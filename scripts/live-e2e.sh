@@ -97,4 +97,5 @@ test "$(jq -s 'map(.run_id) | unique | length' "$summary")" -eq "$run_count"
 test "$(jq -s 'map(.runbook_urn) | unique | length' "$summary")" -eq 1
 test "$(jq -s 'map(.patch_sha256) | unique | length' "$summary")" -eq 1
 request -X POST "$base_url/api/v1/demo/reset" >/dev/null
+"$repo_root/.venv/bin/python" "$repo_root/scripts/verify_runtime_clean.py"
 echo "q4_live_e2e=pass runs=$run_count"
