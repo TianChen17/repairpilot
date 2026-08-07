@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import time
@@ -226,6 +227,7 @@ class WarehouseRunner:
 
     def reset_demo_schemas(self) -> None:
         import psycopg
+        from psycopg import sql
 
         connection = psycopg.connect(
             host=self.settings.postgres_host,
@@ -242,9 +244,13 @@ class WarehouseRunner:
                     "where schema_name like 'rp\\_%' escape '\\'"
                 )
                 for (schema_name,) in cursor.fetchall():
-                    if not schema_name.startswith("rp_") or not schema_name[3:].isalnum():
+                    if not re.fullmatch(
+                        r"rp_[a-z0-9]{1,32}_(raw|staging|intermediate|marts)", schema_name
+                    ):
                         continue
-                    cursor.execute(f'DROP SCHEMA "{schema_name}" CASCADE')
+                    cursor.execute(
+                        sql.SQL("DROP SCHEMA {} CASCADE").format(sql.Identifier(schema_name))
+                    )
         finally:
             connection.close()
 

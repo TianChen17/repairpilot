@@ -43,7 +43,7 @@ def test_real_breaking_change_and_repair_build(tmp_path: Path):
         with connection.cursor() as cursor:
             cursor.execute(
                 "select count(*) from information_schema.schemata "
-                "where schema_name = 'rp_integration1234'"
+                "where schema_name like 'rp\\_integration1\\_%' escape '\\'"
             )
             assert cursor.fetchone() == (0,)
 
