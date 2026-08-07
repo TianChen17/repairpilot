@@ -99,6 +99,15 @@ class WarehouseRunner:
             results.append(repaired_result)
             repair_verified = repaired_result.return_code == 0
 
+            command_evidence_path = artifact_dir / "dbt-command-results.json"
+            command_evidence_path.write_text(
+                json.dumps(
+                    [result.model_dump(mode="json") for result in results],
+                    indent=2,
+                )
+                + "\n"
+            )
+
             patch = self._run_raw(
                 [
                     self.GIT_BINARY,
@@ -111,14 +120,35 @@ class WarehouseRunner:
                 env,
                 check=True,
             ).stdout
+            migration_diff = self._run_raw(
+                [
+                    self.GIT_BINARY,
+                    "diff",
+                    "--no-index",
+                    "--",
+                    "/dev/null",
+                    "warehouse/MIGRATION.md",
+                ],
+                worktree,
+                env,
+                check=False,
+            ).stdout
+            patch += migration_diff
             if not patch.strip():
                 raise WarehouseValidationError("Validated repair produced an empty Git patch")
             patch_path = artifact_dir / "repair.patch"
             patch_path.write_text(patch)
             patch_sha = hashlib.sha256(patch.encode()).hexdigest()
+            self._run_raw(
+                [self.GIT_BINARY, "apply", "--cached", "--check", str(patch_path)],
+                worktree,
+                env,
+                check=True,
+            )
 
             run_results_path = worktree / "warehouse/target/run_results.json"
             run_results = json.loads(run_results_path.read_text())
+            shutil.copyfile(run_results_path, artifact_dir / "run_results.json")
             tests_passed = sum(
                 1
                 for result in run_results.get("results", [])
