@@ -1,0 +1,70 @@
+Metadata-Version: 2.4
+Name: repairpilot
+Version: 0.1.0
+Summary: Incident-to-Repair Autopilot powered by DataHub context
+License-Expression: Apache-2.0
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: acryl-datahub[datahub-rest,dbt]<1.7,>=1.6.0
+Requires-Dist: dbt-core<1.11,>=1.10
+Requires-Dist: dbt-postgres<1.11,>=1.10
+Requires-Dist: fastapi<1,>=0.116
+Requires-Dist: httpx<1,>=0.28
+Requires-Dist: mcp<2,>=1.12
+Requires-Dist: openai<2,>=1.99
+Requires-Dist: psycopg[binary]<4,>=3.2
+Requires-Dist: pydantic<3,>=2.11
+Requires-Dist: pydantic-settings<3,>=2.10
+Requires-Dist: python-multipart<1,>=0.0.20
+Requires-Dist: uvicorn[standard]<1,>=0.35
+Provides-Extra: dev
+Requires-Dist: pytest<9,>=8.4; extra == "dev"
+Requires-Dist: pytest-asyncio<2,>=1.1; extra == "dev"
+Requires-Dist: pytest-cov<7,>=6.2; extra == "dev"
+Requires-Dist: respx<1,>=0.22; extra == "dev"
+Requires-Dist: ruff<1,>=0.12; extra == "dev"
+Dynamic: license-file
+
+# RepairPilot
+
+> **Block. Repair. Prove. Remember.**
+
+RepairPilot is an incident-to-repair autopilot for dangerous data changes. It uses
+DataHub's context graph and official MCP server to find the real blast radius of a
+dbt schema change, applies deterministic release policy, generates a compatibility
+repair with DeepSeek V4 Flash, proves the repair with a real dbt build, requests
+owner approval, and writes the evidence and runbook back to DataHub.
+
+This repository is a new entry for **Build with DataHub: The Agent Hackathon** in
+the **Agents That Do Real Work** category.
+
+## Status
+
+Active implementation. The public judge guide and reproducible setup will remain
+accurate at every tagged release. See [Quality Report](docs/QUALITY_REPORT.md).
+
+## Safety model
+
+- Deterministic code—not the LLM—owns risk classification and release authority.
+- The original breaking change is never applied to the shared demo schema.
+- Generated edits run only inside an isolated worktree and allowlisted dbt paths.
+- DataHub or dbt failure is fail-closed.
+- All business data is deterministic, synthetic, and free of personal information.
+
+## Local development
+
+```bash
+cp .env.example .env
+make bootstrap
+make warehouse-build
+make test
+```
+
+More detailed installation and judge instructions will be added as each quality
+gate is completed.
+
+## License
+
+Apache License 2.0.
+

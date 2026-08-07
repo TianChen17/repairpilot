@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Clean Northstar Commerce orders during the revenue-field migration."
+    columns:
+      - name: order_id
+        data_tests: [unique, not_null]
+      - name: ordered_at
+        data_tests: [not_null]
+      - name: currency
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [USD, GBP, EUR]
+      - name: gross_revenue
+        description: "Canonical revenue field introduced by RepairPilot."
+        data_tests: [not_null]
+      - name: gross_amount
+        description: "Compatibility alias retained for one migration window."
+        data_tests: [not_null]
+      - name: order_status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [completed, refunded, pending]
+

@@ -1,0 +1,27 @@
+name: northstar_analytics
+version: 1.0.0
+config-version: 2
+
+profile: repairpilot
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  northstar_analytics:
+    +materialized: view
+    staging:
+      +schema: staging
+    intermediate:
+      +schema: intermediate
+    marts:
+      +schema: marts
+      +materialized: table
+
+seeds:
+  northstar_analytics:
+    +schema: raw
+    +quote_columns: false
+

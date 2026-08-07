@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: fct_daily_revenue
+    description: "Daily completed-order revenue by region and currency."
+    columns:
+      - name: revenue_date
+        data_tests: [not_null]
+      - name: gross_amount
+        data_tests: [not_null]
+  - name: mart_executive_revenue
+    description: "Tier-1 synthetic revenue mart powering Executive Revenue Pulse."
+    columns:
+      - name: revenue_date
+        data_tests: [not_null]
+      - name: gross_amount
+        data_tests: [not_null]
+

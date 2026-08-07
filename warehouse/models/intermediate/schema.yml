@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: int_order_revenue
+    description: "Completed orders prepared for revenue reporting."
+    columns:
+      - name: order_id
+        data_tests: [unique, not_null]
+      - name: gross_amount
+        data_tests: [not_null]
+

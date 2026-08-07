@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Clean Northstar Commerce orders. Synthetic demo data."
+    columns:
+      - name: order_id
+        description: "Synthetic order identifier."
+        data_tests:
+          - unique
+          - not_null
+      - name: ordered_at
+        data_tests:
+          - not_null
+      - name: currency
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [USD, GBP, EUR]
+      - name: gross_amount
+        description: "Total order value before the canonical gross_revenue migration."
+        data_tests:
+          - not_null
+      - name: order_status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [completed, refunded, pending]
+

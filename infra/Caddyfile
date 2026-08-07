@@ -1,0 +1,31 @@
+repairpilot.145-241-207-154.sslip.io {
+    encode zstd gzip
+    root * /home/ubuntu/repos/repairpilot/frontend/dist
+
+    handle /api/* {
+        reverse_proxy 127.0.0.1:8766
+    }
+
+    try_files {path} /index.html
+    file_server
+
+    header {
+        Strict-Transport-Security "max-age=31536000"
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "no-referrer"
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
+        Content-Security-Policy "default-src 'self'; connect-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'"
+    }
+}
+
+catalog.145-241-207-154.sslip.io {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:9002
+
+    header {
+        Strict-Transport-Security "max-age=31536000"
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "no-referrer"
+    }
+}
+
