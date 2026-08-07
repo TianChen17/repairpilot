@@ -26,7 +26,7 @@ it, wait briefly and press reset after that run completes.
 Open <https://catalog.145-241-207-154.sslip.io> and use:
 
 ```text
-username: repairpilot-judge
+username: judge@repairpilot.demo
 password: RepairPilot-Judge-2026!
 role: Reader
 ```
