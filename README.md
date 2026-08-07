@@ -170,7 +170,8 @@ Export your own DeepSeek API key in the shell; never add it to a repository file
 set -a
 source .env.example
 set +a
-export DEEPSEEK_API_KEY='your-key-here'
+read -rsp 'DeepSeek API key: ' DEEPSEEK_API_KEY
+export DEEPSEEK_API_KEY
 .venv/bin/uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8766
 ```
 

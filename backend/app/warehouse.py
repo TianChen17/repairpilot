@@ -38,6 +38,7 @@ class WarehouseRunner:
         self._add_worktree(worktree)
         results: list[CommandResult] = []
         safe_env = self._safe_subprocess_env()
+        self._ensure_canonical_baseline(worktree, safe_env)
         base_commit = self._run_raw(
             [self.GIT_BINARY, "rev-parse", "HEAD"],
             worktree,
@@ -263,6 +264,68 @@ class WarehouseRunner:
         self._copy(
             worktree / "warehouse/scenarios/repair/MIGRATION.md",
             worktree / "warehouse/MIGRATION.md",
+        )
+
+    def _ensure_canonical_baseline(self, worktree: Path, env: dict[str, str]) -> None:
+        """Reconstruct the demo baseline when validating the repair branch itself.
+
+        Normal hosted runs start from main and make no commit here. A CI run on
+        the canonical repair PR already contains the repaired files, so its
+        detached worktree first receives an explicit ephemeral baseline commit.
+        """
+        pairs = [
+            (
+                self.settings.repairpilot_repo_root / "warehouse/scenarios/baseline/stg_orders.sql",
+                worktree / "warehouse/models/staging/stg_orders.sql",
+            ),
+            (
+                self.settings.repairpilot_repo_root
+                / "warehouse/scenarios/baseline/int_order_revenue.sql",
+                worktree / "warehouse/models/intermediate/int_order_revenue.sql",
+            ),
+            (
+                self.settings.repairpilot_repo_root / "warehouse/scenarios/baseline/schema.yml",
+                worktree / "warehouse/models/staging/schema.yml",
+            ),
+        ]
+        migration = worktree / "warehouse/MIGRATION.md"
+        already_baseline = all(
+            source.read_bytes() == destination.read_bytes() for source, destination in pairs
+        )
+        if already_baseline and not migration.exists():
+            return
+        for source, destination in pairs:
+            self._copy(source, destination)
+        if migration.exists():
+            migration.unlink()
+        self._run_raw(
+            [
+                self.GIT_BINARY,
+                "add",
+                "-A",
+                "--",
+                "warehouse/models",
+                "warehouse/MIGRATION.md",
+            ],
+            worktree,
+            env,
+            check=True,
+        )
+        self._run_raw(
+            [
+                self.GIT_BINARY,
+                "-c",
+                "user.name=RepairPilot",
+                "-c",
+                "user.email=repairpilot@localhost",
+                "commit",
+                "--no-gpg-sign",
+                "-m",
+                "repairpilot: reconstruct canonical test baseline",
+            ],
+            worktree,
+            env,
+            check=True,
         )
 
     @staticmethod
