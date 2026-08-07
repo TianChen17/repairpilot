@@ -11,6 +11,7 @@ def client(tmp_path: Path) -> DataHubMCPClient:
     settings = Settings(
         repairpilot_runtime_dir=tmp_path / "runtime",
         repairpilot_repo_root=tmp_path,
+        deepseek_api_key="test-only",
     )
     return DataHubMCPClient(settings)
 
