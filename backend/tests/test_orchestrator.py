@@ -45,6 +45,8 @@ class FakeWarehouse:
             tests_failed=0,
             patch_sha256="a" * 64,
             patch_path=f"runtime/{run_id}/repair.patch",
+            base_commit="b" * 40,
+            repair_commit="c" * 40,
         )
 
     def reset_demo_schemas(self):

@@ -113,7 +113,23 @@ class DeepSeekRepairGenerator:
         }
         if any(operation.target not in allowed for operation in proposal.operations):
             raise RepairGenerationError("Repair proposal targets a path outside the allowlist")
-        unsafe = ("drop database", "drop schema", "delete from", "truncate ", "../", "/etc/")
+        unsafe = (
+            "drop database",
+            "drop schema",
+            "delete from",
+            "truncate ",
+            "../",
+            "/etc/",
+            "ignore previous",
+            "ignore all previous",
+            "bypass approval",
+            "auto-approve",
+            "api key",
+            "password",
+            "secret",
+            "access token",
+            "curl ",
+        )
         serialized = proposal.model_dump_json().casefold()
         if any(token in serialized for token in unsafe):
             raise RepairGenerationError("Repair proposal contains an unsafe operation")

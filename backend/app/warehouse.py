@@ -37,9 +37,16 @@ class WarehouseRunner:
 
         self._add_worktree(worktree)
         results: list[CommandResult] = []
+        safe_env = self._safe_subprocess_env()
+        base_commit = self._run_raw(
+            [self.GIT_BINARY, "rev-parse", "HEAD"],
+            worktree,
+            safe_env,
+            check=True,
+        ).stdout.strip()
         schema = f"rp_{run_id.replace('-', '')[:12]}"
         env = {
-            **os.environ,
+            **safe_env,
             "POSTGRES_HOST": self.settings.postgres_host,
             "POSTGRES_PORT": str(self.settings.postgres_port),
             "POSTGRES_DB": self.settings.postgres_db,
@@ -166,6 +173,41 @@ class WarehouseRunner:
                     "Repaired dbt build did not pass every selected test"
                 )
 
+            self._run_raw(
+                [
+                    self.GIT_BINARY,
+                    "add",
+                    "--",
+                    "warehouse/models",
+                    "warehouse/MIGRATION.md",
+                ],
+                worktree,
+                env,
+                check=True,
+            )
+            self._run_raw(
+                [
+                    self.GIT_BINARY,
+                    "-c",
+                    "user.name=RepairPilot",
+                    "-c",
+                    "user.email=repairpilot@localhost",
+                    "commit",
+                    "--no-gpg-sign",
+                    "-m",
+                    f"repairpilot: validated repair {run_id}",
+                ],
+                worktree,
+                env,
+                check=True,
+            )
+            repair_commit = self._run_raw(
+                [self.GIT_BINARY, "rev-parse", "HEAD"],
+                worktree,
+                env,
+                check=True,
+            ).stdout.strip()
+
             return ValidationReceipt(
                 breaking_change_reproduced=breaking_reproduced,
                 repair_verified=repair_verified,
@@ -175,6 +217,8 @@ class WarehouseRunner:
                 tests_failed=tests_failed,
                 patch_sha256=patch_sha,
                 patch_path=str(patch_path),
+                base_commit=base_commit,
+                repair_commit=repair_commit,
             )
         finally:
             self._remove_worktree(worktree)
@@ -232,9 +276,27 @@ class WarehouseRunner:
         self._run_raw(
             [self.GIT_BINARY, "worktree", "add", "--detach", str(worktree), "HEAD"],
             self.settings.repairpilot_repo_root,
-            os.environ.copy(),
+            self._safe_subprocess_env(),
             check=True,
         )
+
+    @staticmethod
+    def _safe_subprocess_env() -> dict[str, str]:
+        """Return a deliberately small environment with no agent or platform secrets."""
+        return {
+            key: value
+            for key, value in os.environ.items()
+            if key
+            in {
+                "HOME",
+                "LANG",
+                "LC_ALL",
+                "PATH",
+                "PYTHONIOENCODING",
+                "TMPDIR",
+                "TZ",
+            }
+        }
 
     def _remove_worktree(self, worktree: Path) -> None:
         if worktree.exists():

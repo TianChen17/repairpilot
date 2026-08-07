@@ -62,7 +62,8 @@ class IncidentOrchestrator:
             self._write_evidence_receipt(record)
             return record
         await self.store.transition(record, IncidentState.APPROVED, f"Repair approved by {actor}")
-        asyncio.create_task(self._publish_and_learn(record))
+        async with self.run_lock:
+            await self._publish_and_learn(record)
         return record
 
     async def _investigate_and_validate(self, record: IncidentRecord) -> None:
@@ -168,6 +169,8 @@ class IncidentOrchestrator:
     async def _publish_and_learn(self, record: IncidentRecord) -> None:
         assert record.context and record.risk and record.repair and record.validation
         try:
+            record.pull_request_url = self.settings.github_canonical_pr_url or None
+            self.store.save(record)
             await self.store.transition(
                 record, IncidentState.PUBLISHED, "Validated repair patch published for review"
             )
@@ -187,7 +190,8 @@ class IncidentOrchestrator:
                     run_id=record.run_id,
                     incident_markdown=incident_markdown,
                     runbook_markdown=runbook_markdown,
-                    assertion_urns=["urn:li:assertion:gross-revenue-not-null"],
+                    patch_sha256=record.validation.patch_sha256,
+                    invocation_id=record.validation.invocation_id,
                 )
             record.writeback = writeback
             self.store.save(record)
@@ -230,10 +234,12 @@ class IncidentOrchestrator:
             risk_action=record.risk.action,
             matched_rules=record.risk.matched_rules,
             model=self.settings.deepseek_model,
+            base_commit=record.validation.base_commit,
+            repair_commit=record.validation.repair_commit,
             patch_sha256=record.validation.patch_sha256,
             dbt_invocation_id=record.validation.invocation_id,
             approval=record.approval,
-            pull_request_url=self.settings.github_canonical_pr_url or None,
+            pull_request_url=record.pull_request_url,
             writeback_urns=writeback_urns,
         )
         artifact_dir = self.settings.repairpilot_runtime_dir / "artifacts" / record.run_id

@@ -54,6 +54,8 @@ type Incident = {
     tests_passed: number;
     tests_failed: number;
     patch_sha256: string;
+    base_commit: string;
+    repair_commit: string;
     command_results: {command: string; return_code: number; duration_ms: number; stdout_tail: string}[];
   };
   writeback?: {
@@ -66,6 +68,7 @@ type Incident = {
     actor: string;
     decided_at: string;
   };
+  pull_request_url?: string;
   events: Event[];
   error?: string;
 };
@@ -282,6 +285,7 @@ function ValidationPanel({incident}: {incident: Incident | null}) {
     <PanelTitle icon={<Database />} eyebrow="ISOLATED DBT BUILD" title={validation?.repair_verified ? 'Repair proven' : 'Waiting for executable proof'} />
     {!validation ? <Empty text="The unsafe change must fail, then the repaired selection must pass." /> : <>
       <div className="proof-grid"><div><CircleStop /><strong>Breaking change reproduced</strong><span>Expected failure</span></div><div className="green"><Check /><strong>{validation.tests_passed} tests passed</strong><span>Zero failures</span></div></div>
+      <code className="hash">GIT · {validation.base_commit.slice(0, 8)} → {validation.repair_commit.slice(0, 8)}</code>
       <code className="hash">PATCH SHA · {validation.patch_sha256.slice(0, 24)}…</code>
       <a className="artifact-link" href={`/api/v1/incidents/${incident?.run_id}/artifacts/repair.patch`}>Review Git patch <ExternalLink size={13} /></a>
     </>}
@@ -300,7 +304,7 @@ function MemoryPanel({incident}: {incident: Incident | null}) {
   const writeback = incident?.writeback;
   return <article className="card panel memory-panel">
     <PanelTitle icon={<GitPullRequest />} eyebrow="DATAHUB WRITEBACK" title={writeback ? 'The next incident starts smarter' : 'Institutional memory'} />
-    {!writeback ? <Empty text="Verified evidence, the assertion, and runbook are written back after approval." /> : <div className="memory-grid"><a href={datahubUrl} target="_blank"><span>INCIDENT</span><strong>Root cause + proof</strong><ExternalLink /></a><a href={datahubUrl} target="_blank"><span>ASSERTION</span><strong>gross_revenue not null</strong><ExternalLink /></a><a href={datahubUrl} target="_blank"><span>RUNBOOK</span><strong>Safe column rename</strong><ExternalLink /></a></div>}
+    {!writeback ? <Empty text="Verified evidence, the assertion, and runbook are written back after approval." /> : <div className="memory-grid"><a href={datahubUrl} target="_blank"><span>INCIDENT</span><strong>Root cause + proof</strong><ExternalLink /></a><a href={datahubUrl} target="_blank"><span>ASSERTION</span><strong>gross_revenue not null</strong><ExternalLink /></a><a href={datahubUrl} target="_blank"><span>RUNBOOK</span><strong>Safe column rename</strong><ExternalLink /></a>{incident?.pull_request_url && <a href={incident.pull_request_url} target="_blank"><span>GITHUB PR</span><strong>Review validated diff</strong><ExternalLink /></a>}</div>}
   </article>;
 }
 

@@ -20,8 +20,8 @@ class Settings(BaseSettings):
     datahub_frontend_url: str = "http://127.0.0.1:9002"
     datahub_gms_url: str = "http://127.0.0.1:8080"
     datahub_gms_token: str = ""
-    datahub_mcp_command: str = "uvx"
-    datahub_mcp_package: str = "mcp-server-datahub@0.6.0"
+    datahub_mcp_command: str = ".venv/bin/mcp-server-datahub"
+    datahub_mcp_package: str = ""
 
     deepseek_base_url: str = "https://api.deepseek.com"
     deepseek_model: str = "deepseek-v4-flash"

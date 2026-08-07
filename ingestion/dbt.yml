@@ -1,0 +1,22 @@
+source:
+  type: dbt
+  config:
+    manifest_path: /home/ubuntu/repos/repairpilot/warehouse/target/manifest.json
+    catalog_path: /home/ubuntu/repos/repairpilot/warehouse/target/catalog.json
+    run_results_paths:
+      - /home/ubuntu/repos/repairpilot/warehouse/target/run_results_build.json
+    target_platform: postgres
+    target_platform_instance: repairpilot-demo
+    env: PROD
+    convert_urns_to_lowercase: true
+    include_column_lineage: true
+    include_compiled_code: true
+    test_warnings_are_errors: true
+    git_info:
+      repo: https://github.com/TianChen17/repairpilot
+      branch: main
+
+sink:
+  type: datahub-rest
+  config:
+    server: http://127.0.0.1:8080

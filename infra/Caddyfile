@@ -2,12 +2,16 @@ repairpilot.145-241-207-154.sslip.io {
     encode zstd gzip
     root * /home/ubuntu/repos/repairpilot/frontend/dist
 
-    handle /api/* {
-        reverse_proxy 127.0.0.1:8766
-    }
+    route {
+        handle /api/* {
+            reverse_proxy 127.0.0.1:8766
+        }
 
-    try_files {path} /index.html
-    file_server
+        handle {
+            try_files {path} /index.html
+            file_server
+        }
+    }
 
     header {
         Strict-Transport-Security "max-age=31536000"

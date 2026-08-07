@@ -4,7 +4,7 @@ from collections.abc import AsyncIterator
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 
 from .config import settings
 from .datahub_mcp import DataHubMCPClient
@@ -47,7 +47,7 @@ async def public_rate_limit(request: Request, call_next):  # type: ignore[no-unt
         while history and history[0] < now - 3600:
             history.popleft()
         if len(history) >= 20:
-            raise HTTPException(status_code=429, detail="Demo rate limit reached")
+            return JSONResponse(status_code=429, content={"detail": "Demo rate limit reached"})
         history.append(now)
     return await call_next(request)
 
@@ -123,7 +123,12 @@ async def approve_incident(run_id: str, body: ApprovalRequest) -> IncidentRecord
 
 @app.get("/api/v1/incidents/{run_id}/artifacts/{artifact}")
 async def download_artifact(run_id: str, artifact: str) -> FileResponse:
-    allowed = {"repair.patch", "evidence-receipt.json"}
+    allowed = {
+        "repair.patch",
+        "evidence-receipt.json",
+        "run_results.json",
+        "dbt-command-results.json",
+    }
     if artifact not in allowed:
         raise HTTPException(status_code=404, detail="Artifact not found")
     path = settings.repairpilot_runtime_dir / "artifacts" / run_id / artifact

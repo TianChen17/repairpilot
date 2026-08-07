@@ -1,0 +1,21 @@
+[Unit]
+Description=RepairPilot DataHub OSS Quickstart
+After=docker.service network-online.target
+Requires=docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=ubuntu
+Group=ubuntu
+SupplementaryGroups=docker
+WorkingDirectory=/home/ubuntu/.datahub/quickstart
+Environment=DATAHUB_VERSION=v1.6.0
+ExecStart=/usr/bin/docker compose --env-file /home/ubuntu/.datahub/quickstart/.local-secrets.env --profile quickstart -f /home/ubuntu/.datahub/quickstart/docker-compose.yml -p datahub up -d --wait
+ExecStop=/usr/bin/docker compose --env-file /home/ubuntu/.datahub/quickstart/.local-secrets.env --profile quickstart -f /home/ubuntu/.datahub/quickstart/docker-compose.yml -p datahub stop
+RemainAfterExit=yes
+TimeoutStartSec=600
+TimeoutStopSec=120
+
+[Install]
+WantedBy=multi-user.target

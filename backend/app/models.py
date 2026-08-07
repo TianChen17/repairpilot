@@ -104,6 +104,8 @@ class ValidationReceipt(BaseModel):
     tests_failed: int
     patch_sha256: str
     patch_path: str
+    base_commit: str
+    repair_commit: str
 
 
 class ApprovalRecord(BaseModel):
@@ -142,6 +144,7 @@ class IncidentRecord(BaseModel):
     validation: ValidationReceipt | None = None
     approval: ApprovalRecord | None = None
     writeback: WritebackReceipt | None = None
+    pull_request_url: str | None = None
     evidence: list[EvidenceItem] = Field(default_factory=list)
     events: list[IncidentEvent] = Field(default_factory=list)
     error: str | None = None
@@ -168,6 +171,8 @@ class EvidenceReceipt(BaseModel):
     risk_action: RiskAction
     matched_rules: list[str]
     model: str
+    base_commit: str
+    repair_commit: str
     patch_sha256: str
     dbt_invocation_id: str
     approval: ApprovalRecord | None
