@@ -247,11 +247,16 @@ class IncidentOrchestrator:
         assert record.risk and record.validation and record.repair
         return f"""# RepairPilot Incident {record.run_id}
 
-**Status:** Verified and owner-approved  
-**Root cause:** {record.repair.root_cause}  
-**Risk:** {record.risk.level} ({record.risk.score}/100)  
-**Policy action:** {record.risk.action}  
-**Patch SHA-256:** `{record.validation.patch_sha256}`  
+**Status:** Verified and owner-approved
+
+**Root cause:** {record.repair.root_cause}
+
+**Risk:** {record.risk.level} ({record.risk.score}/100)
+
+**Policy action:** {record.risk.action}
+
+**Patch SHA-256:** `{record.validation.patch_sha256}`
+
 **dbt invocation:** `{record.validation.invocation_id}`
 
 ## Evidence

@@ -9,4 +9,3 @@ select
         rows between 6 preceding and current row
     ) as seven_day_gross_amount
 from {{ ref('fct_daily_revenue') }}
-

@@ -16,4 +16,3 @@ commit.
 | Q7 Submission | PENDING | — |
 
 Release policy: zero P0, zero P1, zero judge-path P2, and zero known flaky tests.
-

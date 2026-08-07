@@ -39,4 +39,3 @@ gate is completed.
 ## License
 
 Apache License 2.0.
-

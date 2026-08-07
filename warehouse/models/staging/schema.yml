@@ -26,4 +26,3 @@ models:
           - accepted_values:
               arguments:
                 values: [completed, refunded, pending]
-

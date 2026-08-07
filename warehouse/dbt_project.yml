@@ -24,4 +24,3 @@ seeds:
   northstar_analytics:
     +schema: raw
     +quote_columns: false
-

@@ -13,4 +13,3 @@ select
     gross_amount as gross_revenue,
     order_status
 from source_orders
-

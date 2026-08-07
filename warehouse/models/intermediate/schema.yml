@@ -8,4 +8,3 @@ models:
         data_tests: [unique, not_null]
       - name: gross_amount
         data_tests: [not_null]
-

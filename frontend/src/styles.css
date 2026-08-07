@@ -155,4 +155,3 @@ footer span:nth-child(1) { color: #d85a62; } footer span:nth-child(2) { color: #
   .operation-grid, .memory-grid { grid-template-columns: 1fr; }
   .lineage-row { align-items: flex-start; flex-direction: column; }
 }
-

@@ -11,4 +11,3 @@ cd "$repo_root"
 npm --prefix frontend run build
 
 echo "local_quality_gates=pass"
-

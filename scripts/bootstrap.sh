@@ -21,4 +21,3 @@ done
 
 echo "postgres=unhealthy" >&2
 exit 1
-

@@ -56,4 +56,3 @@ jobs:
           POSTGRES_PASSWORD: repairpilot-local-only
       - run: npm ci --prefix frontend
       - run: npm --prefix frontend run build
-

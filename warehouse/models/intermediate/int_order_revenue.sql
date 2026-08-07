@@ -7,4 +7,3 @@ select
     order_status
 from {{ ref('stg_orders') }}
 where order_status = 'completed'
-

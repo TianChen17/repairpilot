@@ -23,4 +23,3 @@ quality:
 
 demo-reset:
 	curl -fsS -X POST http://127.0.0.1:8766/api/v1/demo/reset | jq .
-
