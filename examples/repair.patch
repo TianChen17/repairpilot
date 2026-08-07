@@ -1,0 +1,81 @@
+diff --git a/warehouse/models/intermediate/int_order_revenue.sql b/warehouse/models/intermediate/int_order_revenue.sql
+index 7463bba..2902554 100644
+--- a/warehouse/models/intermediate/int_order_revenue.sql
++++ b/warehouse/models/intermediate/int_order_revenue.sql
+@@ -3,7 +3,8 @@ select
+     ordered_at,
+     region,
+     currency,
+-    gross_amount,
++    gross_revenue,
++    gross_revenue as gross_amount,
+     order_status
+ from {{ ref('stg_orders') }}
+ where order_status = 'completed'
+diff --git a/warehouse/models/staging/schema.yml b/warehouse/models/staging/schema.yml
+index f6a9c4b..e54c06f 100644
+--- a/warehouse/models/staging/schema.yml
++++ b/warehouse/models/staging/schema.yml
+@@ -2,25 +2,23 @@ version: 2
+ 
+ models:
+   - name: stg_orders
+-    description: "Clean Northstar Commerce orders. Synthetic demo data."
++    description: "Clean Northstar Commerce orders during the revenue-field migration."
+     columns:
+       - name: order_id
+-        description: "Synthetic order identifier."
+-        data_tests:
+-          - unique
+-          - not_null
++        data_tests: [unique, not_null]
+       - name: ordered_at
+-        data_tests:
+-          - not_null
++        data_tests: [not_null]
+       - name: currency
+         data_tests:
+           - accepted_values:
+               arguments:
+                 values: [USD, GBP, EUR]
++      - name: gross_revenue
++        description: "Canonical revenue field introduced by RepairPilot."
++        data_tests: [not_null]
+       - name: gross_amount
+-        description: "Total order value before the canonical gross_revenue migration."
+-        data_tests:
+-          - not_null
++        description: "Compatibility alias retained for one migration window."
++        data_tests: [not_null]
+       - name: order_status
+         data_tests:
+           - accepted_values:
+diff --git a/warehouse/models/staging/stg_orders.sql b/warehouse/models/staging/stg_orders.sql
+index 8d6ec0f..1df7c50 100644
+--- a/warehouse/models/staging/stg_orders.sql
++++ b/warehouse/models/staging/stg_orders.sql
+@@ -10,6 +10,7 @@ select
+     currency,
+     net_amount,
+     tax_amount,
++    gross_amount as gross_revenue,
+     gross_amount,
+     order_status
+ from source_orders
+diff --git a/warehouse/MIGRATION.md b/warehouse/MIGRATION.md
+new file mode 100644
+index 0000000..2f4507a
+--- /dev/null
++++ b/warehouse/MIGRATION.md
+@@ -0,0 +1,11 @@
++# Revenue field migration
++
++`gross_revenue` is the canonical revenue field. RepairPilot retains `gross_amount`
++as a compatibility alias for one migration window while controlled downstream
++models move to `gross_revenue`.
++
++Removal criteria:
++
++1. DataHub query history shows no remaining `gross_amount` consumers.
++2. Every downstream owner acknowledges the migration.
++3. The `gross_revenue` not-null assertion remains green for seven consecutive runs.

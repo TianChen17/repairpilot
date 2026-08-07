@@ -10,6 +10,7 @@ export POSTGRES_DB=${POSTGRES_DB:-repairpilot}
 export POSTGRES_USER=${POSTGRES_USER:-repairpilot}
 export POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-repairpilot-local-only}
 export DBT_TARGET_SCHEMA=analytics
+export REPAIRPILOT_REPO_ROOT=$repo_root
 
 .venv/bin/dbt build --project-dir warehouse --profiles-dir warehouse
 cp warehouse/target/run_results.json warehouse/target/run_results_build.json

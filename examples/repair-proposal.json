@@ -1,0 +1,22 @@
+{
+  "root_cause": "Renaming gross_amount to gross_revenue in stg_orders.sql breaks downstream references and schema tests.",
+  "summary": "Preserve compatibility, migrate the controlled downstream model, and add a contract test for the canonical field.",
+  "operations": [
+    {
+      "operation": "compatibility_alias",
+      "target": "warehouse/models/staging/stg_orders.sql",
+      "rationale": "Expose gross_revenue while retaining gross_amount for existing consumers."
+    },
+    {
+      "operation": "downstream_migration",
+      "target": "warehouse/models/intermediate/int_order_revenue.sql",
+      "rationale": "Move the controlled downstream model to gross_revenue."
+    },
+    {
+      "operation": "schema_test",
+      "target": "warehouse/models/staging/schema.yml",
+      "rationale": "Require non-null values for the canonical gross_revenue contract."
+    }
+  ],
+  "confidence": 0.95
+}
