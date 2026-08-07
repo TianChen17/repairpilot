@@ -26,7 +26,7 @@ Real Work** challenge.
 DataHub read-only demo login:
 
 ```text
-username: repairpilot-judge
+username: judge@repairpilot.demo
 password: RepairPilot-Judge-2026!
 role: Reader
 ```

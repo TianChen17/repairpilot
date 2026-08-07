@@ -102,6 +102,28 @@ function App() {
     return () => window.clearInterval(timer);
   }, [incident, refresh]);
 
+  useEffect(() => {
+    if (!incident) return;
+    const messages: Record<string, string> = {
+      DETECTED: 'Dangerous schema change detected',
+      CONTEXT_COLLECTED: 'DataHub MCP context verified',
+      POLICY_EVALUATED: 'Deterministic release policy evaluated',
+      BLOCKED: 'Unsafe release blocked before merge',
+      REPAIR_PROPOSED: 'Bounded compatibility repair generated',
+      VALIDATING: 'Running isolated dbt build',
+      VERIFIED: 'Executable repair proof captured',
+      AWAITING_APPROVAL: 'Repair proven — awaiting owner approval',
+      APPROVED: 'Owner approval recorded',
+      PUBLISHED: 'Validated patch published for review',
+      LEARNED: 'Approved repair and reusable knowledge written back',
+      REJECTED: 'Owner rejected repair — release remains blocked',
+      CONTEXT_UNAVAILABLE: 'DataHub unavailable — failed closed',
+      VALIDATION_FAILED: 'dbt validation failed — release remains blocked',
+      MANUAL_REVIEW: 'Unexpected failure — manual review required',
+    };
+    setNotice(messages[incident.state] || incident.state);
+  }, [incident?.state]);
+
   const start = async (mode: 'live' | 'replay') => {
     setBusy(true);
     setNotice(mode === 'live' ? 'Starting live MCP investigation' : 'Starting labeled replay');
