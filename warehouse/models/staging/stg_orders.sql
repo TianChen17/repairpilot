@@ -10,6 +10,7 @@ select
     currency,
     net_amount,
     tax_amount,
+    gross_amount as gross_revenue,
     gross_amount,
     order_status
 from source_orders
