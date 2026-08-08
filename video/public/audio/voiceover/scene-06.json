@@ -2,27 +2,126 @@
   "voice": "en-US-AndrewMultilingualNeural",
   "rate": "+18%",
   "pitch": "-2Hz",
-  "text": "DeepSeek V4 Flash proposes a bounded repair: preserve a compatibility alias, migrate the downstream model, add a schema test, and explain the migration. Only three operation types and three allowlisted paths are accepted. Generated shell and arbitrary SQL never execute.",
+  "boundary": "WordBoundary",
+  "text": "Only verified evidence unlocks Revenue Analytics approval. Rejecting leaves the incident blocked and creates no pull request.",
   "captions": [
     {
-      "text": " DeepSeek V4 Flash proposes a bounded repair: preserve a compatibility alias, migrate the downstream model, add a schema test, and explain the migration.",
-      "startMs": 50,
-      "endMs": 9248,
-      "timestampMs": 50,
+      "text": " Only",
+      "startMs": 85,
+      "endMs": 286,
+      "timestampMs": 85,
       "confidence": null
     },
     {
-      "text": " Only three operation types and three allowlisted paths are accepted.",
-      "startMs": 9248,
-      "endMs": 13655,
-      "timestampMs": 9248,
+      "text": " verified",
+      "startMs": 286,
+      "endMs": 911,
+      "timestampMs": 286,
       "confidence": null
     },
     {
-      "text": " Generated shell and arbitrary SQL never execute.",
-      "startMs": 13655,
-      "endMs": 17002,
-      "timestampMs": 13655,
+      "text": " evidence",
+      "startMs": 922,
+      "endMs": 1420,
+      "timestampMs": 922,
+      "confidence": null
+    },
+    {
+      "text": " unlocks",
+      "startMs": 1536,
+      "endMs": 2108,
+      "timestampMs": 1536,
+      "confidence": null
+    },
+    {
+      "text": " Revenue",
+      "startMs": 2119,
+      "endMs": 2564,
+      "timestampMs": 2119,
+      "confidence": null
+    },
+    {
+      "text": " Analytics",
+      "startMs": 2574,
+      "endMs": 3008,
+      "timestampMs": 2574,
+      "confidence": null
+    },
+    {
+      "text": " approval",
+      "startMs": 3008,
+      "endMs": 3528,
+      "timestampMs": 3008,
+      "confidence": null
+    },
+    {
+      "text": " Rejecting",
+      "startMs": 3867,
+      "endMs": 4322,
+      "timestampMs": 3867,
+      "confidence": null
+    },
+    {
+      "text": " leaves",
+      "startMs": 4333,
+      "endMs": 4576,
+      "timestampMs": 4333,
+      "confidence": null
+    },
+    {
+      "text": " the",
+      "startMs": 4576,
+      "endMs": 4672,
+      "timestampMs": 4576,
+      "confidence": null
+    },
+    {
+      "text": " incident",
+      "startMs": 4682,
+      "endMs": 5053,
+      "timestampMs": 4682,
+      "confidence": null
+    },
+    {
+      "text": " blocked",
+      "startMs": 5053,
+      "endMs": 5487,
+      "timestampMs": 5053,
+      "confidence": null
+    },
+    {
+      "text": " and",
+      "startMs": 5805,
+      "endMs": 5890,
+      "timestampMs": 5805,
+      "confidence": null
+    },
+    {
+      "text": " creates",
+      "startMs": 5890,
+      "endMs": 6271,
+      "timestampMs": 5890,
+      "confidence": null
+    },
+    {
+      "text": " no",
+      "startMs": 6271,
+      "endMs": 6504,
+      "timestampMs": 6271,
+      "confidence": null
+    },
+    {
+      "text": " pull",
+      "startMs": 6515,
+      "endMs": 6748,
+      "timestampMs": 6515,
+      "confidence": null
+    },
+    {
+      "text": " request",
+      "startMs": 6748,
+      "endMs": 7267,
+      "timestampMs": 6748,
       "confidence": null
     }
   ]

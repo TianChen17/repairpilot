@@ -2,20 +2,210 @@
   "voice": "en-US-AndrewMultilingualNeural",
   "rate": "+18%",
   "pitch": "-2Hz",
-  "text": "A single dbt column rename can break revenue models and executive dashboards. RepairPilot stops that change before merge.",
+  "boundary": "WordBoundary",
+  "text": "Renaming one dbt column can silently break three models and an executive dashboard. RepairPilot blocks it before merge—and carries the incident all the way to a verified repair.",
   "captions": [
     {
-      "text": " A single dbt column rename can break revenue models and executive dashboards.",
-      "startMs": 50,
-      "endMs": 5053,
-      "timestampMs": 50,
+      "text": " Renaming",
+      "startMs": 74,
+      "endMs": 498,
+      "timestampMs": 74,
       "confidence": null
     },
     {
-      "text": " RepairPilot stops that change before merge.",
-      "startMs": 5053,
-      "endMs": 7691,
-      "timestampMs": 5053,
+      "text": " one",
+      "startMs": 508,
+      "endMs": 816,
+      "timestampMs": 508,
+      "confidence": null
+    },
+    {
+      "text": " dbt",
+      "startMs": 911,
+      "endMs": 1398,
+      "timestampMs": 911,
+      "confidence": null
+    },
+    {
+      "text": " column",
+      "startMs": 1398,
+      "endMs": 1833,
+      "timestampMs": 1398,
+      "confidence": null
+    },
+    {
+      "text": " can",
+      "startMs": 1960,
+      "endMs": 2097,
+      "timestampMs": 1960,
+      "confidence": null
+    },
+    {
+      "text": " silently",
+      "startMs": 2097,
+      "endMs": 2648,
+      "timestampMs": 2097,
+      "confidence": null
+    },
+    {
+      "text": " break",
+      "startMs": 2648,
+      "endMs": 2998,
+      "timestampMs": 2648,
+      "confidence": null
+    },
+    {
+      "text": " three",
+      "startMs": 3093,
+      "endMs": 3411,
+      "timestampMs": 3093,
+      "confidence": null
+    },
+    {
+      "text": " models",
+      "startMs": 3411,
+      "endMs": 3909,
+      "timestampMs": 3411,
+      "confidence": null
+    },
+    {
+      "text": " and",
+      "startMs": 4089,
+      "endMs": 4195,
+      "timestampMs": 4089,
+      "confidence": null
+    },
+    {
+      "text": " an",
+      "startMs": 4195,
+      "endMs": 4237,
+      "timestampMs": 4195,
+      "confidence": null
+    },
+    {
+      "text": " executive",
+      "startMs": 4237,
+      "endMs": 4703,
+      "timestampMs": 4237,
+      "confidence": null
+    },
+    {
+      "text": " dashboard",
+      "startMs": 4714,
+      "endMs": 5212,
+      "timestampMs": 4714,
+      "confidence": null
+    },
+    {
+      "text": " RepairPilot",
+      "startMs": 5551,
+      "endMs": 6197,
+      "timestampMs": 5551,
+      "confidence": null
+    },
+    {
+      "text": " blocks",
+      "startMs": 6208,
+      "endMs": 6589,
+      "timestampMs": 6208,
+      "confidence": null
+    },
+    {
+      "text": " it",
+      "startMs": 6600,
+      "endMs": 6705,
+      "timestampMs": 6600,
+      "confidence": null
+    },
+    {
+      "text": " before",
+      "startMs": 6716,
+      "endMs": 7108,
+      "timestampMs": 6716,
+      "confidence": null
+    },
+    {
+      "text": " merge",
+      "startMs": 7119,
+      "endMs": 7606,
+      "timestampMs": 7119,
+      "confidence": null
+    },
+    {
+      "text": " and",
+      "startMs": 7828,
+      "endMs": 7977,
+      "timestampMs": 7828,
+      "confidence": null
+    },
+    {
+      "text": " carries",
+      "startMs": 7977,
+      "endMs": 8294,
+      "timestampMs": 7977,
+      "confidence": null
+    },
+    {
+      "text": " the",
+      "startMs": 8294,
+      "endMs": 8390,
+      "timestampMs": 8294,
+      "confidence": null
+    },
+    {
+      "text": " incident",
+      "startMs": 8400,
+      "endMs": 8792,
+      "timestampMs": 8400,
+      "confidence": null
+    },
+    {
+      "text": " all",
+      "startMs": 8856,
+      "endMs": 9036,
+      "timestampMs": 8856,
+      "confidence": null
+    },
+    {
+      "text": " the",
+      "startMs": 9047,
+      "endMs": 9121,
+      "timestampMs": 9047,
+      "confidence": null
+    },
+    {
+      "text": " way",
+      "startMs": 9121,
+      "endMs": 9375,
+      "timestampMs": 9121,
+      "confidence": null
+    },
+    {
+      "text": " to",
+      "startMs": 9375,
+      "endMs": 9502,
+      "timestampMs": 9375,
+      "confidence": null
+    },
+    {
+      "text": " a",
+      "startMs": 9502,
+      "endMs": 9566,
+      "timestampMs": 9502,
+      "confidence": null
+    },
+    {
+      "text": " verified",
+      "startMs": 9566,
+      "endMs": 10064,
+      "timestampMs": 9566,
+      "confidence": null
+    },
+    {
+      "text": " repair",
+      "startMs": 10064,
+      "endMs": 10487,
+      "timestampMs": 10064,
       "confidence": null
     }
   ]

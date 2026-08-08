@@ -2,34 +2,140 @@
   "voice": "en-US-AndrewMultilingualNeural",
   "rate": "+18%",
   "pitch": "-2Hz",
-  "text": "Now comes executable proof. In a detached Git worktree and temporary Postgres schemas, RepairPilot reproduces the failure, applies reviewed templates, and runs dbt build. Fourteen tests pass with zero failures. Commits, invocation, and patch hash are captured.",
+  "boundary": "WordBoundary",
+  "text": "Approval produces this public four-file draft PR. The diff, migration guide, test evidence, and GitHub Actions result are reviewable.",
   "captions": [
     {
-      "text": " Now comes executable proof.",
-      "startMs": 50,
-      "endMs": 1981,
-      "timestampMs": 50,
+      "text": " Approval",
+      "startMs": 85,
+      "endMs": 477,
+      "timestampMs": 85,
       "confidence": null
     },
     {
-      "text": " In a detached Git worktree and temporary Postgres schemas, RepairPilot reproduces the failure, applies reviewed templates, and runs dbt build.",
-      "startMs": 1981,
-      "endMs": 10720,
-      "timestampMs": 1981,
+      "text": " produces",
+      "startMs": 477,
+      "endMs": 996,
+      "timestampMs": 477,
       "confidence": null
     },
     {
-      "text": " Fourteen tests pass with zero failures.",
-      "startMs": 10720,
-      "endMs": 13347,
-      "timestampMs": 10720,
+      "text": " this",
+      "startMs": 996,
+      "endMs": 1133,
+      "timestampMs": 996,
       "confidence": null
     },
     {
-      "text": " Commits, invocation, and patch hash are captured.",
-      "startMs": 13347,
-      "endMs": 16536,
-      "timestampMs": 13347,
+      "text": " public",
+      "startMs": 1133,
+      "endMs": 1472,
+      "timestampMs": 1133,
+      "confidence": null
+    },
+    {
+      "text": " four-file",
+      "startMs": 1472,
+      "endMs": 2129,
+      "timestampMs": 1472,
+      "confidence": null
+    },
+    {
+      "text": " draft",
+      "startMs": 2129,
+      "endMs": 2489,
+      "timestampMs": 2129,
+      "confidence": null
+    },
+    {
+      "text": " PR",
+      "startMs": 2489,
+      "endMs": 2913,
+      "timestampMs": 2489,
+      "confidence": null
+    },
+    {
+      "text": " The",
+      "startMs": 3242,
+      "endMs": 3326,
+      "timestampMs": 3242,
+      "confidence": null
+    },
+    {
+      "text": " diff",
+      "startMs": 3337,
+      "endMs": 3686,
+      "timestampMs": 3337,
+      "confidence": null
+    },
+    {
+      "text": " migration",
+      "startMs": 3898,
+      "endMs": 4407,
+      "timestampMs": 3898,
+      "confidence": null
+    },
+    {
+      "text": " guide",
+      "startMs": 4407,
+      "endMs": 4809,
+      "timestampMs": 4407,
+      "confidence": null
+    },
+    {
+      "text": " test",
+      "startMs": 5117,
+      "endMs": 5392,
+      "timestampMs": 5117,
+      "confidence": null
+    },
+    {
+      "text": " evidence",
+      "startMs": 5403,
+      "endMs": 5869,
+      "timestampMs": 5403,
+      "confidence": null
+    },
+    {
+      "text": " and",
+      "startMs": 6017,
+      "endMs": 6133,
+      "timestampMs": 6017,
+      "confidence": null
+    },
+    {
+      "text": " GitHub",
+      "startMs": 6250,
+      "endMs": 6568,
+      "timestampMs": 6250,
+      "confidence": null
+    },
+    {
+      "text": " Actions",
+      "startMs": 6568,
+      "endMs": 6886,
+      "timestampMs": 6568,
+      "confidence": null
+    },
+    {
+      "text": " result",
+      "startMs": 6896,
+      "endMs": 7256,
+      "timestampMs": 6896,
+      "confidence": null
+    },
+    {
+      "text": " are",
+      "startMs": 7309,
+      "endMs": 7415,
+      "timestampMs": 7309,
+      "confidence": null
+    },
+    {
+      "text": " reviewable",
+      "startMs": 7415,
+      "endMs": 7892,
+      "timestampMs": 7415,
       "confidence": null
     }
   ]

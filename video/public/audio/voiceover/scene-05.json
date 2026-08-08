@@ -2,27 +2,322 @@
   "voice": "en-US-AndrewMultilingualNeural",
   "rate": "+18%",
   "pitch": "-2Hz",
-  "text": "A deterministic policy scores the change high risk: one hundred out of one hundred. The model cannot lower this score, bypass approval, or publish. If DataHub is unavailable, RepairPilot fails closed.",
+  "boundary": "WordBoundary",
+  "text": "RepairPilot creates a detached Git worktree and per-run Postgres schemas. First it reproduces the breaking build. Then it applies the bounded patch and runs dbt build over the affected graph. Fourteen tests pass with zero failures, and the invocation, commits, and patch SHA are recorded.",
   "captions": [
     {
-      "text": " A deterministic policy scores the change high risk: one hundred out of one hundred.",
-      "startMs": 50,
-      "endMs": 4650,
-      "timestampMs": 50,
+      "text": " RepairPilot",
+      "startMs": 74,
+      "endMs": 710,
+      "timestampMs": 74,
       "confidence": null
     },
     {
-      "text": " The model cannot lower this score, bypass approval, or publish.",
-      "startMs": 4650,
-      "endMs": 8347,
-      "timestampMs": 4650,
+      "text": " creates",
+      "startMs": 720,
+      "endMs": 1038,
+      "timestampMs": 720,
       "confidence": null
     },
     {
-      "text": " If DataHub is unavailable, RepairPilot fails closed.",
-      "startMs": 8347,
-      "endMs": 12129,
-      "timestampMs": 8347,
+      "text": " a",
+      "startMs": 1038,
+      "endMs": 1080,
+      "timestampMs": 1038,
+      "confidence": null
+    },
+    {
+      "text": " detached",
+      "startMs": 1091,
+      "endMs": 1663,
+      "timestampMs": 1091,
+      "confidence": null
+    },
+    {
+      "text": " Git",
+      "startMs": 1801,
+      "endMs": 1960,
+      "timestampMs": 1801,
+      "confidence": null
+    },
+    {
+      "text": " worktree",
+      "startMs": 1960,
+      "endMs": 2489,
+      "timestampMs": 1960,
+      "confidence": null
+    },
+    {
+      "text": " and",
+      "startMs": 2670,
+      "endMs": 2786,
+      "timestampMs": 2670,
+      "confidence": null
+    },
+    {
+      "text": " per-run",
+      "startMs": 2797,
+      "endMs": 3294,
+      "timestampMs": 2797,
+      "confidence": null
+    },
+    {
+      "text": " Postgres",
+      "startMs": 3294,
+      "endMs": 3718,
+      "timestampMs": 3294,
+      "confidence": null
+    },
+    {
+      "text": " schemas",
+      "startMs": 3718,
+      "endMs": 4205,
+      "timestampMs": 3718,
+      "confidence": null
+    },
+    {
+      "text": " First",
+      "startMs": 4576,
+      "endMs": 4788,
+      "timestampMs": 4576,
+      "confidence": null
+    },
+    {
+      "text": " it",
+      "startMs": 4799,
+      "endMs": 4915,
+      "timestampMs": 4799,
+      "confidence": null
+    },
+    {
+      "text": " reproduces",
+      "startMs": 4926,
+      "endMs": 5614,
+      "timestampMs": 4926,
+      "confidence": null
+    },
+    {
+      "text": " the",
+      "startMs": 5614,
+      "endMs": 5699,
+      "timestampMs": 5614,
+      "confidence": null
+    },
+    {
+      "text": " breaking",
+      "startMs": 5699,
+      "endMs": 6070,
+      "timestampMs": 5699,
+      "confidence": null
+    },
+    {
+      "text": " build",
+      "startMs": 6070,
+      "endMs": 6409,
+      "timestampMs": 6070,
+      "confidence": null
+    },
+    {
+      "text": " Then",
+      "startMs": 6758,
+      "endMs": 6843,
+      "timestampMs": 6758,
+      "confidence": null
+    },
+    {
+      "text": " it",
+      "startMs": 6843,
+      "endMs": 6896,
+      "timestampMs": 6843,
+      "confidence": null
+    },
+    {
+      "text": " applies",
+      "startMs": 6907,
+      "endMs": 7373,
+      "timestampMs": 6907,
+      "confidence": null
+    },
+    {
+      "text": " the",
+      "startMs": 7373,
+      "endMs": 7447,
+      "timestampMs": 7373,
+      "confidence": null
+    },
+    {
+      "text": " bounded",
+      "startMs": 7458,
+      "endMs": 7828,
+      "timestampMs": 7458,
+      "confidence": null
+    },
+    {
+      "text": " patch",
+      "startMs": 7828,
+      "endMs": 8220,
+      "timestampMs": 7828,
+      "confidence": null
+    },
+    {
+      "text": " and",
+      "startMs": 8422,
+      "endMs": 8570,
+      "timestampMs": 8422,
+      "confidence": null
+    },
+    {
+      "text": " runs",
+      "startMs": 8570,
+      "endMs": 8814,
+      "timestampMs": 8570,
+      "confidence": null
+    },
+    {
+      "text": " dbt",
+      "startMs": 8824,
+      "endMs": 9470,
+      "timestampMs": 8824,
+      "confidence": null
+    },
+    {
+      "text": " build",
+      "startMs": 9640,
+      "endMs": 10021,
+      "timestampMs": 9640,
+      "confidence": null
+    },
+    {
+      "text": " over",
+      "startMs": 10159,
+      "endMs": 10307,
+      "timestampMs": 10159,
+      "confidence": null
+    },
+    {
+      "text": " the",
+      "startMs": 10307,
+      "endMs": 10381,
+      "timestampMs": 10307,
+      "confidence": null
+    },
+    {
+      "text": " affected",
+      "startMs": 10381,
+      "endMs": 10720,
+      "timestampMs": 10381,
+      "confidence": null
+    },
+    {
+      "text": " graph",
+      "startMs": 10720,
+      "endMs": 11176,
+      "timestampMs": 10720,
+      "confidence": null
+    },
+    {
+      "text": " Fourteen",
+      "startMs": 11557,
+      "endMs": 11907,
+      "timestampMs": 11557,
+      "confidence": null
+    },
+    {
+      "text": " tests",
+      "startMs": 11917,
+      "endMs": 12214,
+      "timestampMs": 11917,
+      "confidence": null
+    },
+    {
+      "text": " pass",
+      "startMs": 12214,
+      "endMs": 12595,
+      "timestampMs": 12214,
+      "confidence": null
+    },
+    {
+      "text": " with",
+      "startMs": 12595,
+      "endMs": 12722,
+      "timestampMs": 12595,
+      "confidence": null
+    },
+    {
+      "text": " zero",
+      "startMs": 12733,
+      "endMs": 13051,
+      "timestampMs": 12733,
+      "confidence": null
+    },
+    {
+      "text": " failures",
+      "startMs": 13051,
+      "endMs": 13644,
+      "timestampMs": 13051,
+      "confidence": null
+    },
+    {
+      "text": " and",
+      "startMs": 13877,
+      "endMs": 13941,
+      "timestampMs": 13877,
+      "confidence": null
+    },
+    {
+      "text": " the",
+      "startMs": 13941,
+      "endMs": 13983,
+      "timestampMs": 13941,
+      "confidence": null
+    },
+    {
+      "text": " invocation",
+      "startMs": 13983,
+      "endMs": 14650,
+      "timestampMs": 13983,
+      "confidence": null
+    },
+    {
+      "text": " commits",
+      "startMs": 14862,
+      "endMs": 15434,
+      "timestampMs": 14862,
+      "confidence": null
+    },
+    {
+      "text": " and",
+      "startMs": 15636,
+      "endMs": 15763,
+      "timestampMs": 15636,
+      "confidence": null
+    },
+    {
+      "text": " patch",
+      "startMs": 15763,
+      "endMs": 16080,
+      "timestampMs": 15763,
+      "confidence": null
+    },
+    {
+      "text": " SHA",
+      "startMs": 16080,
+      "endMs": 16568,
+      "timestampMs": 16080,
+      "confidence": null
+    },
+    {
+      "text": " are",
+      "startMs": 16568,
+      "endMs": 16642,
+      "timestampMs": 16568,
+      "confidence": null
+    },
+    {
+      "text": " recorded",
+      "startMs": 16653,
+      "endMs": 17076,
+      "timestampMs": 16653,
       "confidence": null
     }
   ]

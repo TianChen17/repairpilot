@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -16,50 +17,55 @@ AUDIO = VIDEO / "public" / "audio" / "voiceover"
 DATA = VIDEO / "public" / "data"
 VOICE = "en-US-AndrewMultilingualNeural"
 RATE = "+18%"
+CLOSING_RATE = "+70%"
 PITCH = "-2Hz"
-GAP_MS = 350
-TARGET_DURATION_MS = 175_000
-PREFERRED_START_MS = [
-    650,
-    13_200,
-    21_500,
-    33_500,
-    44_700,
-    56_500,
-    73_800,
-    91_000,
-    101_300,
-    114_300,
-    135_200,
-    151_200,
-    162_000,
-    168_000,
-]
+BOUNDARY = "WordBoundary"
+TIMELINE = json.loads((VIDEO / "timeline.json").read_text(encoding="utf-8"))
+TARGET_DURATION_MS = int(TIMELINE["durationSeconds"] * 1000)
 
 
 def phrase_captions(captions: list[dict[str, object]]) -> list[dict[str, object]]:
-    """Split sentence boundaries into readable caption phrases."""
-    phrases: list[dict[str, object]] = []
+    """Group exact word boundaries into phrases of no more than seven words."""
+    normalized: list[dict[str, object]] = []
     for caption in captions:
-        words = str(caption["text"]).split()
-        groups = [words[offset : offset + 7] for offset in range(0, len(words), 7)]
-        start_ms = int(caption["startMs"])
-        end_ms = int(caption["endMs"])
-        total_words = max(len(words), 1)
-        consumed = 0
-        for group in groups:
-            group_start = start_ms + round((end_ms - start_ms) * consumed / total_words)
-            consumed += len(group)
-            group_end = start_ms + round((end_ms - start_ms) * consumed / total_words)
-            phrases.append(
-                {
-                    "text": " " + " ".join(group),
-                    "startMs": group_start,
-                    "endMs": group_end,
-                    "timestampMs": group_start,
-                    "confidence": None,
+        token = str(caption["text"]).strip()
+        if not re.search(r"[A-Za-z0-9_]", token):
+            if normalized:
+                normalized[-1] = {
+                    **normalized[-1],
+                    "text": f"{str(normalized[-1]['text']).rstrip()}{token}",
+                    "endMs": int(caption["endMs"]),
                 }
-            )
+            continue
+        normalized.append({**caption, "text": token})
+
+    phrases: list[dict[str, object]] = []
+    group: list[dict[str, object]] = []
+    for caption in normalized:
+        group.append(caption)
+        word = str(caption["text"]).strip()
+        if len(group) < 7 and not word.endswith((".", "?", "!", ":", ";")):
+            continue
+        phrases.append(
+            {
+                "text": " " + " ".join(str(item["text"]).strip() for item in group),
+                "startMs": int(group[0]["startMs"]),
+                "endMs": int(group[-1]["endMs"]),
+                "timestampMs": int(group[0]["startMs"]),
+                "confidence": None,
+            }
+        )
+        group = []
+    if group:
+        phrases.append(
+            {
+                "text": " " + " ".join(str(item["text"]).strip() for item in group),
+                "startMs": int(group[0]["startMs"]),
+                "endMs": int(group[-1]["endMs"]),
+                "timestampMs": int(group[0]["startMs"]),
+                "confidence": None,
+            }
+        )
     return phrases
 
 
@@ -85,14 +91,16 @@ def duration_ms(path: Path) -> int:
 async def generate_scene(index: int, text: str) -> tuple[Path, list[dict[str, object]]]:
     target = AUDIO / f"scene-{index:02d}.mp3"
     sidecar = AUDIO / f"scene-{index:02d}.json"
+    scene_rate = CLOSING_RATE if index == 10 else RATE
     if target.stat().st_size > 1_000 if target.exists() else False:
         if sidecar.exists():
             cached = json.loads(sidecar.read_text(encoding="utf-8"))
             if (
                 isinstance(cached, dict)
                 and cached.get("voice") == VOICE
-                and cached.get("rate") == RATE
+                and cached.get("rate") == scene_rate
                 and cached.get("pitch") == PITCH
+                and cached.get("boundary") == BOUNDARY
                 and cached.get("text") == text
             ):
                 return target, cached["captions"]
@@ -102,7 +110,9 @@ async def generate_scene(index: int, text: str) -> tuple[Path, list[dict[str, ob
         temporary.unlink(missing_ok=True)
         words: list[dict[str, object]] = []
         try:
-            communicate = edge_tts.Communicate(text, VOICE, rate=RATE, pitch=PITCH)
+            communicate = edge_tts.Communicate(
+                text, VOICE, rate=scene_rate, pitch=PITCH, boundary=BOUNDARY
+            )
             with temporary.open("wb") as audio_file:
                 async for chunk in communicate.stream():
                     if chunk["type"] == "audio":
@@ -124,8 +134,9 @@ async def generate_scene(index: int, text: str) -> tuple[Path, list[dict[str, ob
                 json.dumps(
                     {
                         "voice": VOICE,
-                        "rate": RATE,
+                        "rate": scene_rate,
                         "pitch": PITCH,
+                        "boundary": BOUNDARY,
                         "text": text,
                         "captions": words,
                     },
@@ -153,37 +164,55 @@ async def main() -> None:
     AUDIO.mkdir(parents=True, exist_ok=True)
     DATA.mkdir(parents=True, exist_ok=True)
 
+    chapters = TIMELINE["chapters"]
+    if len(paragraphs) != len(chapters):
+        raise SystemExit(
+            f"Narration has {len(paragraphs)} paragraphs; timeline has {len(chapters)} chapters."
+        )
+
     scene_rows: list[dict[str, object]] = []
     captions: list[dict[str, object]] = []
-    cursor_ms = 650
+    speech_end_ms = 0
 
-    for index, paragraph in enumerate(paragraphs, start=1):
+    for index, (paragraph, chapter) in enumerate(zip(paragraphs, chapters, strict=True), start=1):
         target, scene_words = await generate_scene(index, paragraph)
         scene_duration = duration_ms(target)
-        cursor_ms = max(cursor_ms, PREFERRED_START_MS[index - 1])
+        start_ms = int(chapter["narrationStartMs"])
+        end_ms = start_ms + scene_duration
+        chapter_end_ms = int(chapter["endMs"])
+        if end_ms > chapter_end_ms:
+            raise SystemExit(
+                f"Narration {index} ends at {end_ms / 1000:.3f}s, after "
+                f"chapter {chapter['id']} ends at {chapter_end_ms / 1000:.3f}s."
+            )
         for word in phrase_captions(scene_words):
             captions.append(
                 {
                     **word,
-                    "startMs": int(word["startMs"]) + cursor_ms,
-                    "endMs": int(word["endMs"]) + cursor_ms,
-                    "timestampMs": int(word["timestampMs"]) + cursor_ms,
+                    "startMs": int(word["startMs"]) + start_ms,
+                    "endMs": int(word["endMs"]) + start_ms,
+                    "timestampMs": int(word["timestampMs"]) + start_ms,
                 }
             )
         scene_rows.append(
             {
                 "id": index,
+                "chapter": chapter["id"],
                 "audio": f"audio/voiceover/{target.name}",
-                "startMs": cursor_ms,
+                "startMs": start_ms,
+                "endMs": end_ms,
                 "durationMs": scene_duration,
+                "rate": CLOSING_RATE if index == 10 else RATE,
                 "text": paragraph,
             }
         )
-        cursor_ms += scene_duration + GAP_MS
+        speech_end_ms = max(speech_end_ms, end_ms)
         await asyncio.sleep(0.75)
 
-    if cursor_ms > TARGET_DURATION_MS - 1_500:
-        raise SystemExit(f"Voiceover ends at {cursor_ms / 1000:.2f}s; regenerate at a faster rate.")
+    if speech_end_ms > TARGET_DURATION_MS - 250:
+        raise SystemExit(
+            f"Voiceover ends at {speech_end_ms / 1000:.2f}s; closing hold is too short."
+        )
 
     (DATA / "captions.json").write_text(
         json.dumps(captions, indent=2, ensure_ascii=False) + "\n",
@@ -194,9 +223,11 @@ async def main() -> None:
             {
                 "voice": VOICE,
                 "rate": RATE,
+                "closingRate": CLOSING_RATE,
                 "pitch": PITCH,
+                "boundary": BOUNDARY,
                 "targetDurationMs": TARGET_DURATION_MS,
-                "speechEndMs": cursor_ms - GAP_MS,
+                "speechEndMs": speech_end_ms,
                 "scenes": scene_rows,
             },
             indent=2,
@@ -210,7 +241,7 @@ async def main() -> None:
             {
                 "scenes": len(scene_rows),
                 "captions": len(captions),
-                "speech_end_seconds": round((cursor_ms - GAP_MS) / 1000, 3),
+                "speech_end_seconds": round(speech_end_ms / 1000, 3),
             }
         )
     )

@@ -15,6 +15,7 @@ source:
     git_info:
       repo: https://github.com/TianChen17/repairpilot
       branch: main
+      url_subdir: warehouse
 
 sink:
   type: datahub-rest

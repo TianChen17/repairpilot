@@ -20,7 +20,7 @@ class FakeStore:
 def api_client(monkeypatch: pytest.MonkeyPatch, tmp_path: Path):
     main.requests_by_ip.clear()
     monkeypatch.setattr(main.settings, "repairpilot_runtime_dir", tmp_path)
-    return TestClient(main.app)
+    return TestClient(main.app, client=("127.0.0.1", 50000))
 
 
 def test_health_and_create_contract(api_client: TestClient, monkeypatch: pytest.MonkeyPatch):
@@ -86,6 +86,35 @@ def test_reset_conflict_and_artifact_allowlist(
 def test_rate_limit_is_enforced(api_client: TestClient, monkeypatch: pytest.MonkeyPatch):
     record = IncidentRecord(run_id="run-rate")
     monkeypatch.setattr(main.orchestrator, "start", lambda mode: record)
+    headers = {"x-forwarded-for": "203.0.113.10"}
     for _ in range(20):
-        assert api_client.post("/api/v1/incidents", json={}).status_code == 202
-    assert api_client.post("/api/v1/incidents", json={}).status_code == 429
+        assert api_client.post("/api/v1/incidents", json={}, headers=headers).status_code == 202
+    assert api_client.post("/api/v1/incidents", json={}, headers=headers).status_code == 429
+
+    other_judge = {"x-forwarded-for": "203.0.113.11"}
+    assert api_client.post("/api/v1/incidents", json={}, headers=other_judge).status_code == 202
+
+
+def test_reset_and_approval_do_not_consume_run_quota(
+    api_client: TestClient, monkeypatch: pytest.MonkeyPatch
+):
+    async def clean_reset():
+        return None
+
+    record = IncidentRecord(run_id="run-after-control-actions")
+    monkeypatch.setattr(main.orchestrator, "reset", clean_reset)
+    monkeypatch.setattr(main.orchestrator, "start", lambda mode: record)
+    headers = {"x-forwarded-for": "203.0.113.12"}
+
+    for _ in range(10):
+        assert api_client.post("/api/v1/demo/reset", headers=headers).status_code == 200
+        assert (
+            api_client.post(
+                "/api/v1/incidents/missing/approval",
+                json={"decision": "reject", "actor": "Owner"},
+                headers=headers,
+            ).status_code
+            == 404
+        )
+
+    assert api_client.post("/api/v1/incidents", json={}, headers=headers).status_code == 202

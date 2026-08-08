@@ -2,20 +2,322 @@
   "voice": "en-US-AndrewMultilingualNeural",
   "rate": "+18%",
   "pitch": "-2Hz",
-  "text": "This is not another incident chatbot. It blocks, repairs, proves, requests human authority, and writes reusable knowledge back to DataHub.",
+  "boundary": "WordBoundary",
+  "text": "Here the live agent calls the official DataHub MCP server. It retrieves the stg_orders.gross_amount schema, Revenue Analytics owner, Finance domain, Tier1 and FinancialMetric tags, quality status, stored queries, and field-level lineage. DataHub shows four downstream consumers. None of this blast radius is hard-coded.",
   "captions": [
     {
-      "text": " This is not another incident chatbot.",
-      "startMs": 50,
-      "endMs": 1992,
-      "timestampMs": 50,
+      "text": " Here",
+      "startMs": 95,
+      "endMs": 191,
+      "timestampMs": 95,
       "confidence": null
     },
     {
-      "text": " It blocks, repairs, proves, requests human authority, and writes reusable knowledge back to DataHub.",
-      "startMs": 1992,
+      "text": " the",
+      "startMs": 191,
+      "endMs": 254,
+      "timestampMs": 191,
+      "confidence": null
+    },
+    {
+      "text": " live",
+      "startMs": 254,
+      "endMs": 551,
+      "timestampMs": 254,
+      "confidence": null
+    },
+    {
+      "text": " agent",
+      "startMs": 551,
+      "endMs": 900,
+      "timestampMs": 551,
+      "confidence": null
+    },
+    {
+      "text": " calls",
+      "startMs": 911,
+      "endMs": 1165,
+      "timestampMs": 911,
+      "confidence": null
+    },
+    {
+      "text": " the",
+      "startMs": 1165,
+      "endMs": 1261,
+      "timestampMs": 1165,
+      "confidence": null
+    },
+    {
+      "text": " official",
+      "startMs": 1261,
+      "endMs": 1716,
+      "timestampMs": 1261,
+      "confidence": null
+    },
+    {
+      "text": " DataHub",
+      "startMs": 1727,
+      "endMs": 2150,
+      "timestampMs": 1727,
+      "confidence": null
+    },
+    {
+      "text": " MCP",
+      "startMs": 2267,
+      "endMs": 2807,
+      "timestampMs": 2267,
+      "confidence": null
+    },
+    {
+      "text": " server",
+      "startMs": 2818,
+      "endMs": 3294,
+      "timestampMs": 2818,
+      "confidence": null
+    },
+    {
+      "text": " It",
+      "startMs": 3644,
+      "endMs": 3718,
+      "timestampMs": 3644,
+      "confidence": null
+    },
+    {
+      "text": " retrieves",
+      "startMs": 3718,
+      "endMs": 4089,
+      "timestampMs": 3718,
+      "confidence": null
+    },
+    {
+      "text": " the",
+      "startMs": 4089,
+      "endMs": 4153,
+      "timestampMs": 4089,
+      "confidence": null
+    },
+    {
+      "text": " stg_orders",
+      "startMs": 4163,
+      "endMs": 5000,
+      "timestampMs": 4163,
+      "confidence": null
+    },
+    {
+      "text": " .",
+      "startMs": 5011,
+      "endMs": 5212,
+      "timestampMs": 5011,
+      "confidence": null
+    },
+    {
+      "text": " gross_amount",
+      "startMs": 5222,
+      "endMs": 5985,
+      "timestampMs": 5222,
+      "confidence": null
+    },
+    {
+      "text": " schema",
+      "startMs": 5985,
+      "endMs": 6377,
+      "timestampMs": 5985,
+      "confidence": null
+    },
+    {
+      "text": " Revenue",
+      "startMs": 6769,
+      "endMs": 7108,
+      "timestampMs": 6769,
+      "confidence": null
+    },
+    {
+      "text": " Analytics",
+      "startMs": 7119,
+      "endMs": 7585,
+      "timestampMs": 7119,
+      "confidence": null
+    },
+    {
+      "text": " owner",
+      "startMs": 7595,
       "endMs": 7913,
-      "timestampMs": 1992,
+      "timestampMs": 7595,
+      "confidence": null
+    },
+    {
+      "text": " Finance",
+      "startMs": 8146,
+      "endMs": 8570,
+      "timestampMs": 8146,
+      "confidence": null
+    },
+    {
+      "text": " domain",
+      "startMs": 8580,
+      "endMs": 9025,
+      "timestampMs": 8580,
+      "confidence": null
+    },
+    {
+      "text": " Tier1",
+      "startMs": 9290,
+      "endMs": 9852,
+      "timestampMs": 9290,
+      "confidence": null
+    },
+    {
+      "text": " and",
+      "startMs": 9968,
+      "endMs": 10032,
+      "timestampMs": 9968,
+      "confidence": null
+    },
+    {
+      "text": " FinancialMetric",
+      "startMs": 10032,
+      "endMs": 10678,
+      "timestampMs": 10032,
+      "confidence": null
+    },
+    {
+      "text": " tags",
+      "startMs": 10678,
+      "endMs": 11112,
+      "timestampMs": 10678,
+      "confidence": null
+    },
+    {
+      "text": " quality",
+      "startMs": 11314,
+      "endMs": 11663,
+      "timestampMs": 11314,
+      "confidence": null
+    },
+    {
+      "text": " status",
+      "startMs": 11674,
+      "endMs": 12172,
+      "timestampMs": 11674,
+      "confidence": null
+    },
+    {
+      "text": " stored",
+      "startMs": 12320,
+      "endMs": 12606,
+      "timestampMs": 12320,
+      "confidence": null
+    },
+    {
+      "text": " queries",
+      "startMs": 12606,
+      "endMs": 13136,
+      "timestampMs": 12606,
+      "confidence": null
+    },
+    {
+      "text": " and",
+      "startMs": 13326,
+      "endMs": 13443,
+      "timestampMs": 13326,
+      "confidence": null
+    },
+    {
+      "text": " field-level",
+      "startMs": 13443,
+      "endMs": 13994,
+      "timestampMs": 13443,
+      "confidence": null
+    },
+    {
+      "text": " lineage",
+      "startMs": 13994,
+      "endMs": 14449,
+      "timestampMs": 13994,
+      "confidence": null
+    },
+    {
+      "text": " DataHub",
+      "startMs": 14788,
+      "endMs": 15212,
+      "timestampMs": 14788,
+      "confidence": null
+    },
+    {
+      "text": " shows",
+      "startMs": 15371,
+      "endMs": 15646,
+      "timestampMs": 15371,
+      "confidence": null
+    },
+    {
+      "text": " four",
+      "startMs": 15731,
+      "endMs": 16112,
+      "timestampMs": 15731,
+      "confidence": null
+    },
+    {
+      "text": " downstream",
+      "startMs": 16155,
+      "endMs": 16705,
+      "timestampMs": 16155,
+      "confidence": null
+    },
+    {
+      "text": " consumers",
+      "startMs": 16706,
+      "endMs": 17352,
+      "timestampMs": 16706,
+      "confidence": null
+    },
+    {
+      "text": " None",
+      "startMs": 17691,
+      "endMs": 17807,
+      "timestampMs": 17691,
+      "confidence": null
+    },
+    {
+      "text": " of",
+      "startMs": 17807,
+      "endMs": 17860,
+      "timestampMs": 17807,
+      "confidence": null
+    },
+    {
+      "text": " this",
+      "startMs": 17860,
+      "endMs": 17966,
+      "timestampMs": 17860,
+      "confidence": null
+    },
+    {
+      "text": " blast",
+      "startMs": 17977,
+      "endMs": 18347,
+      "timestampMs": 17977,
+      "confidence": null
+    },
+    {
+      "text": " radius",
+      "startMs": 18358,
+      "endMs": 18792,
+      "timestampMs": 18358,
+      "confidence": null
+    },
+    {
+      "text": " is",
+      "startMs": 18962,
+      "endMs": 19025,
+      "timestampMs": 18962,
+      "confidence": null
+    },
+    {
+      "text": " hard-coded",
+      "startMs": 19025,
+      "endMs": 19650,
+      "timestampMs": 19025,
       "confidence": null
     }
   ]

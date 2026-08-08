@@ -22,6 +22,8 @@ required=(
   examples/migration-note.md
   examples/live-e2e-summary.jsonl
   examples/final-live-e2e-summary.jsonl
+  examples/video-quality-summary.json
+  examples/video-manual-review.json
 )
 for path in "${required[@]}"; do
   test -s "$path"
@@ -35,6 +37,14 @@ test "$(jq -s 'map(.runbook_urn) | unique | length' examples/live-e2e-summary.js
 test "$(jq -s 'map(.run_id) | unique | length' examples/final-live-e2e-summary.jsonl)" -eq 3
 test "$(jq -s 'map(.patch_sha256) | unique | length' examples/final-live-e2e-summary.jsonl)" -eq 1
 test "$(jq -s 'map(.runbook_urn) | unique | length' examples/final-live-e2e-summary.jsonl)" -eq 1
+jq -e '
+  .status == "PASS" and
+  .duration_seconds >= 157 and .duration_seconds <= 159 and
+  .black_frames == 0 and .single_frame_luma_dips == 0 and
+  .manual_review_status == "PASS"
+' examples/video-quality-summary.json >/dev/null
+jq -e '.status == "PASS" and .reviewed_shots == 34 and .total_score >= 90' \
+  examples/video-manual-review.json >/dev/null
 
 curl --fail --silent --show-error --head \
   https://repairpilot.145-241-207-154.sslip.io >/dev/null

@@ -1,6 +1,7 @@
 import {Audio} from '@remotion/media';
 import {Sequence, staticFile, useVideoConfig} from 'remotion';
 import manifest from '../../public/data/voiceover-manifest.json';
+import timeline from '../../timeline.json';
 
 type VoiceScene = {
   id: number;
@@ -18,7 +19,7 @@ export const AudioTracks: React.FC = () => {
           <Audio src={staticFile(scene.audio)} volume={1} />
         </Sequence>
       ))}
-      {[0, 390, 720, 1290, 1680, 2160, 2700, 3030, 3420, 4050, 4530, 4950].map((from) => (
+      {timeline.chapters.map((chapter) => Math.round((chapter.startMs / 1000) * fps)).map((from) => (
         <Sequence key={from} from={from} durationInFrames={12}>
           <Audio src={staticFile('audio/interface-tone.wav')} volume={0.1} />
         </Sequence>

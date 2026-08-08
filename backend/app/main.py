@@ -1,6 +1,7 @@
 import time
 from collections import defaultdict, deque
 from collections.abc import AsyncIterator
+from ipaddress import ip_address
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -36,18 +37,38 @@ app.add_middleware(
 )
 
 requests_by_ip: dict[str, deque[float]] = defaultdict(deque)
+RATE_LIMIT_WINDOW_SECONDS = 3600
+RUN_STARTS_PER_WINDOW = 20
+
+
+def rate_limit_client(request: Request) -> str:
+    """Resolve a judge IP, trusting forwarding only from the loopback Caddy proxy."""
+    peer = request.client.host if request.client else "unknown"
+    if peer not in {"127.0.0.1", "::1"}:
+        return peer
+    forwarded = request.headers.get("x-forwarded-for", "")
+    candidate = forwarded.rsplit(",", maxsplit=1)[-1].strip()
+    try:
+        return str(ip_address(candidate)) if candidate else peer
+    except ValueError:
+        return peer
 
 
 @app.middleware("http")
 async def public_rate_limit(request: Request, call_next):  # type: ignore[no-untyped-def]
-    if request.method == "POST":
-        client = request.client.host if request.client else "unknown"
+    if request.method == "POST" and request.url.path == "/api/v1/incidents":
+        client = rate_limit_client(request)
         now = time.monotonic()
         history = requests_by_ip[client]
-        while history and history[0] < now - 3600:
+        while history and history[0] < now - RATE_LIMIT_WINDOW_SECONDS:
             history.popleft()
-        if len(history) >= 20:
-            return JSONResponse(status_code=429, content={"detail": "Demo rate limit reached"})
+        if len(history) >= RUN_STARTS_PER_WINDOW:
+            retry_after = max(1, round(history[0] + RATE_LIMIT_WINDOW_SECONDS - now + 0.5))
+            return JSONResponse(
+                status_code=429,
+                content={"detail": "Demo run-start rate limit reached"},
+                headers={"Retry-After": str(retry_after)},
+            )
         history.append(now)
     return await call_next(request)
 

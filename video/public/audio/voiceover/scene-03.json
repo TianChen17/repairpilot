@@ -2,27 +2,203 @@
   "voice": "en-US-AndrewMultilingualNeural",
   "rate": "+18%",
   "pitch": "-2Hz",
-  "text": "The live scenario uses twelve hundred deterministic synthetic orders. The infrastructure is real. DataHub MCP returns schema, ownership, governance, lineage, quality, and usage.",
+  "boundary": "WordBoundary",
+  "text": "A versioned rule engine—not the LLM—scores the rename one hundred out of one hundred and blocks release. Missing DataHub context or a failed build stays blocked.",
   "captions": [
     {
-      "text": " The live scenario uses twelve hundred deterministic synthetic orders.",
-      "startMs": 50,
-      "endMs": 3729,
-      "timestampMs": 50,
+      "text": " A",
+      "startMs": 74,
+      "endMs": 117,
+      "timestampMs": 74,
       "confidence": null
     },
     {
-      "text": " The infrastructure is real.",
-      "startMs": 3729,
-      "endMs": 5604,
-      "timestampMs": 3729,
+      "text": " versioned",
+      "startMs": 127,
+      "endMs": 487,
+      "timestampMs": 127,
       "confidence": null
     },
     {
-      "text": " DataHub MCP returns schema, ownership, governance, lineage, quality, and usage.",
-      "startMs": 5604,
-      "endMs": 11557,
-      "timestampMs": 5604,
+      "text": " rule",
+      "startMs": 487,
+      "endMs": 731,
+      "timestampMs": 487,
+      "confidence": null
+    },
+    {
+      "text": " engine",
+      "startMs": 731,
+      "endMs": 996,
+      "timestampMs": 731,
+      "confidence": null
+    },
+    {
+      "text": " not",
+      "startMs": 1441,
+      "endMs": 1621,
+      "timestampMs": 1441,
+      "confidence": null
+    },
+    {
+      "text": " the",
+      "startMs": 1631,
+      "endMs": 1716,
+      "timestampMs": 1631,
+      "confidence": null
+    },
+    {
+      "text": " LLM",
+      "startMs": 1727,
+      "endMs": 2267,
+      "timestampMs": 1727,
+      "confidence": null
+    },
+    {
+      "text": " scores",
+      "startMs": 2627,
+      "endMs": 2945,
+      "timestampMs": 2627,
+      "confidence": null
+    },
+    {
+      "text": " the",
+      "startMs": 2956,
+      "endMs": 3040,
+      "timestampMs": 2956,
+      "confidence": null
+    },
+    {
+      "text": " rename",
+      "startMs": 3040,
+      "endMs": 3443,
+      "timestampMs": 3040,
+      "confidence": null
+    },
+    {
+      "text": " one",
+      "startMs": 3453,
+      "endMs": 3655,
+      "timestampMs": 3453,
+      "confidence": null
+    },
+    {
+      "text": " hundred",
+      "startMs": 3665,
+      "endMs": 3920,
+      "timestampMs": 3665,
+      "confidence": null
+    },
+    {
+      "text": " out",
+      "startMs": 3920,
+      "endMs": 4078,
+      "timestampMs": 3920,
+      "confidence": null
+    },
+    {
+      "text": " of",
+      "startMs": 4078,
+      "endMs": 4174,
+      "timestampMs": 4078,
+      "confidence": null
+    },
+    {
+      "text": " one",
+      "startMs": 4174,
+      "endMs": 4364,
+      "timestampMs": 4174,
+      "confidence": null
+    },
+    {
+      "text": " hundred",
+      "startMs": 4364,
+      "endMs": 4650,
+      "timestampMs": 4364,
+      "confidence": null
+    },
+    {
+      "text": " and",
+      "startMs": 4650,
+      "endMs": 4693,
+      "timestampMs": 4650,
+      "confidence": null
+    },
+    {
+      "text": " blocks",
+      "startMs": 4703,
+      "endMs": 5011,
+      "timestampMs": 4703,
+      "confidence": null
+    },
+    {
+      "text": " release",
+      "startMs": 5011,
+      "endMs": 5498,
+      "timestampMs": 5011,
+      "confidence": null
+    },
+    {
+      "text": " Missing",
+      "startMs": 5847,
+      "endMs": 6070,
+      "timestampMs": 5847,
+      "confidence": null
+    },
+    {
+      "text": " DataHub",
+      "startMs": 6070,
+      "endMs": 6451,
+      "timestampMs": 6070,
+      "confidence": null
+    },
+    {
+      "text": " context",
+      "startMs": 6462,
+      "endMs": 7034,
+      "timestampMs": 6462,
+      "confidence": null
+    },
+    {
+      "text": " or",
+      "startMs": 7097,
+      "endMs": 7182,
+      "timestampMs": 7097,
+      "confidence": null
+    },
+    {
+      "text": " a",
+      "startMs": 7182,
+      "endMs": 7225,
+      "timestampMs": 7182,
+      "confidence": null
+    },
+    {
+      "text": " failed",
+      "startMs": 7225,
+      "endMs": 7617,
+      "timestampMs": 7225,
+      "confidence": null
+    },
+    {
+      "text": " build",
+      "startMs": 7627,
+      "endMs": 7860,
+      "timestampMs": 7627,
+      "confidence": null
+    },
+    {
+      "text": " stays",
+      "startMs": 7860,
+      "endMs": 8125,
+      "timestampMs": 7860,
+      "confidence": null
+    },
+    {
+      "text": " blocked",
+      "startMs": 8125,
+      "endMs": 8538,
+      "timestampMs": 8125,
       "confidence": null
     }
   ]

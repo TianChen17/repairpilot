@@ -6,166 +6,145 @@
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 RepairPilot is an incident-to-repair autopilot for dangerous data changes. It
-uses DataHub's context graph and official MCP server to discover the real blast
-radius of a dbt schema change, applies deterministic release policy, generates a
-bounded compatibility repair, proves it with a real dbt build, requests owner
-approval, publishes a reviewable GitHub PR, and writes reusable evidence back to
-DataHub.
+uses DataHub's context graph and official MCP server to find the real blast
+radius, blocks unsafe releases with deterministic policy, generates a bounded
+dbt repair, proves it by execution, requests the accountable owner's approval,
+and writes reusable incident knowledge back to DataHub.
 
-Built for **Build with DataHub: The Agent Hackathon** in the **Agents That Do
-Real Work** challenge.
+Built for **Build with DataHub: The Agent Hackathon** in **Agents That Do Real
+Work**.
 
-## Try the hosted project
+![RepairPilot control room after a verified repair](docs/images/repairpilot-control-room.png)
 
-- **RepairPilot:** <https://repairpilot.145-241-207-154.sslip.io>
-- **DataHub catalog:** <https://catalog.145-241-207-154.sslip.io>
-- **Validated repair PR:** <https://github.com/TianChen17/repairpilot/pull/1>
-- **Sample outputs:** [`examples/`](examples/)
-- **90-second test path:** [`docs/JUDGE_GUIDE.md`](docs/JUDGE_GUIDE.md)
-- **Video source and publishing package:** [`video/`](video/) · [`docs/YOUTUBE_AND_DEVPOST.md`](docs/YOUTUBE_AND_DEVPOST.md)
+## Judge in 60–90 seconds
 
-DataHub read-only demo login:
+1. Open the [hosted RepairPilot](https://repairpilot.145-241-207-154.sslip.io)
+   and click **Run live incident**. Watch DataHub context produce a deterministic
+   `HIGH · 100/100 · BLOCK` decision.
+2. At **AWAITING APPROVAL**, inspect the failed original build, passing repair
+   build, 14 tests, commits, and Patch SHA; then click **Approve repair**.
+3. Inspect the public [four-file draft PR](https://github.com/TianChen17/repairpilot/pull/1)
+   and the DataHub Incident, Assertion, verified tag, and Runbook.
+
+The page shows the current phase and remaining time. Only one live run executes
+at once; a clearly labeled Replay is available if another judge is testing.
+Detailed access notes are in the [Judge Guide](docs/JUDGE_GUIDE.md).
+
+Read-only DataHub access:
 
 ```text
+URL:      https://catalog.145-241-207-154.sslip.io
 username: judge@repairpilot.demo
 password: RepairPilot-Judge-2026!
-role: Reader
+role:     Reader
 ```
 
-These are intentionally public, non-sensitive testing credentials. The catalog
-contains only synthetic demonstration metadata.
+On first login, dismiss the Welcome Tour and the “Narrow your search” tip, then
+open `stg_orders`. These credentials are intentionally public and non-sensitive;
+the catalog contains synthetic demonstration metadata only.
 
-## The incident
+## The evidence loop
 
-Northstar Commerce proposes a dbt rename:
+| Stage | What actually happens | Reviewable evidence |
+|---|---|---|
+| **Read** | Official DataHub MCP retrieves schema, field lineage, Owner, Domain, Tags, quality status, stored queries, and dashboard impact | MCP tool trace and DataHub UI |
+| **Block** | Versioned Python policy scores the rename `HIGH · 100/100` | Matched rules and fail-closed decision |
+| **Repair** | DeepSeek V4 Flash proposes only three allowlisted dbt operations | Structured proposal and four-file Git patch |
+| **Prove** | Detached worktree and per-run Postgres schemas reproduce failure, then run `dbt build --select stg_orders+` | 14 passing tests, invocation ID, commits, Patch SHA |
+| **Approve** | Revenue Analytics approval unlocks publication; rejection creates no PR | Timestamped approval record and public draft PR |
+| **Remember** | DataHub receives a per-run Incident, Assertion, verified tag, and idempotent Runbook | Native DataHub entities and immutable Evidence Receipt |
 
-```diff
-- gross_amount
-+ gross_amount as gross_revenue
-```
+The demonstrated change renames `gross_amount` to `gross_revenue`. DataHub shows
+three downstream dbt models and the `Executive Revenue Pulse` dashboard at risk.
+RepairPilot retains the old alias temporarily, migrates the controlled consumer,
+adds a schema test, and generates a migration note.
 
-Before merge, RepairPilot asks DataHub MCP for the field schema, column lineage,
-ownership, Domain, governance tags, quality health, downstream dashboard, and
-stored query usage. The deterministic policy finds a Tier-1 governed financial
-metric with four downstream consumers and returns `HIGH / 100 / BLOCK`.
+## What RepairPilot adds to DataHub
 
-DeepSeek V4 Flash can then propose only three allowlisted operations:
+DataHub supplies governed context and organizational memory. RepairPilot turns
+that context into a controlled action loop:
 
-1. expose `gross_revenue` while retaining `gross_amount` as a temporary alias;
-2. migrate the controlled downstream model;
-3. add a real dbt schema test.
+- a deterministic release decision the LLM cannot override;
+- a constrained repair contract instead of arbitrary code or shell access;
+- isolated, executable dbt failure and repair proof;
+- proof-gated human approval and reviewable GitHub output;
+- a cryptographic Evidence Receipt joining DataHub URNs, policy, Git, dbt,
+  approval, PR, and write-back addresses;
+- new knowledge written to the catalog for the next responder.
 
-RepairPilot reproduces the original failure, applies the bounded repair inside
-an isolated Git worktree and temporary Postgres schema, runs
-`dbt build --select stg_orders+`, and waits for the Revenue Analytics owner. Only
-after approval does it publish the reviewable result and write an Incident
-Document, Assertion, verification tag, and Runbook back to DataHub.
+This is not a chat interface that only explains an incident: it changes code,
+runs the affected graph, enforces authority, and preserves the verified result.
 
-## Architecture
+## Real execution, synthetic business data
+
+The Northstar Commerce name, 1,200 fixed-seed order rows, Owner, dashboard, and
+stored queries are synthetic. No personal or production data is present. The
+dashboard and query entities are labeled `SyntheticDemo`; the project does not
+claim to operate Looker, Airflow, Slack, or PagerDuty.
+
+These integrations execute live:
+
+- PostgreSQL relations and dbt models, artifacts, failure, repair, and tests;
+- DataHub OSS entities, graph, official MCP reads/mutations, Documents, Tags,
+  and Assertions;
+- DeepSeek V4 Flash structured repair proposal;
+- isolated Git commits, patch hash, owner decision, and GitHub PR;
+- immutable Evidence Receipt returned by the hosted API.
+
+## Architecture and authority
 
 ```mermaid
 flowchart LR
-    A[Dangerous dbt diff] --> B[RepairPilot API]
+    A[Dangerous dbt diff] --> B[RepairPilot]
     B --> C[Official DataHub MCP]
     C --> D[Lineage · Owner · Tags · Usage · Quality]
     D --> E{Deterministic policy}
-    E -->|HIGH: block| F[DeepSeek bounded proposal]
-    F --> G[Isolated Git worktree + Postgres schema]
-    G --> H[Failing build, then passing dbt build]
+    E -->|HIGH: block| F[Bounded AI proposal]
+    F --> G[Isolated Git worktree + Postgres schemas]
+    G --> H[Failing build → passing dbt build]
     H --> I[Owner approval]
     I --> J[GitHub repair PR]
     J --> K[DataHub Incident · Assertion · Runbook]
-    K --> C
 ```
 
 | Layer | Implementation | Authority |
 |---|---|---|
-| Context | DataHub OSS + official MCP server | Source of lineage and governance truth |
-| Risk | Versioned Python policy | Sole release decision maker |
+| Context | DataHub OSS + official MCP | Source of lineage and governance truth |
+| Risk | Versioned Python rules | Sole release decision maker |
 | Reasoning | `deepseek-v4-flash` JSON contract | Proposes repair intent only |
-| Execution | Fixed dbt templates and allowlisted paths | Applies bounded edits in isolation |
+| Execution | Fixed templates and path allowlists | Applies bounded edits in isolation |
 | Proof | dbt Core + Postgres + Git SHA-256 | Must pass before approval appears |
-| Authority | Human owner approval | Required for every high-risk repair |
+| Authority | Human owner approval | Mandatory for high-risk repair |
 | Memory | DataHub MCP mutations + Metadata API | Persists Incident, Assertion, tag, Runbook |
 
-## What is real and what is synthetic
+Missing DataHub context, failed dbt validation, rejected approval, unexpected
+model output, and concurrent runs all fail closed. Generated shell, arbitrary
+SQL, path traversal, and targets outside the three allowed dbt files are
+rejected. See the [security model](docs/SECURITY.md).
 
-The 1,200 Northstar Commerce order rows, company name, owners, dashboard, and
-stored usage queries are synthetic and generated with a fixed seed. No personal
-or production data is present.
-
-The following are live, executable integrations—not mocked screenshots:
-
-- PostgreSQL relations and 1,200 rows;
-- dbt models, lineage, artifacts, failure, 14 selected tests, and repair build;
-- DataHub entities, column lineage, MCP reads, Documents, tag, and Assertion;
-- DeepSeek V4 Flash API proposal;
-- isolated Git commits, patch hash, owner decision, and GitHub PR;
-- immutable Evidence Receipt returned by the hosted API.
-
-The dashboard and queries are clearly labeled `SyntheticDemo` metadata. This
-project does not claim to run Looker, Airflow, Slack, or PagerDuty.
-
-## Safety properties
-
-- The LLM cannot set risk, approve a change, publish a repair, choose arbitrary
-  paths, or execute shell/SQL.
-- Missing DataHub context, failed dbt validation, rejected approval, concurrent
-  judge runs, and unexpected errors all fail closed.
-- Generated operations must exactly match three safe operation types and three
-  allowlisted dbt files; prompt-injection and destructive-language contracts are
-  rejected.
-- Validation uses a detached Git worktree and a per-run `rp_*` Postgres schema.
-- The MCP and dbt subprocesses receive minimal allowlisted environments and do
-  not inherit the DeepSeek credential path or unrelated server secrets.
-- DataHub GMS, Postgres, Kafka, MySQL, and OpenSearch bind only to loopback.
-- The hosted backend loads DeepSeek from a systemd encrypted credential and
-  never exposes it to the browser, repository, artifacts, or logs.
-- Public writes are limited to one synthetic scenario, rate-limited, and guarded
-  by a global run lock.
-
-See [`docs/SECURITY.md`](docs/SECURITY.md) for the threat model.
-
-## Reproduce locally
+## Run locally
 
 Tested on Ubuntu 24.04 ARM64/aarch64 with Docker 29, Compose 2.40, Python 3.12,
 Node 22, DataHub OSS 1.6.0, dbt 1.10, and MCP Server DataHub 0.6.0. Allow at
-least 8 GB RAM and 20 GB of free disk for DataHub Quickstart images and volumes.
-
-### 1. Install the application and Postgres
+least 8 GB RAM and 20 GB free disk.
 
 ```bash
 git clone https://github.com/TianChen17/repairpilot.git
 cd repairpilot
 ./scripts/bootstrap.sh
-```
 
-### 2. Start and harden DataHub Quickstart
-
-```bash
 .venv/bin/datahub docker quickstart --version v1.6.0 --arch arm64
 .venv/bin/python scripts/harden_datahub_ports.py
 docker compose --env-file "$HOME/.datahub/quickstart/.local-secrets.env" \
   --profile quickstart \
   -f "$HOME/.datahub/quickstart/docker-compose.yml" \
   -p datahub up -d --wait
-```
 
-For x86_64, replace `--arch arm64` with `--arch x86`.
-
-### 3. Build dbt and ingest DataHub
-
-```bash
 ./scripts/ingest_datahub.sh
 ```
 
-This performs a real baseline build, preserves `run_results_build.json`, creates
-dbt docs artifacts, ingests Postgres and dbt metadata, and seeds the synthetic
-Owner, Domain, Tags, Dashboard, three Query entities, and descriptions.
-
-### 4. Run RepairPilot
-
-Export your own DeepSeek API key in the shell; never add it to a repository file.
+For x86_64, replace `--arch arm64` with `--arch x86`. To start the application,
+provide your own DeepSeek key in the current shell—never commit it:
 
 ```bash
 set -a
@@ -176,34 +155,30 @@ export DEEPSEEK_API_KEY
 .venv/bin/uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8766
 ```
 
-In a second terminal:
+In another terminal:
 
 ```bash
 npm --prefix frontend run dev -- --host 127.0.0.1
 ```
 
-`REPLAY` remains visibly labeled and works without a model key. It reuses a
-captured context/proposal fixture but still runs the executable dbt validation.
+`REPLAY` stays visibly labeled. It reuses captured MCP/model evidence but still
+runs the real isolated dbt validation.
 
-## Quality gates
+## Verify and inspect
 
 ```bash
 ./scripts/quality-gates.sh
 REPAIRPILOT_E2E_RUNS=3 ./scripts/live-e2e.sh
 ```
 
-The local gate enforces architecture and secret preflight, Ruff, formatting,
-26 Python tests with at least 75% coverage, a real dbt integration test, dbt
-parse, frontend production build, and both public HTTPS health checks. The Live
-gate requires three consecutive complete runs under 150 seconds each with stable
-Patch SHA, unique Incident URNs, one idempotent Runbook URN, zero residual
-worktrees, and verifiable Evidence Receipts.
+The gates cover architecture, secret hygiene, policy and prompt-injection tests,
+Python coverage, dbt integration, frontend build, public health, stable patch
+hash, unique Incident URNs, an idempotent Runbook, and zero residual schemas or
+worktrees. See the timestamped [Quality Report](docs/QUALITY_REPORT.md).
 
-Current results and evidence are in [`docs/QUALITY_REPORT.md`](docs/QUALITY_REPORT.md).
-
-The competition video is a reproducible 175-second Remotion composition with
-50 shots, English AI narration, open captions, real UI captures, and an
-objective codec/loudness/black-frame validator. See [`video-spec.md`](video-spec.md).
+Reviewable artifacts are in [`examples/`](examples/): repair patch, dbt results,
+command output, migration note, Incident, Runbook, Evidence Receipt, and
+three-run summaries.
 
 ## Public API
 
@@ -216,17 +191,14 @@ POST /api/v1/incidents/{run_id}/approval
 GET  /api/v1/incidents/{run_id}/artifacts/{name}
 ```
 
-Allowed downloadable artifacts are the patch, Evidence Receipt, dbt run
-results, and command results. Artifact names are an explicit allowlist; traversal
-and arbitrary file access return 404.
+Artifact names use an explicit allowlist; traversal and arbitrary file access
+return 404.
 
-## Project provenance
+## Provenance and license
 
-RepairPilot was newly created during the July 6–August 10, 2026 submission
-period. No pre-existing proprietary application code is incorporated. It uses
-the open-source dependencies declared in `pyproject.toml`, `package.json`, and
-the DataHub Quickstart images, and was developed with AI coding assistance.
+RepairPilot was created during the July 6–August 10, 2026 submission period.
+No pre-existing proprietary application code is incorporated. Open-source
+dependencies are declared in the Python, frontend, and video manifests; AI
+coding assistance was used during development.
 
-## License
-
-[Apache License 2.0](LICENSE).
+Licensed under the [Apache License 2.0](LICENSE).

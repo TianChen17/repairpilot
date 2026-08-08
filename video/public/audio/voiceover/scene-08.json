@@ -2,20 +2,266 @@
   "voice": "en-US-AndrewMultilingualNeural",
   "rate": "+18%",
   "pitch": "-2Hz",
-  "text": "Only then does owner approval unlock. A rejection keeps the release blocked and creates no pull request.",
+  "boundary": "WordBoundary",
+  "text": "Then RepairPilot writes the outcome back to DataHub: a passing gross_revenue assertion, a per-run Incident Document, a verified tag, and one idempotent safe-column-rename Runbook. The next responder starts with the proven repair instead of repeating the investigation.",
   "captions": [
     {
-      "text": " Only then does owner approval unlock.",
-      "startMs": 50,
-      "endMs": 1981,
-      "timestampMs": 50,
+      "text": " Then",
+      "startMs": 85,
+      "endMs": 233,
+      "timestampMs": 85,
       "confidence": null
     },
     {
-      "text": " A rejection keeps the release blocked and creates no pull request.",
-      "startMs": 1981,
-      "endMs": 5890,
-      "timestampMs": 1981,
+      "text": " RepairPilot",
+      "startMs": 233,
+      "endMs": 953,
+      "timestampMs": 233,
+      "confidence": null
+    },
+    {
+      "text": " writes",
+      "startMs": 964,
+      "endMs": 1229,
+      "timestampMs": 964,
+      "confidence": null
+    },
+    {
+      "text": " the",
+      "startMs": 1229,
+      "endMs": 1324,
+      "timestampMs": 1229,
+      "confidence": null
+    },
+    {
+      "text": " outcome",
+      "startMs": 1335,
+      "endMs": 1695,
+      "timestampMs": 1335,
+      "confidence": null
+    },
+    {
+      "text": " back",
+      "startMs": 1695,
+      "endMs": 2066,
+      "timestampMs": 1695,
+      "confidence": null
+    },
+    {
+      "text": " to",
+      "startMs": 2076,
+      "endMs": 2172,
+      "timestampMs": 2076,
+      "confidence": null
+    },
+    {
+      "text": " DataHub",
+      "startMs": 2182,
+      "endMs": 2606,
+      "timestampMs": 2182,
+      "confidence": null
+    },
+    {
+      "text": " a",
+      "startMs": 2945,
+      "endMs": 2987,
+      "timestampMs": 2945,
+      "confidence": null
+    },
+    {
+      "text": " passing",
+      "startMs": 2987,
+      "endMs": 3390,
+      "timestampMs": 2987,
+      "confidence": null
+    },
+    {
+      "text": " gross_revenue",
+      "startMs": 3390,
+      "endMs": 4396,
+      "timestampMs": 3390,
+      "confidence": null
+    },
+    {
+      "text": " assertion",
+      "startMs": 4396,
+      "endMs": 4862,
+      "timestampMs": 4396,
+      "confidence": null
+    },
+    {
+      "text": " a",
+      "startMs": 5201,
+      "endMs": 5244,
+      "timestampMs": 5201,
+      "confidence": null
+    },
+    {
+      "text": " per-run",
+      "startMs": 5254,
+      "endMs": 5720,
+      "timestampMs": 5254,
+      "confidence": null
+    },
+    {
+      "text": " Incident",
+      "startMs": 5763,
+      "endMs": 6091,
+      "timestampMs": 5763,
+      "confidence": null
+    },
+    {
+      "text": " Document",
+      "startMs": 6091,
+      "endMs": 6525,
+      "timestampMs": 6091,
+      "confidence": null
+    },
+    {
+      "text": " a",
+      "startMs": 6875,
+      "endMs": 6917,
+      "timestampMs": 6875,
+      "confidence": null
+    },
+    {
+      "text": " verified",
+      "startMs": 6928,
+      "endMs": 7468,
+      "timestampMs": 6928,
+      "confidence": null
+    },
+    {
+      "text": " tag",
+      "startMs": 7479,
+      "endMs": 7828,
+      "timestampMs": 7479,
+      "confidence": null
+    },
+    {
+      "text": " and",
+      "startMs": 8061,
+      "endMs": 8178,
+      "timestampMs": 8061,
+      "confidence": null
+    },
+    {
+      "text": " one",
+      "startMs": 8178,
+      "endMs": 8464,
+      "timestampMs": 8178,
+      "confidence": null
+    },
+    {
+      "text": " idempotent",
+      "startMs": 8591,
+      "endMs": 9142,
+      "timestampMs": 8591,
+      "confidence": null
+    },
+    {
+      "text": " safe-column-rename",
+      "startMs": 9142,
+      "endMs": 9968,
+      "timestampMs": 9142,
+      "confidence": null
+    },
+    {
+      "text": " Runbook",
+      "startMs": 9979,
+      "endMs": 10434,
+      "timestampMs": 9979,
+      "confidence": null
+    },
+    {
+      "text": " The",
+      "startMs": 10773,
+      "endMs": 10816,
+      "timestampMs": 10773,
+      "confidence": null
+    },
+    {
+      "text": " next",
+      "startMs": 10816,
+      "endMs": 11017,
+      "timestampMs": 10816,
+      "confidence": null
+    },
+    {
+      "text": " responder",
+      "startMs": 11028,
+      "endMs": 11430,
+      "timestampMs": 11028,
+      "confidence": null
+    },
+    {
+      "text": " starts",
+      "startMs": 11441,
+      "endMs": 11769,
+      "timestampMs": 11441,
+      "confidence": null
+    },
+    {
+      "text": " with",
+      "startMs": 11769,
+      "endMs": 11843,
+      "timestampMs": 11769,
+      "confidence": null
+    },
+    {
+      "text": " the",
+      "startMs": 11843,
+      "endMs": 11907,
+      "timestampMs": 11843,
+      "confidence": null
+    },
+    {
+      "text": " proven",
+      "startMs": 11907,
+      "endMs": 12267,
+      "timestampMs": 11907,
+      "confidence": null
+    },
+    {
+      "text": " repair",
+      "startMs": 12278,
+      "endMs": 12744,
+      "timestampMs": 12278,
+      "confidence": null
+    },
+    {
+      "text": " instead",
+      "startMs": 12966,
+      "endMs": 13517,
+      "timestampMs": 12966,
+      "confidence": null
+    },
+    {
+      "text": " of",
+      "startMs": 13517,
+      "endMs": 13602,
+      "timestampMs": 13517,
+      "confidence": null
+    },
+    {
+      "text": " repeating",
+      "startMs": 13612,
+      "endMs": 14100,
+      "timestampMs": 13612,
+      "confidence": null
+    },
+    {
+      "text": " the",
+      "startMs": 14100,
+      "endMs": 14153,
+      "timestampMs": 14100,
+      "confidence": null
+    },
+    {
+      "text": " investigation",
+      "startMs": 14163,
+      "endMs": 14873,
+      "timestampMs": 14163,
       "confidence": null
     }
   ]

@@ -1,21 +1,120 @@
 {
   "voice": "en-US-AndrewMultilingualNeural",
-  "rate": "+18%",
+  "rate": "+70%",
   "pitch": "-2Hz",
-  "text": "RepairPilot closes the DataHub loop with an Incident Document, successful assertion, verified tag, and idempotent safe-column-rename Runbook. The next responder inherits evidence instead of repeating the investigation.",
+  "boundary": "WordBoundary",
+  "text": "Synthetic business data. Real DataHub, MCP, dbt, DeepSeek, GitHub, and write-back. RepairPilot: Block. Repair. Prove. Remember.",
   "captions": [
     {
-      "text": " RepairPilot closes the DataHub loop with an Incident Document, successful assertion, verified tag, and idempotent safe-column-rename Runbook.",
-      "startMs": 50,
-      "endMs": 8157,
-      "timestampMs": 50,
+      "text": " Synthetic",
+      "startMs": 59,
+      "endMs": 338,
+      "timestampMs": 59,
       "confidence": null
     },
     {
-      "text": " The next responder inherits evidence instead of repeating the investigation.",
-      "startMs": 8157,
-      "endMs": 12394,
-      "timestampMs": 8157,
+      "text": " business",
+      "startMs": 338,
+      "endMs": 574,
+      "timestampMs": 338,
+      "confidence": null
+    },
+    {
+      "text": " data",
+      "startMs": 574,
+      "endMs": 794,
+      "timestampMs": 574,
+      "confidence": null
+    },
+    {
+      "text": " Real",
+      "startMs": 1029,
+      "endMs": 1154,
+      "timestampMs": 1029,
+      "confidence": null
+    },
+    {
+      "text": " DataHub",
+      "startMs": 1154,
+      "endMs": 1478,
+      "timestampMs": 1154,
+      "confidence": null
+    },
+    {
+      "text": " MCP",
+      "startMs": 1757,
+      "endMs": 2162,
+      "timestampMs": 1757,
+      "confidence": null
+    },
+    {
+      "text": " dbt",
+      "startMs": 2346,
+      "endMs": 2743,
+      "timestampMs": 2346,
+      "confidence": null
+    },
+    {
+      "text": " DeepSeek",
+      "startMs": 2912,
+      "endMs": 3265,
+      "timestampMs": 2912,
+      "confidence": null
+    },
+    {
+      "text": " GitHub",
+      "startMs": 3397,
+      "endMs": 3684,
+      "timestampMs": 3397,
+      "confidence": null
+    },
+    {
+      "text": " and",
+      "startMs": 3824,
+      "endMs": 3875,
+      "timestampMs": 3824,
+      "confidence": null
+    },
+    {
+      "text": " write-back",
+      "startMs": 3875,
+      "endMs": 4221,
+      "timestampMs": 3875,
+      "confidence": null
+    },
+    {
+      "text": " RepairPilot",
+      "startMs": 4456,
+      "endMs": 4904,
+      "timestampMs": 4456,
+      "confidence": null
+    },
+    {
+      "text": " Block",
+      "startMs": 4949,
+      "endMs": 5228,
+      "timestampMs": 4949,
+      "confidence": null
+    },
+    {
+      "text": " Repair",
+      "startMs": 5456,
+      "endMs": 5721,
+      "timestampMs": 5456,
+      "confidence": null
+    },
+    {
+      "text": " Prove",
+      "startMs": 5956,
+      "endMs": 6184,
+      "timestampMs": 5956,
+      "confidence": null
+    },
+    {
+      "text": " Remember",
+      "startMs": 6419,
+      "endMs": 6699,
+      "timestampMs": 6419,
       "confidence": null
     }
   ]

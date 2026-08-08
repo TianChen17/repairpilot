@@ -1,12 +1,18 @@
 {
   "status": "PASS",
-  "duration_seconds": 175.000000,
+  "objective_status": "PASS",
+  "manual_review_status": "PASS",
+  "duration_seconds": 158.0,
   "resolution": "1920x1080",
   "fps": 30,
   "color": "bt709/sRGB-compatible primaries",
-  "integrated_lufs": -15.99,
-  "true_peak_dbtp": -1.30,
-  "black_segments": 0,
-  "caption_phrases": 62,
-  "visual_review_score": 95
+  "integrated_lufs": -16.0,
+  "true_peak_dbtp": -1.29,
+  "black_frames": 0,
+  "single_frame_luma_dips": 0,
+  "semantic_anchors": 46,
+  "max_semantic_anchor_delta_ms": 117,
+  "ocr_terms": 7,
+  "caption_phrases": 48,
+  "manual_review": "video-manual-review.json"
 }
