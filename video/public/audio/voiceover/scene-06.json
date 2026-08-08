@@ -1,0 +1,29 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "+18%",
+  "pitch": "-2Hz",
+  "text": "DeepSeek V4 Flash proposes a bounded repair: preserve a compatibility alias, migrate the downstream model, add a schema test, and explain the migration. Only three operation types and three allowlisted paths are accepted. Generated shell and arbitrary SQL never execute.",
+  "captions": [
+    {
+      "text": " DeepSeek V4 Flash proposes a bounded repair: preserve a compatibility alias, migrate the downstream model, add a schema test, and explain the migration.",
+      "startMs": 50,
+      "endMs": 9248,
+      "timestampMs": 50,
+      "confidence": null
+    },
+    {
+      "text": " Only three operation types and three allowlisted paths are accepted.",
+      "startMs": 9248,
+      "endMs": 13655,
+      "timestampMs": 9248,
+      "confidence": null
+    },
+    {
+      "text": " Generated shell and arbitrary SQL never execute.",
+      "startMs": 13655,
+      "endMs": 17002,
+      "timestampMs": 13655,
+      "confidence": null
+    }
+  ]
+}

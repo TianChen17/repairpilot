@@ -136,7 +136,7 @@ GitHub Actions, Remotion.
 - [x] English text description and testing guide are complete.
 - [x] Recommended sample outputs are present in `examples/`.
 - [ ] Public YouTube video is under three minutes and linked here.
-- [ ] Repository About section contains description, website, and Apache-2.0
+- [x] Repository About section contains description, website, and Apache-2.0
   license detection.
 - [ ] User confirms eligibility, originality, ownership, and any team
   representation declarations.

@@ -1,0 +1,22 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "+18%",
+  "pitch": "-2Hz",
+  "text": "A single dbt column rename can break revenue models and executive dashboards. RepairPilot stops that change before merge.",
+  "captions": [
+    {
+      "text": " A single dbt column rename can break revenue models and executive dashboards.",
+      "startMs": 50,
+      "endMs": 5053,
+      "timestampMs": 50,
+      "confidence": null
+    },
+    {
+      "text": " RepairPilot stops that change before merge.",
+      "startMs": 5053,
+      "endMs": 7691,
+      "timestampMs": 5053,
+      "confidence": null
+    }
+  ]
+}

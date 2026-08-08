@@ -14,6 +14,9 @@ run.
 | `incident.md` | Root cause, policy result, and executable evidence |
 | `runbook.md` | Reusable safe-column-rename procedure written to DataHub |
 | `evidence-receipt.json` | Immutable hashes, commits, approval, PR, and DataHub URNs |
+| `live-e2e-summary.jsonl` | Three consecutive Live runs with durations, stable patch hash, and idempotent Runbook |
+| `final-live-e2e-summary.jsonl` | Final three-run regression after every downstream quality gate and video package |
+| `video-quality-summary.json` | Final media metrics, loudness, peak, captions, black-frame result, and visual score |
 
 Canonical review PR: <https://github.com/TianChen17/repairpilot/pull/1>
 

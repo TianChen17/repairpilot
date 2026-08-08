@@ -1,0 +1,27 @@
+A single dbt column rename can break revenue models and executive dashboards. RepairPilot stops that change before merge.
+
+This is not another incident chatbot. It blocks, repairs, proves, requests human authority, and writes reusable knowledge back to DataHub.
+
+The live scenario uses twelve hundred deterministic synthetic orders. The infrastructure is real. DataHub MCP returns schema, ownership, governance, lineage, quality, and usage.
+
+DataHub shows a Tier-One financial metric owned by Revenue Analytics. Three dbt consumers and Executive Revenue Pulse depend on it. This context is live, not hard-coded.
+
+A deterministic policy scores the change high risk: one hundred out of one hundred. The model cannot lower this score, bypass approval, or publish. If DataHub is unavailable, RepairPilot fails closed.
+
+DeepSeek V4 Flash proposes a bounded repair: preserve a compatibility alias, migrate the downstream model, add a schema test, and explain the migration. Only three operation types and three allowlisted paths are accepted. Generated shell and arbitrary SQL never execute.
+
+Now comes executable proof. In a detached Git worktree and temporary Postgres schemas, RepairPilot reproduces the failure, applies reviewed templates, and runs dbt build. Fourteen tests pass with zero failures. Commits, invocation, and patch hash are captured.
+
+Only then does owner approval unlock. A rejection keeps the release blocked and creates no pull request.
+
+The output is a real public GitHub draft pull request: four files, the alias, migration, test, and guide. GitHub Actions rebuilds everything and stays green.
+
+RepairPilot closes the DataHub loop with an Incident Document, successful assertion, verified tag, and idempotent safe-column-rename Runbook. The next responder inherits evidence instead of repeating the investigation.
+
+An immutable Evidence Receipt ties DataHub URNs, policy version, commits, patch SHA-two-fifty-six, dbt invocation, tests, approval, pull request, and write-back addresses into one traceable record.
+
+Three live runs produced one patch hash, one Runbook, and zero residual schemas or worktrees. Secrets stay server-side, and private services stay on loopback.
+
+Synthetic business data. Real DataHub, MCP, dbt, DeepSeek, GitHub, and write-back.
+
+RepairPilot: Block. Repair. Prove. Remember.

@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "duration_seconds": 175.000000,
+  "resolution": "1920x1080",
+  "fps": 30,
+  "color": "bt709/sRGB-compatible primaries",
+  "integrated_lufs": -15.99,
+  "true_peak_dbtp": -1.30,
+  "black_segments": 0,
+  "caption_phrases": 62,
+  "visual_review_score": 95
+}

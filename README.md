@@ -22,6 +22,7 @@ Real Work** challenge.
 - **Validated repair PR:** <https://github.com/TianChen17/repairpilot/pull/1>
 - **Sample outputs:** [`examples/`](examples/)
 - **90-second test path:** [`docs/JUDGE_GUIDE.md`](docs/JUDGE_GUIDE.md)
+- **Video source and publishing package:** [`video/`](video/) · [`docs/YOUTUBE_AND_DEVPOST.md`](docs/YOUTUBE_AND_DEVPOST.md)
 
 DataHub read-only demo login:
 
@@ -199,6 +200,10 @@ Patch SHA, unique Incident URNs, one idempotent Runbook URN, zero residual
 worktrees, and verifiable Evidence Receipts.
 
 Current results and evidence are in [`docs/QUALITY_REPORT.md`](docs/QUALITY_REPORT.md).
+
+The competition video is a reproducible 175-second Remotion composition with
+50 shots, English AI narration, open captions, real UI captures, and an
+objective codec/loudness/black-frame validator. See [`video-spec.md`](video-spec.md).
 
 ## Public API
 

@@ -1,0 +1,22 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "+18%",
+  "pitch": "-2Hz",
+  "text": "The output is a real public GitHub draft pull request: four files, the alias, migration, test, and guide. GitHub Actions rebuilds everything and stays green.",
+  "captions": [
+    {
+      "text": " The output is a real public GitHub draft pull request: four files, the alias, migration, test, and guide.",
+      "startMs": 50,
+      "endMs": 7013,
+      "timestampMs": 50,
+      "confidence": null
+    },
+    {
+      "text": " GitHub Actions rebuilds everything and stays green.",
+      "startMs": 7013,
+      "endMs": 9958,
+      "timestampMs": 7013,
+      "confidence": null
+    }
+  ]
+}

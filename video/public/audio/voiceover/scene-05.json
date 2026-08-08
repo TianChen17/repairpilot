@@ -1,0 +1,29 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "+18%",
+  "pitch": "-2Hz",
+  "text": "A deterministic policy scores the change high risk: one hundred out of one hundred. The model cannot lower this score, bypass approval, or publish. If DataHub is unavailable, RepairPilot fails closed.",
+  "captions": [
+    {
+      "text": " A deterministic policy scores the change high risk: one hundred out of one hundred.",
+      "startMs": 50,
+      "endMs": 4650,
+      "timestampMs": 50,
+      "confidence": null
+    },
+    {
+      "text": " The model cannot lower this score, bypass approval, or publish.",
+      "startMs": 4650,
+      "endMs": 8347,
+      "timestampMs": 4650,
+      "confidence": null
+    },
+    {
+      "text": " If DataHub is unavailable, RepairPilot fails closed.",
+      "startMs": 8347,
+      "endMs": 12129,
+      "timestampMs": 8347,
+      "confidence": null
+    }
+  ]
+}

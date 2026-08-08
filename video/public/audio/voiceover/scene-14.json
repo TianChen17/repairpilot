@@ -1,0 +1,36 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "+18%",
+  "pitch": "-2Hz",
+  "text": "RepairPilot: Block. Repair. Prove. Remember.",
+  "captions": [
+    {
+      "text": " RepairPilot: Block.",
+      "startMs": 50,
+      "endMs": 1578,
+      "timestampMs": 50,
+      "confidence": null
+    },
+    {
+      "text": " Repair.",
+      "startMs": 1578,
+      "endMs": 2288,
+      "timestampMs": 1578,
+      "confidence": null
+    },
+    {
+      "text": " Prove.",
+      "startMs": 2288,
+      "endMs": 2956,
+      "timestampMs": 2288,
+      "confidence": null
+    },
+    {
+      "text": " Remember.",
+      "startMs": 2956,
+      "endMs": 3686,
+      "timestampMs": 2956,
+      "confidence": null
+    }
+  ]
+}

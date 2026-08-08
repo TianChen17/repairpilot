@@ -1,0 +1,29 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "+18%",
+  "pitch": "-2Hz",
+  "text": "The live scenario uses twelve hundred deterministic synthetic orders. The infrastructure is real. DataHub MCP returns schema, ownership, governance, lineage, quality, and usage.",
+  "captions": [
+    {
+      "text": " The live scenario uses twelve hundred deterministic synthetic orders.",
+      "startMs": 50,
+      "endMs": 3729,
+      "timestampMs": 50,
+      "confidence": null
+    },
+    {
+      "text": " The infrastructure is real.",
+      "startMs": 3729,
+      "endMs": 5604,
+      "timestampMs": 3729,
+      "confidence": null
+    },
+    {
+      "text": " DataHub MCP returns schema, ownership, governance, lineage, quality, and usage.",
+      "startMs": 5604,
+      "endMs": 11557,
+      "timestampMs": 5604,
+      "confidence": null
+    }
+  ]
+}
