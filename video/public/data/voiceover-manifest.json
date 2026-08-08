@@ -1,107 +1,111 @@
 {
   "voice": "en-US-AndrewMultilingualNeural",
   "rate": "+18%",
+  "closingRate": "+70%",
   "pitch": "-2Hz",
-  "targetDurationMs": 175000,
-  "speechEndMs": 172310,
+  "boundary": "WordBoundary",
+  "targetDurationMs": 158000,
+  "speechEndMs": 157212,
   "scenes": [
     {
       "id": 1,
+      "chapter": "dangerous-change",
       "audio": "audio/voiceover/scene-01.mp3",
       "startMs": 650,
-      "durationMs": 7752,
-      "text": "A single dbt column rename can break revenue models and executive dashboards. RepairPilot stops that change before merge."
+      "endMs": 11450,
+      "durationMs": 10800,
+      "rate": "+18%",
+      "text": "Renaming one dbt column can silently break three models and an executive dashboard. RepairPilot blocks it before merge—and carries the incident all the way to a verified repair."
     },
     {
       "id": 2,
+      "chapter": "datahub-context",
       "audio": "audio/voiceover/scene-02.mp3",
-      "startMs": 13200,
-      "durationMs": 7968,
-      "text": "This is not another incident chatbot. It blocks, repairs, proves, requests human authority, and writes reusable knowledge back to DataHub."
+      "startMs": 14300,
+      "endMs": 34268,
+      "durationMs": 19968,
+      "rate": "+18%",
+      "text": "Here the live agent calls the official DataHub MCP server. It retrieves the stg_orders.gross_amount schema, Revenue Analytics owner, Finance domain, Tier1 and FinancialMetric tags, quality status, stored queries, and field-level lineage. DataHub shows four downstream consumers. None of this blast radius is hard-coded."
     },
     {
       "id": 3,
+      "chapter": "policy",
       "audio": "audio/voiceover/scene-03.mp3",
-      "startMs": 21518,
-      "durationMs": 11616,
-      "text": "The live scenario uses twelve hundred deterministic synthetic orders. The infrastructure is real. DataHub MCP returns schema, ownership, governance, lineage, quality, and usage."
+      "startMs": 37300,
+      "endMs": 46156,
+      "durationMs": 8856,
+      "rate": "+18%",
+      "text": "A versioned rule engine—not the LLM—scores the rename one hundred out of one hundred and blocks release. Missing DataHub context or a failed build stays blocked."
     },
     {
       "id": 4,
+      "chapter": "repair",
       "audio": "audio/voiceover/scene-04.mp3",
-      "startMs": 33500,
-      "durationMs": 11040,
-      "text": "DataHub shows a Tier-One financial metric owned by Revenue Analytics. Three dbt consumers and Executive Revenue Pulse depend on it. This context is live, not hard-coded."
+      "startMs": 51300,
+      "endMs": 66444,
+      "durationMs": 15144,
+      "rate": "+18%",
+      "text": "DeepSeek V4 Flash can only propose three allowlisted changes: expose gross_revenue while retaining the old alias, migrate the controlled downstream model, and add a dbt schema test. Generated shell and arbitrary SQL are rejected."
     },
     {
       "id": 5,
+      "chapter": "proof",
       "audio": "audio/voiceover/scene-05.mp3",
-      "startMs": 44890,
-      "durationMs": 12192,
-      "text": "A deterministic policy scores the change high risk: one hundred out of one hundred. The model cannot lower this score, bypass approval, or publish. If DataHub is unavailable, RepairPilot fails closed."
+      "startMs": 69300,
+      "endMs": 86700,
+      "durationMs": 17400,
+      "rate": "+18%",
+      "text": "RepairPilot creates a detached Git worktree and per-run Postgres schemas. First it reproduces the breaking build. Then it applies the bounded patch and runs dbt build over the affected graph. Fourteen tests pass with zero failures, and the invocation, commits, and patch SHA are recorded."
     },
     {
       "id": 6,
+      "chapter": "approval",
       "audio": "audio/voiceover/scene-06.mp3",
-      "startMs": 57432,
-      "durationMs": 17064,
-      "text": "DeepSeek V4 Flash proposes a bounded repair: preserve a compatibility alias, migrate the downstream model, add a schema test, and explain the migration. Only three operation types and three allowlisted paths are accepted. Generated shell and arbitrary SQL never execute."
+      "startMs": 94300,
+      "endMs": 101884,
+      "durationMs": 7584,
+      "rate": "+18%",
+      "text": "Only verified evidence unlocks Revenue Analytics approval. Rejecting leaves the incident blocked and creates no pull request."
     },
     {
       "id": 7,
+      "chapter": "pull-request",
       "audio": "audio/voiceover/scene-07.mp3",
-      "startMs": 74846,
-      "durationMs": 16584,
-      "text": "Now comes executable proof. In a detached Git worktree and temporary Postgres schemas, RepairPilot reproduces the failure, applies reviewed templates, and runs dbt build. Fourteen tests pass with zero failures. Commits, invocation, and patch hash are captured."
+      "startMs": 103300,
+      "endMs": 111508,
+      "durationMs": 8208,
+      "rate": "+18%",
+      "text": "Approval produces this public four-file draft PR. The diff, migration guide, test evidence, and GitHub Actions result are reviewable."
     },
     {
       "id": 8,
+      "chapter": "writeback",
       "audio": "audio/voiceover/scene-08.mp3",
-      "startMs": 91780,
-      "durationMs": 5952,
-      "text": "Only then does owner approval unlock. A rejection keeps the release blocked and creates no pull request."
+      "startMs": 113300,
+      "endMs": 128492,
+      "durationMs": 15192,
+      "rate": "+18%",
+      "text": "Then RepairPilot writes the outcome back to DataHub: a passing gross_revenue assertion, a per-run Incident Document, a verified tag, and one idempotent safe-column-rename Runbook. The next responder starts with the proven repair instead of repeating the investigation."
     },
     {
       "id": 9,
+      "chapter": "receipt",
       "audio": "audio/voiceover/scene-09.mp3",
-      "startMs": 101300,
-      "durationMs": 10008,
-      "text": "The output is a real public GitHub draft pull request: four files, the alias, migration, test, and guide. GitHub Actions rebuilds everything and stays green."
+      "startMs": 133300,
+      "endMs": 147412,
+      "durationMs": 14112,
+      "rate": "+18%",
+      "text": "An immutable Evidence Receipt joins the DataHub URNs, policy version, commits, dbt invocation, approval, PR, and write-back addresses. Three live runs produced one patch hash and zero residual schemas or worktrees."
     },
     {
       "id": 10,
+      "chapter": "close",
       "audio": "audio/voiceover/scene-10.mp3",
-      "startMs": 114300,
-      "durationMs": 12456,
-      "text": "RepairPilot closes the DataHub loop with an Incident Document, successful assertion, verified tag, and idempotent safe-column-rename Runbook. The next responder inherits evidence instead of repeating the investigation."
-    },
-    {
-      "id": 11,
-      "audio": "audio/voiceover/scene-11.mp3",
-      "startMs": 135200,
-      "durationMs": 13104,
-      "text": "An immutable Evidence Receipt ties DataHub URNs, policy version, commits, patch SHA-two-fifty-six, dbt invocation, tests, approval, pull request, and write-back addresses into one traceable record."
-    },
-    {
-      "id": 12,
-      "audio": "audio/voiceover/scene-12.mp3",
-      "startMs": 151200,
-      "durationMs": 10224,
-      "text": "Three live runs produced one patch hash, one Runbook, and zero residual schemas or worktrees. Secrets stay server-side, and private services stay on loopback."
-    },
-    {
-      "id": 13,
-      "audio": "audio/voiceover/scene-13.mp3",
-      "startMs": 162000,
-      "durationMs": 6216,
-      "text": "Synthetic business data. Real DataHub, MCP, dbt, DeepSeek, GitHub, and write-back."
-    },
-    {
-      "id": 14,
-      "audio": "audio/voiceover/scene-14.mp3",
-      "startMs": 168566,
-      "durationMs": 3744,
-      "text": "RepairPilot: Block. Repair. Prove. Remember."
+      "startMs": 150300,
+      "endMs": 157212,
+      "durationMs": 6912,
+      "rate": "+70%",
+      "text": "Synthetic business data. Real DataHub, MCP, dbt, DeepSeek, GitHub, and write-back. RepairPilot: Block. Repair. Prove. Remember."
     }
   ]
 }

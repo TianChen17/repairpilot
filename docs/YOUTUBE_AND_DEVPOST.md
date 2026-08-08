@@ -19,18 +19,15 @@ Read-only DataHub: https://catalog.145-241-207-154.sslip.io
 
 RepairPilot reads live lineage, ownership, governance, quality, and query context through DataHub MCP; deterministically blocks a high-risk release; asks DeepSeek V4 Flash for a bounded repair; reproduces the failure and proves the fix with a real isolated dbt build; requires owner approval; creates a reviewable GitHub PR; and writes an Incident, Assertion, verified Tag, and reusable Runbook back to DataHub.
 
-00:00 One renamed field, four downstream failures
-00:13 Block. Repair. Prove. Remember.
-00:24 Live DataHub MCP context
-00:43 Deterministic release block
-00:56 Bounded AI repair
-01:12 Real isolated dbt proof
-01:30 Owner approval
-01:41 GitHub pull request
-01:54 DataHub write-back
-02:15 Immutable Evidence Receipt
-02:31 Safety and repeatability
-02:45 RepairPilot
+00:00 One renamed field, four assets at risk
+00:14 Live DataHub MCP context
+00:37 Deterministic release block
+00:51 Bounded AI repair
+01:09 Real isolated dbt proof
+01:34 Owner approval
+01:43 GitHub pull request
+01:53 DataHub write-back
+02:13 Immutable Evidence Receipt and real boundary
 
 All Northstar Commerce business data, dashboard metadata, and query metadata are deterministic synthetic demonstration data. DataHub, MCP, Postgres, dbt, DeepSeek, Git, GitHub, approvals, and write-back execution are real.
 
@@ -79,9 +76,14 @@ not add extra YouTube text over the URLs.
 3. Replace `YOUTUBE_PUBLIC_URL_TO_BE_ADDED_AFTER_UPLOAD` in
    `docs/DEVPOST_SUBMISSION.md` with the public URL.
 4. Paste the prepared fields from `docs/DEVPOST_SUBMISSION.md` into the existing
-   Devpost draft and upload the four gallery images in the order above.
+   Devpost draft, select **Agents That Do Real Work**, select **DataHub OSS /
+   Core Platform** and **DataHub MCP Server**, and upload the four gallery
+   images in the order above.
 5. Confirm personal eligibility, team representation, originality, ownership,
    and any feedback-prize choices. These declarations cannot be made by the
    automation agent.
 6. Click Submit before **August 10, 2026 at 5:00 PM EDT**, then verify the entry
    page shows a submitted status.
+7. Target completion by **August 10 at 11:00 AM EDT** (**August 10 at 23:00
+   Beijing time**), six hours before the official deadline, and keep both
+   hosted URLs online and free through **August 31 at 5:00 PM EDT**.

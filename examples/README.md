@@ -16,7 +16,8 @@ run.
 | `evidence-receipt.json` | Immutable hashes, commits, approval, PR, and DataHub URNs |
 | `live-e2e-summary.jsonl` | Three consecutive Live runs with durations, stable patch hash, and idempotent Runbook |
 | `final-live-e2e-summary.jsonl` | Final three-run regression after every downstream quality gate and video package |
-| `video-quality-summary.json` | Final media metrics, loudness, peak, captions, black-frame result, and visual score |
+| `video-quality-summary.json` | Machine-measured format, loudness, sync, OCR, and black/flash-frame results |
+| `video-manual-review.json` | Separate 34-shot editorial review and judge-criteria score |
 
 Canonical review PR: <https://github.com/TianChen17/repairpilot/pull/1>
 

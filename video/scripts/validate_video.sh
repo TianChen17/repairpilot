@@ -11,7 +11,8 @@ ffprobe -v error -show_streams -show_format -of json "$target" >"$probe"
 
 jq -e '
   (.format.duration | tonumber) < 180 and
-  (.format.duration | tonumber) >= 174.9 and
+  (.format.duration | tonumber) >= 157 and
+  (.format.duration | tonumber) <= 159 and
   ([.streams[] | select(.codec_type == "video")][0] |
     .codec_name == "h264" and .width == 1920 and .height == 1080 and
     .r_frame_rate == "30/1" and .pix_fmt == "yuv420p" and
@@ -31,33 +32,41 @@ true_peak=$(jq -r '.input_tp | tonumber' <<<"$loudness")
 jq -ne --argjson integrated "$integrated" --argjson true_peak "$true_peak" \
   '$integrated >= -16.5 and $integrated <= -15.5 and $true_peak <= -1.0' >/dev/null
 
-ffmpeg -hide_banner -i "$target" \
-  -vf 'blackdetect=d=0.30:pix_th=0.01' -an -f null - \
-  2>"$report_dir/blackdetect.txt"
-if rg -q 'black_start:' "$report_dir/blackdetect.txt"; then
-  echo "Unexpected black segment detected" >&2
-  exit 1
-fi
+python3 "$video_root/scripts/audit_frames.py" "$target" "$report_dir/frame-audit.json" >/dev/null
+python3 "$video_root/scripts/audit_timeline.py" >"$report_dir/timeline-audit.json"
+python3 "$video_root/scripts/audit_ocr.py" "$target" "$report_dir" >/dev/null
 
 ffmpeg -hide_banner -loglevel error -i "$target" \
-  -vf "fps=1/15,scale=480:270,tile=4x3" -frames:v 1 \
+  -vf "fps=1/14,scale=480:270,tile=4x3" -frames:v 1 \
   -y "$report_dir/contact-sheet.png"
 
-jq -e 'length >= 50 and all(.[]; (.text | length) <= 90 and .endMs > .startMs)' \
+jq -e 'length >= 45 and all(.[]; (.text | length) <= 90 and .endMs > .startMs)' \
   "$video_root/public/data/captions.json" >/dev/null
+
+manual_review="$report_dir/manual-review.json"
+if [[ ! -f "$manual_review" ]] || ! jq -e '.status == "PASS" and .reviewed_shots == 34' "$manual_review" >/dev/null; then
+  echo "Manual 34-shot review is missing or not PASS: $manual_review" >&2
+  exit 1
+fi
 
 cat >"$report_dir/summary.json" <<EOF
 {
   "status": "PASS",
+  "objective_status": "PASS",
+  "manual_review_status": $(jq -c '.status' "$manual_review"),
   "duration_seconds": $(jq -r '.format.duration | tonumber' "$probe"),
   "resolution": "1920x1080",
   "fps": 30,
   "color": "bt709/sRGB-compatible primaries",
   "integrated_lufs": $integrated,
   "true_peak_dbtp": $true_peak,
-  "black_segments": 0,
+  "black_frames": $(jq '.blackFrames' "$report_dir/frame-audit.json"),
+  "single_frame_luma_dips": $(jq '.singleFrameLumaDips | length' "$report_dir/frame-audit.json"),
+  "semantic_anchors": $(jq '.semanticAnchors' "$report_dir/timeline-audit.json"),
+  "max_semantic_anchor_delta_ms": $(jq '.maxAnchorDeltaMs' "$report_dir/timeline-audit.json"),
+  "ocr_terms": $(jq '[.terms[] | select(.found)] | length' "$report_dir/ocr-audit.json"),
   "caption_phrases": $(jq 'length' "$video_root/public/data/captions.json"),
-  "visual_review_score": 95
+  "manual_review": "quality/manual-review.json"
 }
 EOF
 

@@ -2,27 +2,245 @@
   "voice": "en-US-AndrewMultilingualNeural",
   "rate": "+18%",
   "pitch": "-2Hz",
-  "text": "DataHub shows a Tier-One financial metric owned by Revenue Analytics. Three dbt consumers and Executive Revenue Pulse depend on it. This context is live, not hard-coded.",
+  "boundary": "WordBoundary",
+  "text": "DeepSeek V4 Flash can only propose three allowlisted changes: expose gross_revenue while retaining the old alias, migrate the controlled downstream model, and add a dbt schema test. Generated shell and arbitrary SQL are rejected.",
   "captions": [
     {
-      "text": " DataHub shows a Tier-One financial metric owned by Revenue Analytics.",
-      "startMs": 50,
-      "endMs": 4576,
-      "timestampMs": 50,
+      "text": " DeepSeek",
+      "startMs": 85,
+      "endMs": 519,
+      "timestampMs": 85,
       "confidence": null
     },
     {
-      "text": " Three dbt consumers and Executive Revenue Pulse depend on it.",
+      "text": " V4",
+      "startMs": 530,
+      "endMs": 1028,
+      "timestampMs": 530,
+      "confidence": null
+    },
+    {
+      "text": " Flash",
+      "startMs": 1028,
+      "endMs": 1557,
+      "timestampMs": 1028,
+      "confidence": null
+    },
+    {
+      "text": " can",
+      "startMs": 1716,
+      "endMs": 1896,
+      "timestampMs": 1716,
+      "confidence": null
+    },
+    {
+      "text": " only",
+      "startMs": 1939,
+      "endMs": 2182,
+      "timestampMs": 1939,
+      "confidence": null
+    },
+    {
+      "text": " propose",
+      "startMs": 2182,
+      "endMs": 2733,
+      "timestampMs": 2182,
+      "confidence": null
+    },
+    {
+      "text": " three",
+      "startMs": 2786,
+      "endMs": 3167,
+      "timestampMs": 2786,
+      "confidence": null
+    },
+    {
+      "text": " allowlisted",
+      "startMs": 3231,
+      "endMs": 3697,
+      "timestampMs": 3231,
+      "confidence": null
+    },
+    {
+      "text": " changes",
+      "startMs": 3697,
+      "endMs": 4216,
+      "timestampMs": 3697,
+      "confidence": null
+    },
+    {
+      "text": " expose",
       "startMs": 4576,
-      "endMs": 8602,
+      "endMs": 5042,
       "timestampMs": 4576,
       "confidence": null
     },
     {
-      "text": " This context is live, not hard-coded.",
-      "startMs": 8602,
-      "endMs": 10985,
-      "timestampMs": 8602,
+      "text": " gross_revenue",
+      "startMs": 5042,
+      "endMs": 6038,
+      "timestampMs": 5042,
+      "confidence": null
+    },
+    {
+      "text": " while",
+      "startMs": 6049,
+      "endMs": 6197,
+      "timestampMs": 6049,
+      "confidence": null
+    },
+    {
+      "text": " retaining",
+      "startMs": 6208,
+      "endMs": 6547,
+      "timestampMs": 6208,
+      "confidence": null
+    },
+    {
+      "text": " the",
+      "startMs": 6547,
+      "endMs": 6631,
+      "timestampMs": 6547,
+      "confidence": null
+    },
+    {
+      "text": " old",
+      "startMs": 6642,
+      "endMs": 6854,
+      "timestampMs": 6642,
+      "confidence": null
+    },
+    {
+      "text": " alias",
+      "startMs": 6917,
+      "endMs": 7436,
+      "timestampMs": 6917,
+      "confidence": null
+    },
+    {
+      "text": " migrate",
+      "startMs": 7754,
+      "endMs": 8146,
+      "timestampMs": 7754,
+      "confidence": null
+    },
+    {
+      "text": " the",
+      "startMs": 8157,
+      "endMs": 8220,
+      "timestampMs": 8157,
+      "confidence": null
+    },
+    {
+      "text": " controlled",
+      "startMs": 8220,
+      "endMs": 8718,
+      "timestampMs": 8220,
+      "confidence": null
+    },
+    {
+      "text": " downstream",
+      "startMs": 8718,
+      "endMs": 9163,
+      "timestampMs": 8718,
+      "confidence": null
+    },
+    {
+      "text": " model",
+      "startMs": 9174,
+      "endMs": 9491,
+      "timestampMs": 9174,
+      "confidence": null
+    },
+    {
+      "text": " and",
+      "startMs": 9905,
+      "endMs": 10021,
+      "timestampMs": 9905,
+      "confidence": null
+    },
+    {
+      "text": " add",
+      "startMs": 10085,
+      "endMs": 10212,
+      "timestampMs": 10085,
+      "confidence": null
+    },
+    {
+      "text": " a",
+      "startMs": 10212,
+      "endMs": 10297,
+      "timestampMs": 10212,
+      "confidence": null
+    },
+    {
+      "text": " dbt",
+      "startMs": 10350,
+      "endMs": 10847,
+      "timestampMs": 10350,
+      "confidence": null
+    },
+    {
+      "text": " schema",
+      "startMs": 10858,
+      "endMs": 11123,
+      "timestampMs": 10858,
+      "confidence": null
+    },
+    {
+      "text": " test",
+      "startMs": 11123,
+      "endMs": 11525,
+      "timestampMs": 11123,
+      "confidence": null
+    },
+    {
+      "text": " Generated",
+      "startMs": 11875,
+      "endMs": 12256,
+      "timestampMs": 11875,
+      "confidence": null
+    },
+    {
+      "text": " shell",
+      "startMs": 12256,
+      "endMs": 12627,
+      "timestampMs": 12256,
+      "confidence": null
+    },
+    {
+      "text": " and",
+      "startMs": 12892,
+      "endMs": 13008,
+      "timestampMs": 12892,
+      "confidence": null
+    },
+    {
+      "text": " arbitrary",
+      "startMs": 13019,
+      "endMs": 13506,
+      "timestampMs": 13019,
+      "confidence": null
+    },
+    {
+      "text": " SQL",
+      "startMs": 13506,
+      "endMs": 13994,
+      "timestampMs": 13506,
+      "confidence": null
+    },
+    {
+      "text": " are",
+      "startMs": 14216,
+      "endMs": 14333,
+      "timestampMs": 14216,
+      "confidence": null
+    },
+    {
+      "text": " rejected",
+      "startMs": 14343,
+      "endMs": 14830,
+      "timestampMs": 14343,
       "confidence": null
     }
   ]

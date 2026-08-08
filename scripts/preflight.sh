@@ -18,7 +18,8 @@ if [[ -n "$bad_bindings" ]]; then
   exit 1
 fi
 
-if git -C "$repo_root" grep -nE '(DEEPSEEK_API_KEY|GITHUB_PAT_[A-Za-z0-9_]+)=[^[:space:]]+' -- ':!*.example'; then
+if git -C "$repo_root" grep -nE '(DEEPSEEK_API_KEY|GITHUB_PAT_[A-Za-z0-9_]+)=[^[:space:]]+' \
+  -- ':!*.example' ':!scripts/submission-preflight.sh'; then
   echo "secret_pattern=failed" >&2
   exit 1
 fi

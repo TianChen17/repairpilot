@@ -1,101 +1,155 @@
-# RepairPilot Demo Video Specification
+请你按照以下 script，帮我生成一条视频；所有产品证据必须来自最终线上版本。
 
-## Delivery contract
+# RepairPilot Judge-Cut Video Specification
+
+## 1. Delivery contract
 
 - **Title:** RepairPilot — Block. Repair. Prove. Remember.
-- **Audience:** DataHub hackathon judges and data-platform engineers
-- **Purpose:** Prove a real DataHub read/action/write-back agent loop in under three minutes
-- **Format:** 175 seconds, 1920×1080, 30 fps, 16:9, sRGB, H.264/AAC
-- **Voice:** English AI voice, calm technical-lead delivery
-- **Captions:** Always visible; active phrase highlighted; 80 px horizontal and 100 px vertical safe areas
-- **Visual system:** `#0B1020` background, `#141B2D` cards, DataHub blue `#3B82F6`, block red `#EF4444`, approval amber `#F59E0B`, proof green `#22C55E`, memory violet `#8B5CF6`
-- **Evidence rule:** Product, DataHub, GitHub, and dbt results use real captures or real generated artifacts. Accelerated footage is labeled. No secret, browser password, or fake result may appear.
-- **Data disclosure:** All Northstar Commerce business data and dashboard/query metadata are synthetic. DataHub, MCP, Postgres, dbt, DeepSeek, Git, GitHub, and HTTPS executions are real.
-- **Audio:** Voice centered near -16 LUFS, final true peak no higher than -1 dBTP; subtle original synthesized interface tones only; no third-party music.
+- **Audience:** DataHub hackathon judges first; data-platform engineers second.
+- **Decision the video must earn:** this agent uses DataHub deeply, performs a
+  bounded real repair, proves the result, preserves human authority, and writes
+  reusable knowledge back.
+- **Format:** 158.0 seconds, 1920×1080, 30 fps, 16:9, H.264/AAC, BT.709.
+- **Pacing:** tutorial/editorial, 34 shots, ten evidence chapters; no empty
+  promise scene.
+- **Voice:** `en-US-AndrewMultilingualNeural`, calm technical-lead delivery;
+  canonical 296 words in `video/narration.txt`.
+- **Captions:** generated from exact TTS word boundaries; at most seven words,
+  at most two lines, approximately 34 px, bottom safe offset 52 px.
+- **Visual theme:** incident control room; background `#0B1020`, card
+  `#141B2D`, DataHub `#3B82F6`, block `#EF4444`, approval `#F59E0B`, proof
+  `#22C55E`, write-back `#8B5CF6`.
+- **Evidence rule:** real RepairPilot, DataHub OSS, GitHub, and dbt output only.
+  Waiting may be accelerated at `2×` and must be labeled. DataHub pages remain
+  the native UI.
+- **Disclosure:** Northstar Commerce business data is synthetic. DataHub, MCP,
+  Postgres, dbt, DeepSeek, Git, GitHub, HTTPS, approval, and write-back execute
+  for real.
+- **Audio:** no music; original interface tones only; target -16 LUFS and no
+  higher than -1 dBTP.
 
-## Narrative arc and timing
+## 2. Narrative and chapter timing
 
-| Scene | Time | Purpose | Primary evidence |
+| Chapter | Time | Judge question answered | Primary evidence |
 |---|---:|---|---|
-| 1. Cold open | 00:00–00:13 | Make one-column risk instantly legible | RepairPilot hero + breaking diff |
-| 2. Product promise | 00:13–00:24 | Differentiate from investigation chatbots | Four-word loop animation |
-| 3. Live context | 00:24–00:43 | Prove DataHub MCP use | Real DataHub asset, ownership, tags, lineage, queries |
-| 4. Deterministic block | 00:43–00:56 | Establish safety and authority boundary | RepairPilot policy 100/100 |
-| 5. Bounded AI repair | 00:56–01:12 | Show useful model work with a strict contract | DeepSeek proposal cards + patch |
-| 6. Executable proof | 01:12–01:30 | Demonstrate actual work | Real accelerated run, failing then passing dbt build |
-| 7. Human authority | 01:30–01:41 | Show approval is mandatory | Awaiting approval → approved UI |
-| 8. Reviewable output | 01:41–01:54 | Prove the action is inspectable | Real GitHub PR + green Actions |
-| 9. DataHub write-back | 01:54–02:15 | Close the memory loop | Real Assertion, Incident, Runbook pages |
-| 10. Evidence receipt | 02:15–02:31 | Make verification tamper-evident and traceable | Receipt fields and patch SHA |
-| 11. Safety + repeatability | 02:31–02:45 | Build production credibility | Three runs, isolation cleanup, fail-closed rails |
-| 12. Close | 02:45–02:55 | Memorable final claim and access | Product URL, repo, four-word mark |
+| Dangerous change | 0.0–14.0 | Is the problem real and immediately clear? | Live Run → BLOCK |
+| DataHub context | 14.0–37.0 | Is DataHub essential rather than decorative? | Schema, Owner, Tags, Lineage, Queries, Quality |
+| Deterministic policy | 37.0–51.0 | Can the model bypass safety? | HIGH 100/100, fail closed |
+| Bounded repair | 51.0–69.0 | Does AI contribute useful but constrained work? | Alias, migration, schema test |
+| Executable proof | 69.0–94.0 | Did the agent actually do and verify work? | Failure, worktree, dbt build, 14 tests |
+| Owner authority | 94.0–103.0 | Who authorizes a high-risk action? | Approval unlocked only by proof |
+| Reviewable PR | 103.0–113.0 | Can reviewers inspect the action? | Four-file PR, Diff, Actions |
+| DataHub write-back | 113.0–133.0 | Does the result become reusable knowledge? | Assertion, real Incident, Runbook |
+| Evidence Receipt | 133.0–150.0 | Is the chain tamper-evident and repeatable? | URNs, SHA, three runs, zero residue |
+| Real boundary | 150.0–158.0 | What is synthetic and what is real? | Disclosure, URL, four-word mark |
 
-## 50-shot plan
+Emotional curve: **risk → controlled confidence → verified institutional
+memory**. The first real DataHub frame appears at 14.0 seconds. The final shot
+holds on the disclosure and public URLs without a fade.
 
-| # | Time | Shot and motion | On-screen emphasis |
-|---:|---:|---|---|
-| 1 | 00:00–00:03 | Black-to-red schema alert | `gross_amount → gross_revenue` |
-| 2 | 00:03–00:06 | RepairPilot hero slow push-in | “One renamed field.” |
-| 3 | 00:06–00:09 | Push toward red headline | “Four downstream failures.” |
-| 4 | 00:09–00:11 | Diff card close-up | breaking contract |
-| 5 | 00:11–00:13 | Freeze with red release stamp | `BLOCK BEFORE MERGE` |
-| 6 | 00:13–00:16 | Four-step line enters | Block |
-| 7 | 00:16–00:18 | Second step locks in | Repair |
-| 8 | 00:18–00:21 | Third step locks in | Prove |
-| 9 | 00:21–00:24 | Fourth step completes loop | Remember |
-| 10 | 00:24–00:28 | Real DataHub dataset page | dbt `stg_orders` |
-| 11 | 00:28–00:31 | Crop to Owner/Domain | Revenue Analytics |
-| 12 | 00:31–00:34 | Crop to governance tags | Tier1 · FinancialMetric · SLA-1h |
-| 13 | 00:34–00:37 | Real lineage explorer pan | field lineage |
-| 14 | 00:37–00:40 | Real stored queries page | three usage queries |
-| 15 | 00:40–00:43 | Return to product context card | 4 impacted assets |
-| 16 | 00:43–00:47 | Risk bar sweeps red | HIGH · 100/100 |
-| 17 | 00:47–00:50 | Four matched rules appear | deterministic policy |
-| 18 | 00:50–00:53 | LLM boundary diagram | model cannot override |
-| 19 | 00:53–00:56 | Fail-closed lock | MCP unavailable = blocked |
-| 20 | 00:56–00:59 | DeepSeek contract header | strict JSON |
-| 21 | 00:59–01:03 | Compatibility repair card | keep old alias |
-| 22 | 01:03–01:06 | Migration repair card | update downstream model |
-| 23 | 01:06–01:09 | Test repair card | add schema test |
-| 24 | 01:09–01:12 | Patch lines animate | allowlisted paths only |
-| 25 | 01:12–01:16 | Real browser recording, 3× | isolated worktree |
-| 26 | 01:16–01:19 | Terminal-style result from artifact | breaking build failed |
-| 27 | 01:19–01:23 | Schema isolation callout | temporary Postgres schema |
-| 28 | 01:23–01:27 | Real browser recording, 3× | repaired build running |
-| 29 | 01:27–01:30 | Green proof close-up | 14 tests · 0 failures |
-| 30 | 01:30–01:33 | Awaiting approval screenshot | control locked until proof |
-| 31 | 01:33–01:36 | Amber spotlight on owner | Revenue Analytics Owner |
-| 32 | 01:36–01:38 | Approval click from real recording | approval recorded |
-| 33 | 01:38–01:41 | State changes to LEARNED | human authority preserved |
-| 34 | 01:41–01:45 | Real GitHub PR page | draft repair PR |
-| 35 | 01:45–01:48 | Crop to four changed files | reviewable scope |
-| 36 | 01:48–01:51 | Crop to executable proof text | Patch SHA + invocation |
-| 37 | 01:51–01:54 | Real Actions page | green CI checks |
-| 38 | 01:54–01:58 | Violet write-back transition | institutional memory |
-| 39 | 01:58–02:02 | Real DataHub Assertions page | gross_revenue not null |
-| 40 | 02:02–02:06 | Real DataHub Documents page | Incident Document |
-| 41 | 02:06–02:10 | Real Runbook page | Safe column rename |
-| 42 | 02:10–02:15 | Product write-back card | next incident starts smarter |
-| 43 | 02:15–02:19 | Receipt card enters | immutable evidence |
-| 44 | 02:19–02:23 | URN/policy/dbt identifiers | end-to-end traceability |
-| 45 | 02:23–02:27 | Patch SHA verification | same bytes, same hash |
-| 46 | 02:27–02:31 | LIVE badge + approval record | not a replay |
-| 47 | 02:31–02:35 | Three-run strip | 30s · 31s · 28s |
-| 48 | 02:35–02:40 | Security rails checklist | allowlist · fail closed · no secrets |
-| 49 | 02:40–02:45 | Synthetic/real disclosure split | synthetic data, real execution |
-| 50 | 02:45–02:55 | Final product hero and URLs | Block. Repair. Prove. Remember. |
+## 3. 34-shot execution table
 
-## Voiceover script
+The machine-readable source of truth is `video/timeline.json`. Each time range
+below is exact. UI shots use a stable `broll-ui.browser` frame; graphic proof
+uses the listed registered component family. Light UI is fully opaque on the
+first frame and never uses a full-frame fade.
 
-The canonical narration is stored in `video/narration.txt`. Caption timings are generated from the same speech synthesis output so the spoken and rendered copy cannot drift.
+| # | Time | Component | Evidence / screen message | Motion, audio, transition |
+|---:|---:|---|---|---|
+| 01 | 0.0–4.0 | `broll-ui.browser` | Real RepairPilot; `gross_amount → gross_revenue` | native recording; click/state change at `1×`; hard cut |
+| 02 | 4.0–9.0 | `broll-ui.browser` | Product context; four assets at risk | continuous native recording; wait only `2×`; hard cut |
+| 03 | 9.0–14.0 | `broll-ui.browser` | Real Run → BLOCK | continuous native recording; wait only `2×`; hard cut |
+| 04 | 14.0–17.7 | `broll-ui.browser` | `stg_orders.gross_amount`; official MCP | fixed high-resolution crop; hard cut |
+| 05 | 17.7–21.3 | `broll-ui.browser` | Revenue Analytics Owner; Finance Domain | fixed crop; hard cut |
+| 06 | 21.3–25.7 | `broll-ui.browser` | Tier1, FinancialMetric, quality | fixed crop; hard cut |
+| 08 | 25.7–27.8 | `broll-ui.browser` | stored usage queries | fixed crop; hard cut |
+| 07 | 27.8–34.0 | `broll-ui.browser` | field lineage, four consumers, not hard-coded | native lineage canvas; hard cut |
+| 09 | 34.0–37.0 | `broll-ui.browser` | Assertions and health | fixed crop; hard cut + chapter tone |
+| 10 | 37.0–41.3 | `broll-hero.big-number` | `HIGH · 100/100 · BLOCK` | number lands; soft entrance → hard cut |
+| 11 | 41.3–46.0 | `broll-flows.branching` | DataHub/dbt failure remains blocked | checks CASCADE; hard cut |
+| 12 | 46.0–51.0 | `broll-thinking.card-grid` | breaking + governed + downstream rules | checks CASCADE; soft entrance → hard cut |
+| 13 | 51.0–54.3 | `broll-thinking.card-grid` | DeepSeek proposes; policy retains authority | cards CASCADE; soft entrance → hard cut |
+| 14 | 54.3–58.0 | `broll-ui.browser` | retain `gross_amount` alias | static product evidence; hard cut |
+| 15 | 58.0–61.0 | `broll-ui.browser` | migrate controlled downstream model | static product evidence; hard cut |
+| 16 | 61.0–69.0 | `broll-thinking.card-grid` | add real schema test; reject shell/SQL | checks CASCADE; soft entrance → hard cut |
+| 17 | 69.0–74.0 | `broll-structures2.layered-stack` | detached worktree + per-run schemas | layers CASCADE; hard cut |
+| 18 | 74.0–77.0 | `broll-hero.big-number` | original breaking build `FAILED` | red result lands; soft entrance → hard cut |
+| 19 | 77.0–79.7 | `broll-ui.browser` | affected `dbt build`; BLOCK and proof | native recording at `1×`; hard cut |
+| 20 | 79.7–85.0 | `broll-ui.browser` | `14 tests · zero failures`; invocation + SHA | stable proof crop; hard cut |
+| 21 | 85.0–94.0 | `broll-hero.big-number` | `14 tests`, `Zero failures` | green hold; soft entrance → hard cut |
+| 22 | 94.0–98.2 | `broll-ui.browser` | Revenue Analytics approval unlocked | native recording at `1×`; hard cut |
+| 23 | 98.2–103.0 | `broll-ui.browser` | approval recorded; reject semantics | native product screenshot; hard cut |
+| 24 | 103.0–106.3 | `broll-ui.browser` | public draft PR #1; four files | fixed GitHub crop; hard cut |
+| 25 | 106.3–109.7 | `broll-ui.browser` | alias, migration, test, guide Diff | fixed GitHub crop; hard cut |
+| 26 | 109.7–113.0 | `broll-ui.browser` | GitHub Actions green | fixed GitHub crop; hard cut + chapter tone |
+| 27 | 113.0–118.0 | `broll-ui.browser` | passing `gross_revenue` Assertion | native DataHub UI; hard cut |
+| 28 | 118.0–121.8 | `broll-ui.browser` | real per-run Incident body | root cause, risk, invocation, SHA readable; hard cut |
+| 29 | 121.8–128.0 | `broll-ui.browser` | Safe dbt Column Rename Runbook body | native DataHub UI; hard cut |
+| 30 | 128.0–133.0 | `broll-ui.browser` | learned product state | stable write-back links; hard cut |
+| 31 | 133.0–140.3 | `broll-thinking.card-grid` | immutable Receipt joins every proof | cards CASCADE; soft entrance → hard cut |
+| 32 | 140.3–144.3 | `broll-hero.big-number` | three runs; one patch hash; one Runbook | metric hold; hard cut |
+| 33 | 144.3–150.0 | `broll-thinking.card-grid` | zero schemas/worktrees; Receipts verify | checks CASCADE; hard cut |
+| 34 | 150.0–158.0 | `broll-hero.big-type` | Synthetic business data · real execution; URLs | title hold; hard cut into the final frame |
 
-## Acceptance checks
+Hard cuts are the default. Seven dark graphic shots use a six-frame content
+entrance over an unchanged background; light UI never fades to the control-room
+background. There is no Ken Burns motion, flash transition, shot number, or
+large lower-third competing with captions.
 
-1. `ffprobe` reports 1920×1080, 30 fps, duration below 180 seconds, H.264 video, and AAC audio.
-2. `ffmpeg` loudness analysis reports approximately -16 LUFS and true peak no higher than -1 dBTP.
-3. Automated black-frame and freeze checks find no unexplained segment.
-4. A frame-contact sheet is visually reviewed at full resolution; all key type is readable and inside safe areas.
-5. Captions cover every narration line and never cover the active product evidence.
-6. All accelerated real footage has a visible `3×` label.
-7. Secret-pattern scan of frames, source, captions, and metadata returns zero findings.
-8. The final video references the exact deployed commit and the currently public PR.
+## 4. Audio and shared timing source
+
+`video/timeline.json` supplies every chapter and shot boundary. The TTS generator
+reads the same file, anchors each narration paragraph inside its chapter, emits
+`Caption` JSON from WordBoundary events, and fails if speech crosses the chapter
+end. `AudioTracks.tsx`, `Captions.tsx`, and the visual composition consume those
+generated manifests.
+
+Only the closing line uses a faster voice rate so all 296 approved words remain
+inside the eight-second final chapter; it still ends with a visible hold.
+
+## 5. Encoding and visual constraints
+
+- All Remotion intermediates are PNG.
+- UI sources are lossless browser screenshots, captured at high pixel density
+  and shown with static contain/fixed crops.
+- Remotion performs one H.264 encode at CRF 14.
+- Two-pass loudness normalization creates a separate AAC file; final packaging
+  uses `-c:v copy`, so UI video is never encoded twice.
+- Captions remain 52 px from the bottom and the evidence window is 824 px high.
+- Accelerated footage is labeled `2× WAIT`; clicks, BLOCK, Approval, and LEARNED
+  stay at normal speed.
+
+## 6. Acceptance checks
+
+1. Duration 157–159 seconds and strictly below 180; 1920×1080, 30 fps,
+   H.264/AAC, yuv420p, BT.709.
+2. Approximately -16 LUFS; true peak no higher than -1 dBTP.
+3. Zero black segments and zero transient luminance valleys at light-UI cuts.
+4. Every narration segment ends inside its chapter; at least 20 semantic anchors
+   are within ±250 ms of the matching visual evidence.
+5. Caption phrases contain at most seven words and use exact TTS word-boundary
+   start/end timestamps.
+6. OCR/manual review identifies `stg_orders`, `Revenue Analytics`, `Tier1`,
+   `gross_revenue`, `14 tests`, `Incident`, and `Runbook` at 1080p.
+7. Secret-pattern scan across source, metadata, frames, and captions is clean.
+8. Machine results and manual visual scoring are recorded separately; no
+   hard-coded quality score is permitted.
+9. The video, README, deployed UI, public PR, and final Git commit agree.
+
+## 7. References and anti-patterns
+
+- Positive reference: a calm SRE incident review—fast proof, restrained motion,
+  readable artifacts, and explicit authority boundaries.
+- Differentiation: real catalog context and executable repair evidence appear
+  before architectural explanation.
+- Never: fade a light UI shot from black, animate a screenshot continuously, or
+  claim evidence that is not visible in the frame.
+- Never: repeat “not a chatbot,” synthetic disclosure, or Receipt fields merely
+  to fill time.
+- Never: use background music, fake enterprise integrations, or an unlabeled
+  replay.
+
+## 8. Open issues
+
+None. The specification is locked to the judge-cut plan and the 296-word
+narration.

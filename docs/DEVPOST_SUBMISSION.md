@@ -13,6 +13,11 @@ proves the fix, requests approval, and remembers the incident.
 
 Agents That Do Real Work
 
+## DataHub technologies used
+
+- DataHub OSS / Core Platform
+- DataHub MCP Server
+
 ## Project URL
 
 <https://repairpilot.145-241-207-154.sslip.io>
@@ -20,6 +25,23 @@ Agents That Do Real Work
 ## Public repository
 
 <https://github.com/TianChen17/repairpilot>
+
+## Testing instructions
+
+Open the hosted project and click **Run live incident**. The service reaches a
+deterministic BLOCK, reproduces the breaking build, applies and validates the
+bounded repair, then stops at **AWAITING APPROVAL**. Click **Go to approval**,
+inspect the 14-test proof, and approve to expose the public PR and DataHub
+write-back links. The complete path takes about 60–90 seconds; no key, signup,
+or payment is required. Only one live run executes at once, so use the clearly
+labeled Replay if another judge is testing.
+
+Read-only DataHub inspection is available at
+<https://catalog.145-241-207-154.sslip.io> with username
+`judge@repairpilot.demo` and password `RepairPilot-Judge-2026!`. Dismiss the
+standard Welcome Tour, search for the dbt model `stg_orders`, and inspect its
+Owner, Domain, Tags, Queries, Quality, field lineage, and **View in GitHub**.
+All catalog data is synthetic demonstration metadata.
 
 ## Demo video
 
@@ -54,10 +76,11 @@ A versioned policy scores it HIGH/100 and blocks the release.
 
 DeepSeek V4 Flash proposes a compatibility alias, a controlled downstream
 migration, and a new schema test. RepairPilot never executes generated shell or
-SQL. It applies fixed, reviewed templates only to three allowlisted paths in a
-detached Git worktree and temporary Postgres schema. The breaking build must
-fail; the repaired `dbt build --select stg_orders+` must then pass. Only after 14
-tests pass does the owner approval control unlock.
+SQL. It applies fixed, reviewed templates only to three model-editable
+allowlisted paths in a detached Git worktree and per-run Postgres schemas; the
+executor adds the fourth, reviewable migration note. The breaking build must
+fail; the repaired `dbt build --select stg_orders+` must then pass. Only after
+14 tests pass does the owner approval control unlock.
 
 After approval, judges can inspect the real Git patch and GitHub PR. RepairPilot
 also writes an Incident Document, reusable safe-rename Runbook,
@@ -143,3 +166,5 @@ GitHub Actions, Remotion.
 - [ ] User optionally completes the feedback section for the feedback prize.
 - [ ] User clicks Submit before **August 10, 2026 at 5:00 PM EDT** and confirms
   submission status.
+- [ ] RepairPilot and DataHub remain online and free through **August 31, 2026
+  at 5:00 PM EDT**.

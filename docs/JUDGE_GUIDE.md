@@ -5,25 +5,29 @@ payment.
 
 ## Live path
 
-1. Open <https://repairpilot.145-241-207-154.sslip.io>.
-2. Click **Run live incident**.
+1. Open <https://repairpilot.145-241-207-154.sslip.io>. The banner explicitly
+   distinguishes synthetic business data from real execution.
+2. Click **Run live incident**. The progress line shows the active phase and
+   estimated time remaining.
 3. Watch the trace reach **BLOCKED**. Confirm that DataHub MCP found the Revenue
    Analytics owner, governed tags, three dbt models, one dashboard, three usage
    queries, and passing quality health.
-4. Wait for **AWAITING APPROVAL**. The page now shows the expected failing build,
-   the passing repaired build, 14 tests, two Git commits, and Patch SHA.
-5. Click **Approve repair**. Approval is intentionally unavailable until the
-   executable proof exists.
+4. Wait for **AWAITING APPROVAL**, then use the visible **Go to approval** link.
+   The page shows the expected failing build, passing repaired build, 14 tests,
+   two Git commits, and Patch SHA.
+5. Click **Approve repair**. Approval is unavailable until executable proof
+   exists; **Reject** leaves the change blocked and creates no PR.
 6. Inspect the Incident, Assertion, Runbook, and GitHub PR links shown in the
    final panel. Download the Git patch directly from the proof panel.
-7. Click the reset icon before trying another run.
+7. Click **New run / Reset** before trying another run.
 
-The service permits only one run at a time. If another judge is currently using
-it, wait briefly and press reset after that run completes.
+The service permits only one run at a time. If another judge is testing, the UI
+shows a plain-language message: wait briefly or use the clearly labeled Replay.
 
 ## Inspect DataHub
 
-Open <https://catalog.145-241-207-154.sslip.io> and use:
+Use **Inspect DataHub** in RepairPilot for these instructions and a direct
+`stg_orders` link, or open <https://catalog.145-241-207-154.sslip.io> and use:
 
 ```text
 username: judge@repairpilot.demo
@@ -31,7 +35,12 @@ password: RepairPilot-Judge-2026!
 role: Reader
 ```
 
-Search for `stg_orders`, open the dbt model, and inspect:
+On first login, close the **Welcome Tour**. After the first search, also dismiss
+the **Narrow your search** tip if it appears. These are standard DataHub browser
+onboarding dialogs.
+
+Search for `stg_orders`, choose the dbt model—not the Postgres relation—and
+inspect:
 
 - column `gross_amount` and downstream lineage;
 - Owner `Revenue Analytics` and Domain `Finance Analytics`;
@@ -39,6 +48,7 @@ Search for `stg_orders`, open the dbt model, and inspect:
 - health/Assertions;
 - the `Executive Revenue Pulse` dashboard;
 - RepairPilot Documents and `RepairPilotVerified` tag after an approved run.
+- **View in GitHub**, which opens the real file under `warehouse/models/`.
 
 The dashboard and stored queries are demonstration metadata and are labeled as
 such. DataHub itself, its graph, MCP reads/mutations, and all written entities are

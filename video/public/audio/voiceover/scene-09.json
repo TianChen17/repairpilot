@@ -2,20 +2,224 @@
   "voice": "en-US-AndrewMultilingualNeural",
   "rate": "+18%",
   "pitch": "-2Hz",
-  "text": "The output is a real public GitHub draft pull request: four files, the alias, migration, test, and guide. GitHub Actions rebuilds everything and stays green.",
+  "boundary": "WordBoundary",
+  "text": "An immutable Evidence Receipt joins the DataHub URNs, policy version, commits, dbt invocation, approval, PR, and write-back addresses. Three live runs produced one patch hash and zero residual schemas or worktrees.",
   "captions": [
     {
-      "text": " The output is a real public GitHub draft pull request: four files, the alias, migration, test, and guide.",
-      "startMs": 50,
-      "endMs": 7013,
-      "timestampMs": 50,
+      "text": " An",
+      "startMs": 64,
+      "endMs": 127,
+      "timestampMs": 64,
       "confidence": null
     },
     {
-      "text": " GitHub Actions rebuilds everything and stays green.",
-      "startMs": 7013,
-      "endMs": 9958,
-      "timestampMs": 7013,
+      "text": " immutable",
+      "startMs": 138,
+      "endMs": 625,
+      "timestampMs": 138,
+      "confidence": null
+    },
+    {
+      "text": " Evidence",
+      "startMs": 625,
+      "endMs": 985,
+      "timestampMs": 625,
+      "confidence": null
+    },
+    {
+      "text": " Receipt",
+      "startMs": 996,
+      "endMs": 1409,
+      "timestampMs": 996,
+      "confidence": null
+    },
+    {
+      "text": " joins",
+      "startMs": 1420,
+      "endMs": 1727,
+      "timestampMs": 1420,
+      "confidence": null
+    },
+    {
+      "text": " the",
+      "startMs": 1727,
+      "endMs": 1833,
+      "timestampMs": 1727,
+      "confidence": null
+    },
+    {
+      "text": " DataHub",
+      "startMs": 1833,
+      "endMs": 2225,
+      "timestampMs": 1833,
+      "confidence": null
+    },
+    {
+      "text": " URNs",
+      "startMs": 2225,
+      "endMs": 2881,
+      "timestampMs": 2225,
+      "confidence": null
+    },
+    {
+      "text": " policy",
+      "startMs": 3072,
+      "endMs": 3517,
+      "timestampMs": 3072,
+      "confidence": null
+    },
+    {
+      "text": " version",
+      "startMs": 3517,
+      "endMs": 3898,
+      "timestampMs": 3517,
+      "confidence": null
+    },
+    {
+      "text": " commits",
+      "startMs": 4078,
+      "endMs": 4608,
+      "timestampMs": 4078,
+      "confidence": null
+    },
+    {
+      "text": " dbt",
+      "startMs": 4809,
+      "endMs": 5328,
+      "timestampMs": 4809,
+      "confidence": null
+    },
+    {
+      "text": " invocation",
+      "startMs": 5328,
+      "endMs": 5879,
+      "timestampMs": 5328,
+      "confidence": null
+    },
+    {
+      "text": " approval",
+      "startMs": 6229,
+      "endMs": 6780,
+      "timestampMs": 6229,
+      "confidence": null
+    },
+    {
+      "text": " PR",
+      "startMs": 6970,
+      "endMs": 7436,
+      "timestampMs": 6970,
+      "confidence": null
+    },
+    {
+      "text": " and",
+      "startMs": 7648,
+      "endMs": 7744,
+      "timestampMs": 7648,
+      "confidence": null
+    },
+    {
+      "text": " write-back",
+      "startMs": 7754,
+      "endMs": 8157,
+      "timestampMs": 7754,
+      "confidence": null
+    },
+    {
+      "text": " addresses",
+      "startMs": 8167,
+      "endMs": 8739,
+      "timestampMs": 8167,
+      "confidence": null
+    },
+    {
+      "text": " Three",
+      "startMs": 9131,
+      "endMs": 9280,
+      "timestampMs": 9131,
+      "confidence": null
+    },
+    {
+      "text": " live",
+      "startMs": 9280,
+      "endMs": 9544,
+      "timestampMs": 9280,
+      "confidence": null
+    },
+    {
+      "text": " runs",
+      "startMs": 9544,
+      "endMs": 9767,
+      "timestampMs": 9544,
+      "confidence": null
+    },
+    {
+      "text": " produced",
+      "startMs": 9767,
+      "endMs": 10222,
+      "timestampMs": 9767,
+      "confidence": null
+    },
+    {
+      "text": " one",
+      "startMs": 10318,
+      "endMs": 10561,
+      "timestampMs": 10318,
+      "confidence": null
+    },
+    {
+      "text": " patch",
+      "startMs": 10561,
+      "endMs": 10847,
+      "timestampMs": 10561,
+      "confidence": null
+    },
+    {
+      "text": " hash",
+      "startMs": 10847,
+      "endMs": 11218,
+      "timestampMs": 10847,
+      "confidence": null
+    },
+    {
+      "text": " and",
+      "startMs": 11483,
+      "endMs": 11600,
+      "timestampMs": 11483,
+      "confidence": null
+    },
+    {
+      "text": " zero",
+      "startMs": 11600,
+      "endMs": 12013,
+      "timestampMs": 11600,
+      "confidence": null
+    },
+    {
+      "text": " residual",
+      "startMs": 12013,
+      "endMs": 12426,
+      "timestampMs": 12013,
+      "confidence": null
+    },
+    {
+      "text": " schemas",
+      "startMs": 12436,
+      "endMs": 12934,
+      "timestampMs": 12436,
+      "confidence": null
+    },
+    {
+      "text": " or",
+      "startMs": 13104,
+      "endMs": 13199,
+      "timestampMs": 13104,
+      "confidence": null
+    },
+    {
+      "text": " worktrees",
+      "startMs": 13199,
+      "endMs": 13782,
+      "timestampMs": 13199,
       "confidence": null
     }
   ]

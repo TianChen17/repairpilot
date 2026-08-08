@@ -25,4 +25,5 @@ video/public/audio/narration.raw.mp3
 video/public/data/narration.vtt
 video/public/captures/*.webm
 video/public/captures/*.mp4
+/artifacts/
 .DS_Store

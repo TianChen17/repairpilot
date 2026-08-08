@@ -82,11 +82,28 @@ const terminalStates = new Set([
 ]);
 
 const datahubUrl = import.meta.env.VITE_DATAHUB_URL || 'https://catalog.145-241-207-154.sslip.io';
+const stgOrdersUrn = 'urn:li:dataset:(urn:li:dataPlatform:dbt,repairpilot.analytics_staging.stg_orders,PROD)';
+const stgOrdersUrl = `${datahubUrl}/dataset/${stgOrdersUrn}`;
+
+const progressByState: Record<string, {step: string; remaining: string}> = {
+  DETECTED: {step: '1/6 · Detecting change', remaining: '~32s remaining'},
+  CONTEXT_COLLECTED: {step: '2/6 · Reading DataHub', remaining: '~27s remaining'},
+  POLICY_EVALUATED: {step: '3/6 · Applying policy', remaining: '~23s remaining'},
+  BLOCKED: {step: '3/6 · Release blocked', remaining: '~20s remaining'},
+  REPAIR_PROPOSED: {step: '4/6 · Generating bounded repair', remaining: '~15s remaining'},
+  VALIDATING: {step: '5/6 · Running dbt build', remaining: '~8s remaining'},
+  VERIFIED: {step: '5/6 · Proof recorded', remaining: 'Approval next'},
+  AWAITING_APPROVAL: {step: '6/6 · Owner decision required', remaining: 'Ready now'},
+  APPROVED: {step: '6/6 · Publishing evidence', remaining: '~3s remaining'},
+  PUBLISHED: {step: '6/6 · Writing back to DataHub', remaining: '~2s remaining'},
+  LEARNED: {step: 'Complete · Knowledge retained', remaining: 'Inspect evidence'},
+};
 
 function App() {
   const [incident, setIncident] = useState<Incident | null>(null);
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState('Ready for a controlled live run');
+  const [showDataHubGuide, setShowDataHubGuide] = useState(false);
 
   const refresh = useCallback(async (runId: string) => {
     const response = await fetch(`/api/v1/incidents/${runId}`);
@@ -133,7 +150,12 @@ function App() {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({scenario: 'breaking-column-rename', execution_mode: mode}),
       });
-      if (!response.ok) throw new Error(await response.text());
+      if (!response.ok) {
+        if (response.status === 409 || response.status === 429) {
+          throw new Error('Another judge is running the live demo. Try again shortly, or use the clearly labeled Replay.');
+        }
+        throw new Error(await response.text());
+      }
       setIncident((await response.json()) as Incident);
     } catch (error) {
       setNotice(error instanceof Error ? error.message : 'Could not start incident');
@@ -187,6 +209,9 @@ function App() {
     return 'active';
   }, [incident]);
 
+  const progress = incident ? progressByState[incident.state] : undefined;
+  const awaitingApproval = incident?.state === 'AWAITING_APPROVAL';
+
   return (
     <main>
       <header className="topbar">
@@ -195,24 +220,28 @@ function App() {
           <div><strong>RepairPilot</strong><span>Incident-to-Repair Autopilot</span></div>
         </div>
         <div className="topbar-right">
-          <span className={`mode-chip ${incident?.mode || 'live'}`}>{(incident?.mode || 'LIVE').toUpperCase()}</span>
-          <a className="catalog-link" href={datahubUrl} target="_blank">Open DataHub <ExternalLink size={14} /></a>
+          <span className={`mode-chip ${incident?.mode || 'live'}`}>{incident?.mode === 'replay' ? 'REPLAY' : 'LIVE SERVICE'}</span>
+          <button className="catalog-link" onClick={() => setShowDataHubGuide(true)}>Inspect DataHub <ExternalLink size={14} /></button>
         </div>
       </header>
 
       <section className="hero-grid">
         <div className="hero-copy">
           <p className="eyebrow">NORTHSTAR COMMERCE · CHANGE CONTROL</p>
-          <h1>One renamed field.<br /><span>Four downstream failures.</span></h1>
+          <h1>One renamed field.<br /><span>Four downstream assets at risk.</span></h1>
           <p className="lede">RepairPilot uses DataHub context to block the unsafe release, generate a compatible repair, prove it with dbt, and leave reusable knowledge behind.</p>
+          <p className="execution-boundary"><Check size={13} /> Synthetic business data <span>·</span> Real execution</p>
           <div className="actions">
             <button className="primary" onClick={() => start('live')} disabled={busy || !!incident}>
               <Play size={16} fill="currentColor" /> Run live incident
             </button>
             <button className="secondary" onClick={() => start('replay')} disabled={busy || !!incident}>Replay evidence</button>
-            <button className="icon-button" onClick={reset} disabled={busy} title="Reset demo"><RefreshCcw size={17} /></button>
+            <button className="reset-button" onClick={reset} disabled={busy} aria-label="Start a new run and reset the demo"><RefreshCcw size={16} /> New run / Reset</button>
           </div>
+          <p className="judge-path"><strong>1</strong> Run (~35s) <ArrowRight /> <strong>2</strong> Approve repair <ArrowRight /> <strong>3</strong> Inspect write-back</p>
           <p className="notice"><Activity size={14} /> {notice}</p>
+          {progress && <p className="run-progress"><span>{progress.step}</span><strong>{progress.remaining}</strong></p>}
+          {awaitingApproval && <a className="approval-jump" href="#approval"><UserCheck size={15} /> Go to approval</a>}
         </div>
         <SchemaDiff />
       </section>
@@ -232,11 +261,12 @@ function App() {
           <RepairPanel incident={incident} />
           <ValidationPanel incident={incident} />
           <ApprovalPanel incident={incident} busy={busy} approve={approve} />
-          <MemoryPanel incident={incident} />
+          <MemoryPanel incident={incident} onInspectDataHub={() => setShowDataHubGuide(true)} />
         </div>
       </section>
 
       <footer><span>Block.</span><span>Repair.</span><span>Prove.</span><span>Remember.</span></footer>
+      {showDataHubGuide && <DataHubGuide onClose={() => setShowDataHubGuide(false)} />}
     </main>
   );
 }
@@ -316,18 +346,32 @@ function ValidationPanel({incident}: {incident: Incident | null}) {
 
 function ApprovalPanel({incident, busy, approve}: {incident: Incident | null; busy: boolean; approve: (decision: 'approve' | 'reject') => void}) {
   const awaiting = incident?.state === 'AWAITING_APPROVAL';
-  return <article className={`card panel approval-panel ${awaiting ? 'awaiting' : ''}`}>
+  return <article id="approval" className={`card panel approval-panel ${awaiting ? 'awaiting' : ''}`}>
     <PanelTitle icon={<UserCheck />} eyebrow="HUMAN AUTHORITY" title={incident?.approval ? `${incident.approval.decision}d by owner` : 'Owner approval'} />
     {!awaiting && !incident?.approval ? <Empty text="Approval unlocks only after the repair has executable proof." /> : awaiting ? <div className="approval-actions"><div><strong>Revenue Analytics Owner</strong><span>Reviewing a verified high-risk repair</span></div><button className="reject" onClick={() => approve('reject')} disabled={busy}>Reject</button><button className="approve" onClick={() => approve('approve')} disabled={busy}><Check size={15} /> Approve repair</button></div> : <p className="approved-copy"><Check size={15} /> Decision recorded with timestamp and run evidence.</p>}
   </article>;
 }
 
-function MemoryPanel({incident}: {incident: Incident | null}) {
+function MemoryPanel({incident, onInspectDataHub}: {incident: Incident | null; onInspectDataHub: () => void}) {
   const writeback = incident?.writeback;
-  return <article className="card panel memory-panel">
+  return <article id="writeback" className="card panel memory-panel">
     <PanelTitle icon={<GitPullRequest />} eyebrow="DATAHUB WRITEBACK" title={writeback ? 'The next incident starts smarter' : 'Institutional memory'} />
-    {!writeback ? <Empty text="Verified evidence, the assertion, and runbook are written back after approval." /> : <div className="memory-grid"><a href={datahubUrl} target="_blank"><span>INCIDENT</span><strong>Root cause + proof</strong><ExternalLink /></a><a href={datahubUrl} target="_blank"><span>ASSERTION</span><strong>gross_revenue not null</strong><ExternalLink /></a><a href={datahubUrl} target="_blank"><span>RUNBOOK</span><strong>Safe column rename</strong><ExternalLink /></a>{incident?.pull_request_url && <a href={incident.pull_request_url} target="_blank"><span>GITHUB PR</span><strong>Review validated diff</strong><ExternalLink /></a>}</div>}
+    {!writeback ? <Empty text="Verified evidence, the assertion, and runbook are written back after approval." /> : <><div className="memory-grid"><button onClick={onInspectDataHub}><span>INCIDENT</span><strong>Root cause + proof</strong><ExternalLink /></button><button onClick={onInspectDataHub}><span>ASSERTION</span><strong>gross_revenue not null</strong><ExternalLink /></button><button onClick={onInspectDataHub}><span>RUNBOOK</span><strong>Safe column rename</strong><ExternalLink /></button>{incident?.pull_request_url && <a href={incident.pull_request_url} target="_blank"><span>GITHUB PR</span><strong>Review validated diff</strong><ExternalLink /></a>}</div><button className="inspect-writeback" onClick={onInspectDataHub}>Inspect DataHub write-back <ExternalLink size={13} /></button></>}
   </article>;
+}
+
+function DataHubGuide({onClose}: {onClose: () => void}) {
+  return <div className="modal-backdrop" role="presentation" onMouseDown={onClose}>
+    <section className="datahub-guide card" role="dialog" aria-modal="true" aria-labelledby="datahub-guide-title" onMouseDown={(event) => event.stopPropagation()}>
+      <button className="modal-close" onClick={onClose} aria-label="Close DataHub access instructions">×</button>
+      <p className="eyebrow">READ-ONLY JUDGE ACCESS</p>
+      <h2 id="datahub-guide-title">Inspect the real DataHub graph</h2>
+      <p>On first login, dismiss the Welcome Tour and the “Narrow your search” tip. The catalog contains synthetic demo metadata only.</p>
+      <div className="credential-grid"><div><span>Username</span><code>judge@repairpilot.demo</code></div><div><span>Password</span><code>RepairPilot-Judge-2026!</code></div></div>
+      <ol><li>Open the direct <code>stg_orders</code> asset.</li><li>Inspect Owner, Domain, Tags, Schema, Queries, Assertions, and field-level Lineage.</li><li>After approval, open Documents for the per-run Incident and shared Runbook.</li></ol>
+      <div className="modal-actions"><a className="secondary-link" href={datahubUrl} target="_blank">DataHub home <ExternalLink size={14} /></a><a className="primary-link" href={stgOrdersUrl} target="_blank">Open stg_orders <ExternalLink size={14} /></a></div>
+    </section>
+  </div>;
 }
 
 function PanelTitle({icon, eyebrow, title}: {icon: React.ReactNode; eyebrow: string; title: string}) {

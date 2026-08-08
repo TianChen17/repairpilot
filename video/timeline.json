@@ -1,0 +1,132 @@
+{
+  "title": "RepairPilot — Judge Cut",
+  "fps": 30,
+  "durationFrames": 4740,
+  "durationSeconds": 158,
+  "chapters": [
+    {
+      "id": "dangerous-change",
+      "label": "DANGEROUS CHANGE",
+      "startMs": 0,
+      "endMs": 14000,
+      "narrationStartMs": 650,
+      "shots": [
+        {"id":"01","duration":120,"kind":"video","video":"assets/repairpilot-live-v2.webm","headline":"gross_amount → gross_revenue","subhead":"Real RepairPilot · dangerous change detected","accent":"block","badge":"LIVE · 1×","playbackRate":1,"trimBeforeSeconds":0,"fit":"cover","objectPosition":"center top"},
+        {"id":"02","duration":150,"kind":"video","video":"assets/repairpilot-live-v2.webm","headline":"Four downstream assets at risk","subhead":"BLOCK before merge · three dbt models · one dashboard","accent":"block","badge":"2× WAIT","playbackRate":2,"trimBeforeSeconds":4,"fit":"cover","objectPosition":"center top"},
+        {"id":"03","duration":150,"kind":"video","video":"assets/repairpilot-live-v2.webm","headline":"Run → BLOCK","subhead":"Real service · waiting only at 2×","accent":"block","badge":"2× WAIT","playbackRate":2,"trimBeforeSeconds":14,"fit":"cover","objectPosition":"center top"}
+      ]
+    },
+    {
+      "id": "datahub-context",
+      "label": "DATAHUB CONTEXT",
+      "startMs": 14000,
+      "endMs": 37000,
+      "narrationStartMs": 14300,
+      "shots": [
+        {"id":"04","duration":110,"kind":"image","image":"assets/datahub-stg-orders-v2.png","headline":"stg_orders.gross_amount","subhead":"Official DataHub MCP · real OSS asset","accent":"datahub","badge":"SCHEMA","fit":"contain"},
+        {"id":"05","duration":110,"kind":"image","image":"assets/datahub-context-v2.png","headline":"gross_amount · Revenue Analytics","subhead":"Owner · Finance domain","accent":"datahub","badge":"OWNER","fit":"contain"},
+        {"id":"06","duration":130,"kind":"image","image":"assets/datahub-context-v2.png","headline":"Tier1 · FinancialMetric · quality","subhead":"Governance changes the release outcome","accent":"datahub","badge":"TAGS","fit":"contain"},
+        {"id":"08","duration":65,"kind":"image","image":"assets/datahub-queries-v2.png","headline":"Stored usage queries","subhead":"Synthetic metadata, clearly labeled","accent":"datahub","badge":"QUERIES","fit":"contain"},
+        {"id":"07","duration":185,"kind":"image","image":"assets/datahub-lineage-v2.png","headline":"Queries + field-level lineage","subhead":"Four downstream consumers · not hard-coded","accent":"datahub","badge":"LINEAGE","fit":"contain"},
+        {"id":"09","duration":90,"kind":"image","image":"assets/datahub-quality-v2.png","headline":"Quality status and assertions","subhead":"Every card traces to MCP evidence","accent":"datahub","badge":"QUALITY","fit":"contain"}
+      ]
+    },
+    {
+      "id": "policy",
+      "label": "DETERMINISTIC POLICY",
+      "startMs": 37000,
+      "endMs": 51000,
+      "narrationStartMs": 37300,
+      "shots": [
+        {"id":"10","duration":130,"kind":"metric","eyebrow":"POLICY 2026-08-07.1","metric":"100/100","headline":"HIGH RISK · BLOCK","subhead":"The rule engine—not the LLM—holds the gate.","accent":"block","transition":"soft"},
+        {"id":"11","duration":140,"kind":"diagram","eyebrow":"FAIL-CLOSED DEFAULT","headline":"Missing context stays BLOCKED","bullets":["DataHub unavailable → BLOCK","dbt failure → BLOCK","LLM cannot change risk","No approval bypass"],"accent":"block"},
+        {"id":"12","duration":150,"kind":"diagram","eyebrow":"MATCHED RULES","headline":"Breaking + governed + downstream","bullets":["Breaking schema change","Tier-1 financial metric","Four downstream assets","Executive dashboard impact"],"accent":"block","transition":"soft"}
+      ]
+    },
+    {
+      "id": "repair",
+      "label": "BOUNDED AI REPAIR",
+      "startMs": 51000,
+      "endMs": 69000,
+      "narrationStartMs": 51300,
+      "shots": [
+        {"id":"13","duration":100,"kind":"diagram","eyebrow":"DEEPSEEK V4 FLASH","headline":"A proposal, not authority","bullets":["gross_revenue + old alias","Three operation types","Three allowed paths","Deterministic validator"],"accent":"approval","transition":"soft"},
+        {"id":"14","duration":110,"kind":"image","image":"assets/repairpilot-awaiting-v2.png","headline":"Retain the old alias","subhead":"gross_amount remains compatible","accent":"approval","badge":"ALIAS","fit":"cover","objectPosition":"center 44%"},
+        {"id":"15","duration":90,"kind":"image","image":"assets/repairpilot-awaiting-v2.png","headline":"Migrate the controlled model","subhead":"gross_revenue becomes canonical","accent":"approval","badge":"MIGRATE","fit":"cover","objectPosition":"center 52%"},
+        {"id":"16","duration":240,"kind":"diagram","eyebrow":"SCHEMA CONTRACT","headline":"Add a real dbt test","bullets":["gross_revenue not_null","No generated shell","No arbitrary SQL","No out-of-scope file"],"accent":"approval","transition":"soft"}
+      ]
+    },
+    {
+      "id": "proof",
+      "label": "EXECUTABLE PROOF",
+      "startMs": 69000,
+      "endMs": 94000,
+      "narrationStartMs": 69300,
+      "shots": [
+        {"id":"17","duration":150,"kind":"diagram","eyebrow":"ISOLATED EXECUTOR","headline":"Worktree + per-run schemas","bullets":["Detached Git worktree","rp_<run>_raw","rp_<run>_staging","Automatic cleanup"],"accent":"datahub"},
+        {"id":"18","duration":90,"kind":"metric","eyebrow":"NEGATIVE CONTROL","metric":"FAILED","headline":"Breaking build reproduced","subhead":"Repair is not trusted until failure is observed.","accent":"block","transition":"soft"},
+        {"id":"19","duration":80,"kind":"video","video":"assets/repairpilot-live-v2.webm","headline":"dbt build · affected graph","subhead":"BLOCK and executable proof · real time","accent":"proof","badge":"LIVE · 1×","playbackRate":1,"trimBeforeSeconds":24,"fit":"cover","objectPosition":"center top"},
+        {"id":"20","duration":160,"kind":"image","image":"assets/repairpilot-awaiting-v2.png","headline":"14 tests · zero failures","subhead":"Invocation, commits, and Patch SHA recorded","accent":"proof","badge":"VERIFIED","fit":"cover","objectPosition":"center 68%"},
+        {"id":"21","duration":270,"kind":"metric","eyebrow":"DBT BUILD PASSED","metric":"14 tests","headline":"Zero failures","subhead":"Patch SHA 588e2b4b…","accent":"proof","transition":"soft"}
+      ]
+    },
+    {
+      "id": "approval",
+      "label": "OWNER AUTHORITY",
+      "startMs": 94000,
+      "endMs": 103000,
+      "narrationStartMs": 94300,
+      "shots": [
+        {"id":"22","duration":125,"kind":"video","video":"assets/repairpilot-live-v2.webm","headline":"Proof unlocks approval","subhead":"Revenue Analytics Owner · real time","accent":"approval","badge":"LIVE · 1×","playbackRate":1,"trimBeforeSeconds":31,"fit":"cover","objectPosition":"center top"},
+        {"id":"23","duration":145,"kind":"image","image":"assets/repairpilot-learned-v2.png","headline":"Approval recorded","subhead":"Reject leaves BLOCKED and creates no PR","accent":"approval","badge":"HUMAN AUTHORITY","fit":"contain"}
+      ]
+    },
+    {
+      "id": "pull-request",
+      "label": "REVIEWABLE PR",
+      "startMs": 103000,
+      "endMs": 113000,
+      "narrationStartMs": 103300,
+      "shots": [
+        {"id":"24","duration":100,"kind":"image","image":"assets/github-pr-v2.png","headline":"Public draft PR #1","subhead":"The repair is reviewable, not silently deployed","accent":"approval","badge":"4 FILES","fit":"contain"},
+        {"id":"25","duration":100,"kind":"image","image":"assets/github-diff-v2.png","headline":"Alias · migration · test · guide","subhead":"Diff and migration note agree","accent":"approval","badge":"DIFF","fit":"contain"},
+        {"id":"26","duration":100,"kind":"image","image":"assets/github-actions-v2.png","headline":"GitHub Actions green","subhead":"Backend, safety, dbt, and frontend rebuilt","accent":"proof","badge":"CHECKS PASS","fit":"contain"}
+      ]
+    },
+    {
+      "id": "writeback",
+      "label": "DATAHUB WRITE-BACK",
+      "startMs": 113000,
+      "endMs": 133000,
+      "narrationStartMs": 113300,
+      "shots": [
+        {"id":"27","duration":150,"kind":"image","image":"assets/datahub-assertion-v2.png","headline":"gross_revenue assertion · passing","subhead":"A real DataHub Assertion entity","accent":"memory","badge":"ASSERTION","fit":"contain"},
+        {"id":"28","duration":115,"kind":"image","image":"assets/datahub-incident-v2.png","headline":"Per-run Incident Document","subhead":"Root cause, risk, invocation, and Patch SHA","accent":"memory","badge":"INCIDENT","fit":"contain"},
+        {"id":"29","duration":185,"kind":"image","image":"assets/datahub-runbook-v2.png","headline":"Safe dbt Column Rename Runbook","subhead":"One idempotent playbook for the next responder","accent":"memory","badge":"RUNBOOK","fit":"contain"},
+        {"id":"30","duration":150,"kind":"image","image":"assets/repairpilot-learned-v2.png","headline":"The next incident starts smarter","subhead":"Incident · Assertion · Runbook · PR","accent":"memory","badge":"LEARNED","fit":"contain"}
+      ]
+    },
+    {
+      "id": "receipt",
+      "label": "EVIDENCE RECEIPT",
+      "startMs": 133000,
+      "endMs": 150000,
+      "narrationStartMs": 133300,
+      "shots": [
+        {"id":"31","duration":220,"kind":"receipt","eyebrow":"IMMUTABLE EVIDENCE RECEIPT","headline":"One record joins every proof point","bullets":["DataHub URNs + MCP tools","Policy version + risk","Git commits + Patch SHA","dbt + approval + write-back"],"accent":"datahub","transition":"soft"},
+        {"id":"32","duration":120,"kind":"metric","eyebrow":"THREE CONSECUTIVE LIVE RUNS","metric":"3×","headline":"One patch hash","subhead":"Three unique Incidents · one shared Runbook","accent":"proof"},
+        {"id":"33","duration":170,"kind":"diagram","eyebrow":"CLEAN RESET VERIFIED","headline":"Zero residual state","bullets":["0 Postgres schemas","0 Git worktrees","No duplicated Runbook","Evidence Receipts verify"],"accent":"proof"}
+      ]
+    },
+    {
+      "id": "close",
+      "label": "REAL BOUNDARY",
+      "startMs": 150000,
+      "endMs": 158000,
+      "narrationStartMs": 150300,
+      "shots": [
+        {"id":"34","duration":240,"kind":"title","eyebrow":"SYNTHETIC BUSINESS DATA · REAL EXECUTION","headline":"BLOCK. REPAIR. PROVE. REMEMBER.","subhead":"repairpilot.145-241-207-154.sslip.io  ·  github.com/TianChen17/repairpilot","accent":"memory","badge":"PUBLIC DEMO"}
+      ]
+    }
+  ]
+}

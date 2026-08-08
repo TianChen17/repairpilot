@@ -11,7 +11,10 @@ import {
 } from 'remotion';
 import {fontFamily, monoFamily, palette} from '../theme';
 
+type AccentName = 'block' | 'approval' | 'proof' | 'memory' | 'datahub';
+
 export type StoryShot = {
+  id?: string;
   duration: number;
   kind?: 'title' | 'image' | 'metric' | 'diagram' | 'receipt' | 'video';
   eyebrow?: string;
@@ -22,11 +25,19 @@ export type StoryShot = {
   trimBeforeSeconds?: number;
   playbackRate?: number;
   badge?: string;
-  accent?: string;
+  accent?: AccentName | string;
   metric?: string;
   bullets?: string[];
   objectPosition?: string;
   zoom?: number;
+  fit?: 'cover' | 'contain';
+  transition?: 'hard' | 'soft';
+  chapter?: string;
+};
+
+const accentValue = (accent?: string) => {
+  if (!accent) return palette.datahub;
+  return palette[accent as keyof typeof palette] ?? accent;
 };
 
 const HighlightedText: React.FC<{text: string}> = ({text}) => {
@@ -47,11 +58,7 @@ const HighlightedText: React.FC<{text: string}> = ({text}) => {
                   : normalized === 'LIVE' || normalized === 'REAL' || normalized === '100/100'
                     ? palette.datahub
                     : undefined;
-        return (
-          <span key={`${part}-${index}`} style={{color: accent}}>
-            {part}
-          </span>
-        );
+        return <span key={`${part}-${index}`} style={{color: accent}}>{part}</span>;
       })}
     </>
   );
@@ -68,210 +75,79 @@ const Grid = () => (
   />
 );
 
-const Shot: React.FC<{shot: StoryShot; index: number; duration: number}> = ({shot, index, duration}) => {
-  const frame = useCurrentFrame();
-  const {fps} = useVideoConfig();
-  const accent = shot.accent ?? palette.datahub;
-  const reveal = interpolate(frame, [0, 10], [0, 1], {
-    extrapolateLeft: 'clamp',
-    extrapolateRight: 'clamp',
-    easing: Easing.bezier(0.16, 1, 0.3, 1),
-  });
-  const scale = interpolate(frame, [0, Math.max(duration - 1, 1)], [shot.zoom ?? 1, (shot.zoom ?? 1) + 0.025], {
-    extrapolateLeft: 'clamp',
-    extrapolateRight: 'clamp',
-  });
-
-  const isVisual = shot.kind === 'image' || shot.kind === 'video';
-
-  return (
-    <AbsoluteFill style={{fontFamily, color: palette.text}}>
-      <Grid />
-      <div
-        style={{
-          position: 'absolute',
-          left: 82,
-          right: 82,
-          top: 42,
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          opacity: reveal,
-        }}
-      >
-        <div style={{display: 'flex', alignItems: 'center', gap: 14}}>
-          <div
-            style={{
-              width: 30,
-              height: 30,
-              borderRadius: 9,
-              background: accent,
-              boxShadow: `0 0 26px ${accent}80`,
-            }}
-          />
-          <span style={{fontWeight: 800, fontSize: 24, letterSpacing: 0.2}}>RepairPilot</span>
-          <span style={{fontSize: 17, color: palette.muted}}>Incident-to-Repair Autopilot</span>
-        </div>
-        <div style={{display: 'flex', alignItems: 'center', gap: 12}}>
-          {shot.badge ? (
-            <span
-              style={{
-                color: accent,
-                border: `1px solid ${accent}80`,
-                background: `${accent}15`,
-                borderRadius: 999,
-                padding: '8px 14px',
-                fontSize: 17,
-                fontWeight: 800,
-                letterSpacing: 1.2,
-              }}
-            >
-              {shot.badge}
-            </span>
-          ) : null}
-          <span style={{fontFamily: monoFamily, color: palette.muted, fontSize: 16}}>
-            SHOT {String(index + 1).padStart(2, '0')}
-          </span>
-        </div>
-      </div>
-
-      {isVisual ? (
-        <>
-          <div
-            style={{
-              position: 'absolute',
-              left: 90,
-              right: 90,
-              top: 126,
-              height: 680,
-              overflow: 'hidden',
-              borderRadius: 24,
-              border: `1px solid ${palette.line}`,
-              background: '#080D18',
-              boxShadow: '0 28px 80px rgba(0,0,0,0.45)',
-              opacity: reveal,
-            }}
-          >
-            <div
-              style={{
-                height: 42,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 8,
-                padding: '0 18px',
-                background: '#111827',
-                borderBottom: `1px solid ${palette.line}`,
-              }}
-            >
-              {[palette.block, palette.approval, palette.proof].map((color) => (
-                <div key={color} style={{width: 11, height: 11, borderRadius: 99, background: color, opacity: 0.9}} />
-              ))}
-              <span style={{marginLeft: 12, fontFamily: monoFamily, color: palette.muted, fontSize: 14}}>
-                VERIFIED LIVE CAPTURE
-              </span>
-            </div>
-            <div style={{position: 'absolute', inset: '42px 0 0 0', overflow: 'hidden'}}>
-              {shot.kind === 'video' && shot.video ? (
-                <Video
-                  src={staticFile(shot.video)}
-                  trimBefore={(shot.trimBeforeSeconds ?? 0) * fps}
-                  playbackRate={shot.playbackRate ?? 1}
-                  muted
-                  objectFit="cover"
-                  style={{width: '100%', height: '100%', objectPosition: shot.objectPosition ?? 'center top', scale}}
-                />
-              ) : shot.image ? (
-                <Img
-                  src={staticFile(shot.image)}
-                  style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: shot.objectPosition ?? 'center top', scale}}
-                />
-              ) : null}
-            </div>
-          </div>
-          <div
-            style={{
-              position: 'absolute',
-              left: 118,
-              top: 700,
-              maxWidth: 1350,
-              padding: '18px 24px',
-              background: 'rgba(11,16,32,0.91)',
-              borderLeft: `5px solid ${accent}`,
-              borderRadius: 12,
-              opacity: reveal,
-              translate: `${interpolate(frame, [0, 10], [24, 0], {extrapolateRight: 'clamp'})}px 0`,
-            }}
-          >
-            <div style={{fontSize: 40, lineHeight: 1.08, fontWeight: 850}}>
-              <HighlightedText text={shot.headline} />
-            </div>
-            {shot.subhead ? <div style={{fontSize: 21, marginTop: 7, color: palette.muted}}>{shot.subhead}</div> : null}
-          </div>
-        </>
-      ) : (
-        <div
-          style={{
-            position: 'absolute',
-            inset: '112px 90px 180px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: shot.kind === 'diagram' || shot.kind === 'receipt' ? 'stretch' : 'center',
-            opacity: reveal,
-            translate: `0 ${interpolate(frame, [0, 12], [30, 0], {extrapolateRight: 'clamp'})}px`,
-          }}
-        >
-          {shot.eyebrow ? (
-            <div style={{fontSize: 22, fontWeight: 800, color: accent, letterSpacing: 4, marginBottom: 24}}>{shot.eyebrow}</div>
-          ) : null}
-          {shot.metric ? (
-            <div style={{fontFamily: monoFamily, fontSize: 122, fontWeight: 900, color: accent, textShadow: `0 0 44px ${accent}55`}}>{shot.metric}</div>
-          ) : null}
-          <div
-            style={{
-              maxWidth: shot.kind === 'diagram' || shot.kind === 'receipt' ? 1520 : 1380,
-              fontSize: shot.metric ? 58 : 96,
-              lineHeight: 1.02,
-              fontWeight: 900,
-              letterSpacing: -3.5,
-              textAlign: shot.kind === 'diagram' || shot.kind === 'receipt' ? 'left' : 'center',
-            }}
-          >
-            <HighlightedText text={shot.headline} />
-          </div>
-          {shot.subhead ? (
-            <div style={{maxWidth: 1320, marginTop: 26, fontSize: 34, lineHeight: 1.35, color: palette.muted, textAlign: shot.kind === 'diagram' || shot.kind === 'receipt' ? 'left' : 'center'}}>
-              {shot.subhead}
-            </div>
-          ) : null}
-          {shot.bullets ? (
-            <div style={{display: 'grid', gridTemplateColumns: shot.bullets.length > 2 ? 'repeat(2, 1fr)' : '1fr', gap: 18, marginTop: 34}}>
-              {shot.bullets.map((bullet, bulletIndex) => (
-                <div key={bullet} style={{background: palette.card, border: `1px solid ${palette.line}`, borderRadius: 16, padding: '19px 24px', fontFamily: monoFamily, fontSize: 25, color: bulletIndex === 0 ? accent : palette.text}}>
-                  <span style={{color: accent, marginRight: 12}}>✓</span>{bullet}
-                </div>
-              ))}
-            </div>
-          ) : null}
-        </div>
-      )}
-    </AbsoluteFill>
-  );
+const Header: React.FC<{shot: StoryShot}> = ({shot}) => {
+  const accent = accentValue(shot.accent);
+  return <div style={{position:'absolute',left:70,right:70,top:31,height:44,display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+    <div style={{display:'flex',alignItems:'center',gap:13}}>
+      <div style={{width:30,height:30,borderRadius:9,background:accent,boxShadow:`0 0 24px ${accent}66`}} />
+      <strong style={{fontSize:24,letterSpacing:-0.3}}>RepairPilot</strong>
+      <span style={{fontSize:16,color:palette.muted}}>Incident-to-Repair Autopilot</span>
+    </div>
+    <div style={{display:'flex',alignItems:'center',gap:12}}>
+      <span style={{fontFamily:monoFamily,fontSize:14,color:palette.muted,letterSpacing:1.3}}>{shot.chapter}</span>
+      {shot.badge ? <span style={{color:accent,border:`1px solid ${accent}77`,background:`${accent}15`,borderRadius:999,padding:'7px 12px',fontSize:14,fontWeight:850,letterSpacing:1}}>{shot.badge}</span> : null}
+    </div>
+  </div>;
 };
 
-export const StoryScene: React.FC<{shots: StoryShot[]; shotOffset: number}> = ({shots, shotOffset}) => {
+const VisualShot: React.FC<{shot: StoryShot}> = ({shot}) => {
+  const {fps} = useVideoConfig();
+  const accent = accentValue(shot.accent);
+  const mediaStyle: React.CSSProperties = {
+    width: '100%',
+    height: '100%',
+    objectFit: shot.fit ?? 'contain',
+    objectPosition: shot.objectPosition ?? 'center top',
+    transform: `scale(${shot.zoom ?? 1})`,
+  };
+  return <div style={{position:'absolute',left:70,right:70,top:94,height:824,overflow:'hidden',borderRadius:18,border:`1px solid ${palette.line}`,background:'#080d18',boxShadow:'0 26px 74px rgba(0,0,0,.44)'}}>
+    <div style={{height:38,display:'flex',alignItems:'center',gap:7,padding:'0 14px',background:'#111827',borderBottom:`1px solid ${palette.line}`}}>
+      {[palette.block,palette.approval,palette.proof].map((color)=><i key={color} style={{width:9,height:9,borderRadius:99,background:color,opacity:.9}} />)}
+      <span style={{marginLeft:10,fontFamily:monoFamily,color:accent,fontSize:13,fontWeight:800,letterSpacing:1.1}}>{shot.headline}</span>
+      {shot.subhead ? <span style={{marginLeft:'auto',color:palette.muted,fontSize:12}}>{shot.subhead}</span> : null}
+    </div>
+    <div style={{position:'absolute',inset:'38px 0 0',overflow:'hidden',display:'grid',placeItems:'center'}}>
+      {shot.kind === 'video' && shot.video ? <Video
+        src={staticFile(shot.video)}
+        trimBefore={(shot.trimBeforeSeconds ?? 0) * fps}
+        playbackRate={shot.playbackRate ?? 1}
+        muted
+        style={mediaStyle}
+      /> : shot.image ? <Img src={staticFile(shot.image)} style={mediaStyle} /> : null}
+    </div>
+  </div>;
+};
+
+const GraphicShot: React.FC<{shot: StoryShot}> = ({shot}) => {
+  const frame = useCurrentFrame();
+  const accent = accentValue(shot.accent);
+  // A soft shot may settle by ten pixels, but it is fully opaque from its first
+  // frame. This retains restrained motion without the dark flash created by
+  // fading the complete graphic layer from opacity zero.
+  const settle = shot.transition === 'soft' ? interpolate(frame,[0,6],[10,0],{extrapolateLeft:'clamp',extrapolateRight:'clamp',easing:Easing.bezier(.16,1,.3,1)}) : 0;
+  return <div style={{position:'absolute',inset:'102px 90px 176px',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:shot.kind === 'diagram' || shot.kind === 'receipt' ? 'stretch' : 'center',transform:`translateY(${settle}px)`}}>
+    {shot.eyebrow ? <div style={{fontSize:20,fontWeight:850,color:accent,letterSpacing:3.5,marginBottom:20}}>{shot.eyebrow}</div> : null}
+    {shot.metric ? <div style={{fontFamily:monoFamily,fontSize:112,fontWeight:900,color:accent,textShadow:`0 0 42px ${accent}4d`,lineHeight:.95}}>{shot.metric}</div> : null}
+    <div style={{maxWidth:shot.kind === 'diagram' || shot.kind === 'receipt' ? 1510 : 1440,fontSize:shot.metric ? 56 : 84,lineHeight:1.03,fontWeight:900,letterSpacing:-3,textAlign:shot.kind === 'diagram' || shot.kind === 'receipt' ? 'left' : 'center'}}><HighlightedText text={shot.headline} /></div>
+    {shot.subhead ? <div style={{maxWidth:1340,marginTop:23,fontSize:31,lineHeight:1.32,color:palette.muted,textAlign:shot.kind === 'diagram' || shot.kind === 'receipt' ? 'left' : 'center'}}>{shot.subhead}</div> : null}
+    {shot.bullets ? <div style={{display:'grid',gridTemplateColumns:'repeat(2,1fr)',gap:16,marginTop:31}}>{shot.bullets.map((bullet,index)=><div key={bullet} style={{background:palette.card,border:`1px solid ${palette.line}`,borderRadius:14,padding:'17px 21px',fontFamily:monoFamily,fontSize:23,color:index===0?accent:palette.text}}><span style={{color:accent,marginRight:11}}>✓</span>{bullet}</div>)}</div> : null}
+  </div>;
+};
+
+const Shot: React.FC<{shot: StoryShot}> = ({shot}) => {
+  const isVisual = shot.kind === 'image' || shot.kind === 'video';
+  return <AbsoluteFill style={{fontFamily,color:palette.text}}>
+    <Grid />
+    <Header shot={shot} />
+    {isVisual ? <VisualShot shot={shot} /> : <GraphicShot shot={shot} />}
+  </AbsoluteFill>;
+};
+
+export const StoryScene: React.FC<{shots: StoryShot[]; shotOffset?: number}> = ({shots}) => {
   let cursor = 0;
-  return (
-    <AbsoluteFill>
-      {shots.map((shot, index) => {
-        const from = cursor;
-        cursor += shot.duration;
-        return (
-          <Sequence key={`${shotOffset}-${index}`} from={from} durationInFrames={shot.duration} name={`Shot ${shotOffset + index}`}>
-            <Shot shot={shot} index={shotOffset + index - 1} duration={shot.duration} />
-          </Sequence>
-        );
-      })}
-    </AbsoluteFill>
-  );
+  return <AbsoluteFill>{shots.map((shot)=>{
+    const from=cursor;
+    cursor+=shot.duration;
+    return <Sequence key={shot.id ?? `${from}`} from={from} durationInFrames={shot.duration} name={`Shot ${shot.id ?? ''}`}><Shot shot={shot} /></Sequence>;
+  })}</AbsoluteFill>;
 };

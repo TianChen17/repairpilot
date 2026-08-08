@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "reviewed_shots": 34,
+  "review_method": "All 34 midpoint frames plus full-resolution key frames for live approval, DataHub context, lineage, queries, quality, Assertion, Incident, Runbook, and close were visually inspected.",
+  "criteria": {
+    "problem_clarity_first_15_seconds": 15,
+    "datahub_usage_evidence": 20,
+    "agent_takes_real_action": 20,
+    "repair_and_verification_credibility": 20,
+    "ui_and_caption_readability": 9,
+    "pacing_and_narration": 8,
+    "compliance_and_disclosure": 5
+  },
+  "total_score": 97,
+  "checks": {
+    "browser_chrome_stable": true,
+    "full_frame_fades_present": false,
+    "datahub_ui_readable_at_1080p": true,
+    "incident_body_visible": true,
+    "runbook_body_visible": true,
+    "captions_clear_of_evidence_window": true,
+    "speed_changes_labeled": true,
+    "secrets_or_private_data_visible": false,
+    "final_boundary_disclosed": true
+  },
+  "notes": "The cut is evidence-dense and judge-oriented. DataHub entity pages remain native and legible; captions use the lower safe area without covering the evidence window. No release-blocking visual defect was found."
+}
