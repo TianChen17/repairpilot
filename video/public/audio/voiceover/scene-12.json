@@ -1,0 +1,22 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "+18%",
+  "pitch": "-2Hz",
+  "text": "Three live runs produced one patch hash, one Runbook, and zero residual schemas or worktrees. Secrets stay server-side, and private services stay on loopback.",
+  "captions": [
+    {
+      "text": " Three live runs produced one patch hash, one Runbook, and zero residual schemas or worktrees.",
+      "startMs": 50,
+      "endMs": 6229,
+      "timestampMs": 50,
+      "confidence": null
+    },
+    {
+      "text": " Secrets stay server-side, and private services stay on loopback.",
+      "startMs": 6229,
+      "endMs": 10169,
+      "timestampMs": 6229,
+      "confidence": null
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "+18%",
+  "pitch": "-2Hz",
+  "targetDurationMs": 175000,
+  "speechEndMs": 172310,
+  "scenes": [
+    {
+      "id": 1,
+      "audio": "audio/voiceover/scene-01.mp3",
+      "startMs": 650,
+      "durationMs": 7752,
+      "text": "A single dbt column rename can break revenue models and executive dashboards. RepairPilot stops that change before merge."
+    },
+    {
+      "id": 2,
+      "audio": "audio/voiceover/scene-02.mp3",
+      "startMs": 13200,
+      "durationMs": 7968,
+      "text": "This is not another incident chatbot. It blocks, repairs, proves, requests human authority, and writes reusable knowledge back to DataHub."
+    },
+    {
+      "id": 3,
+      "audio": "audio/voiceover/scene-03.mp3",
+      "startMs": 21518,
+      "durationMs": 11616,
+      "text": "The live scenario uses twelve hundred deterministic synthetic orders. The infrastructure is real. DataHub MCP returns schema, ownership, governance, lineage, quality, and usage."
+    },
+    {
+      "id": 4,
+      "audio": "audio/voiceover/scene-04.mp3",
+      "startMs": 33500,
+      "durationMs": 11040,
+      "text": "DataHub shows a Tier-One financial metric owned by Revenue Analytics. Three dbt consumers and Executive Revenue Pulse depend on it. This context is live, not hard-coded."
+    },
+    {
+      "id": 5,
+      "audio": "audio/voiceover/scene-05.mp3",
+      "startMs": 44890,
+      "durationMs": 12192,
+      "text": "A deterministic policy scores the change high risk: one hundred out of one hundred. The model cannot lower this score, bypass approval, or publish. If DataHub is unavailable, RepairPilot fails closed."
+    },
+    {
+      "id": 6,
+      "audio": "audio/voiceover/scene-06.mp3",
+      "startMs": 57432,
+      "durationMs": 17064,
+      "text": "DeepSeek V4 Flash proposes a bounded repair: preserve a compatibility alias, migrate the downstream model, add a schema test, and explain the migration. Only three operation types and three allowlisted paths are accepted. Generated shell and arbitrary SQL never execute."
+    },
+    {
+      "id": 7,
+      "audio": "audio/voiceover/scene-07.mp3",
+      "startMs": 74846,
+      "durationMs": 16584,
+      "text": "Now comes executable proof. In a detached Git worktree and temporary Postgres schemas, RepairPilot reproduces the failure, applies reviewed templates, and runs dbt build. Fourteen tests pass with zero failures. Commits, invocation, and patch hash are captured."
+    },
+    {
+      "id": 8,
+      "audio": "audio/voiceover/scene-08.mp3",
+      "startMs": 91780,
+      "durationMs": 5952,
+      "text": "Only then does owner approval unlock. A rejection keeps the release blocked and creates no pull request."
+    },
+    {
+      "id": 9,
+      "audio": "audio/voiceover/scene-09.mp3",
+      "startMs": 101300,
+      "durationMs": 10008,
+      "text": "The output is a real public GitHub draft pull request: four files, the alias, migration, test, and guide. GitHub Actions rebuilds everything and stays green."
+    },
+    {
+      "id": 10,
+      "audio": "audio/voiceover/scene-10.mp3",
+      "startMs": 114300,
+      "durationMs": 12456,
+      "text": "RepairPilot closes the DataHub loop with an Incident Document, successful assertion, verified tag, and idempotent safe-column-rename Runbook. The next responder inherits evidence instead of repeating the investigation."
+    },
+    {
+      "id": 11,
+      "audio": "audio/voiceover/scene-11.mp3",
+      "startMs": 135200,
+      "durationMs": 13104,
+      "text": "An immutable Evidence Receipt ties DataHub URNs, policy version, commits, patch SHA-two-fifty-six, dbt invocation, tests, approval, pull request, and write-back addresses into one traceable record."
+    },
+    {
+      "id": 12,
+      "audio": "audio/voiceover/scene-12.mp3",
+      "startMs": 151200,
+      "durationMs": 10224,
+      "text": "Three live runs produced one patch hash, one Runbook, and zero residual schemas or worktrees. Secrets stay server-side, and private services stay on loopback."
+    },
+    {
+      "id": 13,
+      "audio": "audio/voiceover/scene-13.mp3",
+      "startMs": 162000,
+      "durationMs": 6216,
+      "text": "Synthetic business data. Real DataHub, MCP, dbt, DeepSeek, GitHub, and write-back."
+    },
+    {
+      "id": 14,
+      "audio": "audio/voiceover/scene-14.mp3",
+      "startMs": 168566,
+      "durationMs": 3744,
+      "text": "RepairPilot: Block. Repair. Prove. Remember."
+    }
+  ]
+}

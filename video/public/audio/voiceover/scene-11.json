@@ -1,0 +1,15 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "+18%",
+  "pitch": "-2Hz",
+  "text": "An immutable Evidence Receipt ties DataHub URNs, policy version, commits, patch SHA-two-fifty-six, dbt invocation, tests, approval, pull request, and write-back addresses into one traceable record.",
+  "captions": [
+    {
+      "text": " An immutable Evidence Receipt ties DataHub URNs, policy version, commits, patch SHA-two-fifty-six, dbt invocation, tests, approval, pull request, and write-back addresses into one traceable record.",
+      "startMs": 50,
+      "endMs": 13040,
+      "timestampMs": 50,
+      "confidence": null
+    }
+  ]
+}

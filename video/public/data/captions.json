@@ -1,0 +1,436 @@
+[
+  {
+    "text": " A single dbt column rename can break",
+    "startMs": 700,
+    "endMs": 3618,
+    "timestampMs": 700,
+    "confidence": null
+  },
+  {
+    "text": " revenue models and executive dashboards.",
+    "startMs": 3618,
+    "endMs": 5703,
+    "timestampMs": 3618,
+    "confidence": null
+  },
+  {
+    "text": " RepairPilot stops that change before merge.",
+    "startMs": 5703,
+    "endMs": 8341,
+    "timestampMs": 5703,
+    "confidence": null
+  },
+  {
+    "text": " This is not another incident chatbot.",
+    "startMs": 13250,
+    "endMs": 15192,
+    "timestampMs": 13250,
+    "confidence": null
+  },
+  {
+    "text": " It blocks, repairs, proves, requests human authority,",
+    "startMs": 15192,
+    "endMs": 18152,
+    "timestampMs": 15192,
+    "confidence": null
+  },
+  {
+    "text": " and writes reusable knowledge back to DataHub.",
+    "startMs": 18152,
+    "endMs": 21113,
+    "timestampMs": 18152,
+    "confidence": null
+  },
+  {
+    "text": " The live scenario uses twelve hundred deterministic",
+    "startMs": 21568,
+    "endMs": 24429,
+    "timestampMs": 21568,
+    "confidence": null
+  },
+  {
+    "text": " synthetic orders.",
+    "startMs": 24429,
+    "endMs": 25247,
+    "timestampMs": 24429,
+    "confidence": null
+  },
+  {
+    "text": " The infrastructure is real.",
+    "startMs": 25247,
+    "endMs": 27122,
+    "timestampMs": 25247,
+    "confidence": null
+  },
+  {
+    "text": " DataHub MCP returns schema, ownership, governance, lineage,",
+    "startMs": 27122,
+    "endMs": 31289,
+    "timestampMs": 27122,
+    "confidence": null
+  },
+  {
+    "text": " quality, and usage.",
+    "startMs": 31289,
+    "endMs": 33075,
+    "timestampMs": 31289,
+    "confidence": null
+  },
+  {
+    "text": " DataHub shows a Tier-One financial metric owned",
+    "startMs": 33550,
+    "endMs": 36718,
+    "timestampMs": 33550,
+    "confidence": null
+  },
+  {
+    "text": " by Revenue Analytics.",
+    "startMs": 36718,
+    "endMs": 38076,
+    "timestampMs": 36718,
+    "confidence": null
+  },
+  {
+    "text": " Three dbt consumers and Executive Revenue Pulse",
+    "startMs": 38076,
+    "endMs": 40894,
+    "timestampMs": 38076,
+    "confidence": null
+  },
+  {
+    "text": " depend on it.",
+    "startMs": 40894,
+    "endMs": 42102,
+    "timestampMs": 40894,
+    "confidence": null
+  },
+  {
+    "text": " This context is live, not hard-coded.",
+    "startMs": 42102,
+    "endMs": 44485,
+    "timestampMs": 42102,
+    "confidence": null
+  },
+  {
+    "text": " A deterministic policy scores the change high",
+    "startMs": 44940,
+    "endMs": 47240,
+    "timestampMs": 44940,
+    "confidence": null
+  },
+  {
+    "text": " risk: one hundred out of one hundred.",
+    "startMs": 47240,
+    "endMs": 49540,
+    "timestampMs": 47240,
+    "confidence": null
+  },
+  {
+    "text": " The model cannot lower this score, bypass",
+    "startMs": 49540,
+    "endMs": 52128,
+    "timestampMs": 49540,
+    "confidence": null
+  },
+  {
+    "text": " approval, or publish.",
+    "startMs": 52128,
+    "endMs": 53237,
+    "timestampMs": 52128,
+    "confidence": null
+  },
+  {
+    "text": " If DataHub is unavailable, RepairPilot fails closed.",
+    "startMs": 53237,
+    "endMs": 57019,
+    "timestampMs": 53237,
+    "confidence": null
+  },
+  {
+    "text": " DeepSeek V4 Flash proposes a bounded repair:",
+    "startMs": 57482,
+    "endMs": 60281,
+    "timestampMs": 57482,
+    "confidence": null
+  },
+  {
+    "text": " preserve a compatibility alias, migrate the downstream",
+    "startMs": 60281,
+    "endMs": 63081,
+    "timestampMs": 60281,
+    "confidence": null
+  },
+  {
+    "text": " model, add a schema test, and explain",
+    "startMs": 63081,
+    "endMs": 65880,
+    "timestampMs": 63081,
+    "confidence": null
+  },
+  {
+    "text": " the migration.",
+    "startMs": 65880,
+    "endMs": 66680,
+    "timestampMs": 65880,
+    "confidence": null
+  },
+  {
+    "text": " Only three operation types and three allowlisted",
+    "startMs": 66680,
+    "endMs": 69765,
+    "timestampMs": 66680,
+    "confidence": null
+  },
+  {
+    "text": " paths are accepted.",
+    "startMs": 69765,
+    "endMs": 71087,
+    "timestampMs": 69765,
+    "confidence": null
+  },
+  {
+    "text": " Generated shell and arbitrary SQL never execute.",
+    "startMs": 71087,
+    "endMs": 74434,
+    "timestampMs": 71087,
+    "confidence": null
+  },
+  {
+    "text": " Now comes executable proof.",
+    "startMs": 74896,
+    "endMs": 76827,
+    "timestampMs": 74896,
+    "confidence": null
+  },
+  {
+    "text": " In a detached Git worktree and temporary",
+    "startMs": 76827,
+    "endMs": 79886,
+    "timestampMs": 76827,
+    "confidence": null
+  },
+  {
+    "text": " Postgres schemas, RepairPilot reproduces the failure, applies",
+    "startMs": 79886,
+    "endMs": 82944,
+    "timestampMs": 79886,
+    "confidence": null
+  },
+  {
+    "text": " reviewed templates, and runs dbt build.",
+    "startMs": 82944,
+    "endMs": 85566,
+    "timestampMs": 82944,
+    "confidence": null
+  },
+  {
+    "text": " Fourteen tests pass with zero failures.",
+    "startMs": 85566,
+    "endMs": 88193,
+    "timestampMs": 85566,
+    "confidence": null
+  },
+  {
+    "text": " Commits, invocation, and patch hash are captured.",
+    "startMs": 88193,
+    "endMs": 91382,
+    "timestampMs": 88193,
+    "confidence": null
+  },
+  {
+    "text": " Only then does owner approval unlock.",
+    "startMs": 91830,
+    "endMs": 93761,
+    "timestampMs": 91830,
+    "confidence": null
+  },
+  {
+    "text": " A rejection keeps the release blocked and",
+    "startMs": 93761,
+    "endMs": 96249,
+    "timestampMs": 93761,
+    "confidence": null
+  },
+  {
+    "text": " creates no pull request.",
+    "startMs": 96249,
+    "endMs": 97670,
+    "timestampMs": 96249,
+    "confidence": null
+  },
+  {
+    "text": " The output is a real public GitHub",
+    "startMs": 101350,
+    "endMs": 104058,
+    "timestampMs": 101350,
+    "confidence": null
+  },
+  {
+    "text": " draft pull request: four files, the alias,",
+    "startMs": 104058,
+    "endMs": 106766,
+    "timestampMs": 104058,
+    "confidence": null
+  },
+  {
+    "text": " migration, test, and guide.",
+    "startMs": 106766,
+    "endMs": 108313,
+    "timestampMs": 106766,
+    "confidence": null
+  },
+  {
+    "text": " GitHub Actions rebuilds everything and stays green.",
+    "startMs": 108313,
+    "endMs": 111258,
+    "timestampMs": 108313,
+    "confidence": null
+  },
+  {
+    "text": " RepairPilot closes the DataHub loop with an",
+    "startMs": 114350,
+    "endMs": 117688,
+    "timestampMs": 114350,
+    "confidence": null
+  },
+  {
+    "text": " Incident Document, successful assertion, verified tag, and",
+    "startMs": 117688,
+    "endMs": 121026,
+    "timestampMs": 117688,
+    "confidence": null
+  },
+  {
+    "text": " idempotent safe-column-rename Runbook.",
+    "startMs": 121026,
+    "endMs": 122457,
+    "timestampMs": 121026,
+    "confidence": null
+  },
+  {
+    "text": " The next responder inherits evidence instead of",
+    "startMs": 122457,
+    "endMs": 125423,
+    "timestampMs": 122457,
+    "confidence": null
+  },
+  {
+    "text": " repeating the investigation.",
+    "startMs": 125423,
+    "endMs": 126694,
+    "timestampMs": 125423,
+    "confidence": null
+  },
+  {
+    "text": " An immutable Evidence Receipt ties DataHub URNs,",
+    "startMs": 135250,
+    "endMs": 138887,
+    "timestampMs": 135250,
+    "confidence": null
+  },
+  {
+    "text": " policy version, commits, patch SHA-two-fifty-six, dbt invocation,",
+    "startMs": 138887,
+    "endMs": 142524,
+    "timestampMs": 138887,
+    "confidence": null
+  },
+  {
+    "text": " tests, approval, pull request, and write-back addresses",
+    "startMs": 142524,
+    "endMs": 146162,
+    "timestampMs": 142524,
+    "confidence": null
+  },
+  {
+    "text": " into one traceable record.",
+    "startMs": 146162,
+    "endMs": 148240,
+    "timestampMs": 146162,
+    "confidence": null
+  },
+  {
+    "text": " Three live runs produced one patch hash,",
+    "startMs": 151250,
+    "endMs": 154134,
+    "timestampMs": 151250,
+    "confidence": null
+  },
+  {
+    "text": " one Runbook, and zero residual schemas or",
+    "startMs": 154134,
+    "endMs": 157017,
+    "timestampMs": 154134,
+    "confidence": null
+  },
+  {
+    "text": " worktrees.",
+    "startMs": 157017,
+    "endMs": 157429,
+    "timestampMs": 157017,
+    "confidence": null
+  },
+  {
+    "text": " Secrets stay server-side, and private services stay",
+    "startMs": 157429,
+    "endMs": 160493,
+    "timestampMs": 157429,
+    "confidence": null
+  },
+  {
+    "text": " on loopback.",
+    "startMs": 160493,
+    "endMs": 161369,
+    "timestampMs": 160493,
+    "confidence": null
+  },
+  {
+    "text": " Synthetic business data.",
+    "startMs": 162050,
+    "endMs": 163409,
+    "timestampMs": 162050,
+    "confidence": null
+  },
+  {
+    "text": " Real DataHub, MCP, dbt, DeepSeek, GitHub, and",
+    "startMs": 163409,
+    "endMs": 167562,
+    "timestampMs": 163409,
+    "confidence": null
+  },
+  {
+    "text": " write-back.",
+    "startMs": 167562,
+    "endMs": 168155,
+    "timestampMs": 167562,
+    "confidence": null
+  },
+  {
+    "text": " RepairPilot: Block.",
+    "startMs": 168616,
+    "endMs": 170144,
+    "timestampMs": 168616,
+    "confidence": null
+  },
+  {
+    "text": " Repair.",
+    "startMs": 170144,
+    "endMs": 170854,
+    "timestampMs": 170144,
+    "confidence": null
+  },
+  {
+    "text": " Prove.",
+    "startMs": 170854,
+    "endMs": 171522,
+    "timestampMs": 170854,
+    "confidence": null
+  },
+  {
+    "text": " Remember.",
+    "startMs": 171522,
+    "endMs": 172252,
+    "timestampMs": 171522,
+    "confidence": null
+  }
+]

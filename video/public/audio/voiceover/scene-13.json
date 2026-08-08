@@ -1,0 +1,22 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "+18%",
+  "pitch": "-2Hz",
+  "text": "Synthetic business data. Real DataHub, MCP, dbt, DeepSeek, GitHub, and write-back.",
+  "captions": [
+    {
+      "text": " Synthetic business data.",
+      "startMs": 50,
+      "endMs": 1409,
+      "timestampMs": 50,
+      "confidence": null
+    },
+    {
+      "text": " Real DataHub, MCP, dbt, DeepSeek, GitHub, and write-back.",
+      "startMs": 1409,
+      "endMs": 6155,
+      "timestampMs": 1409,
+      "confidence": null
+    }
+  ]
+}

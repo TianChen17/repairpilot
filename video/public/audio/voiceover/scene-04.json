@@ -1,0 +1,29 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "+18%",
+  "pitch": "-2Hz",
+  "text": "DataHub shows a Tier-One financial metric owned by Revenue Analytics. Three dbt consumers and Executive Revenue Pulse depend on it. This context is live, not hard-coded.",
+  "captions": [
+    {
+      "text": " DataHub shows a Tier-One financial metric owned by Revenue Analytics.",
+      "startMs": 50,
+      "endMs": 4576,
+      "timestampMs": 50,
+      "confidence": null
+    },
+    {
+      "text": " Three dbt consumers and Executive Revenue Pulse depend on it.",
+      "startMs": 4576,
+      "endMs": 8602,
+      "timestampMs": 4576,
+      "confidence": null
+    },
+    {
+      "text": " This context is live, not hard-coded.",
+      "startMs": 8602,
+      "endMs": 10985,
+      "timestampMs": 8602,
+      "confidence": null
+    }
+  ]
+}

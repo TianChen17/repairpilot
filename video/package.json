@@ -1,0 +1,23 @@
+{
+  "name": "repairpilot-demo-video",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "studio": "remotion studio --no-open",
+    "lint": "tsc --noEmit",
+    "still": "remotion still RepairPilotDemo output/cover.png --frame=5220",
+    "render": "remotion render RepairPilotDemo output/repairpilot-demo-raw.mp4 --codec=h264 --crf=18 --pixel-format=yuv420p --audio-codec=aac --audio-bitrate=192k"
+  },
+  "dependencies": {
+    "@remotion/captions": "4.0.506",
+    "@remotion/cli": "4.0.506",
+    "@remotion/media": "4.0.506",
+    "@remotion/transitions": "4.0.506",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.506",
+    "typescript": "5.9.3"
+  }
+}

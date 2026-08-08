@@ -1,0 +1,22 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "+18%",
+  "pitch": "-2Hz",
+  "text": "This is not another incident chatbot. It blocks, repairs, proves, requests human authority, and writes reusable knowledge back to DataHub.",
+  "captions": [
+    {
+      "text": " This is not another incident chatbot.",
+      "startMs": 50,
+      "endMs": 1992,
+      "timestampMs": 50,
+      "confidence": null
+    },
+    {
+      "text": " It blocks, repairs, proves, requests human authority, and writes reusable knowledge back to DataHub.",
+      "startMs": 1992,
+      "endMs": 7913,
+      "timestampMs": 1992,
+      "confidence": null
+    }
+  ]
+}

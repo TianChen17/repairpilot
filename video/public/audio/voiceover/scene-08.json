@@ -1,0 +1,22 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "+18%",
+  "pitch": "-2Hz",
+  "text": "Only then does owner approval unlock. A rejection keeps the release blocked and creates no pull request.",
+  "captions": [
+    {
+      "text": " Only then does owner approval unlock.",
+      "startMs": 50,
+      "endMs": 1981,
+      "timestampMs": 50,
+      "confidence": null
+    },
+    {
+      "text": " A rejection keeps the release blocked and creates no pull request.",
+      "startMs": 1981,
+      "endMs": 5890,
+      "timestampMs": 1981,
+      "confidence": null
+    }
+  ]
+}

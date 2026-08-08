@@ -1,0 +1,36 @@
+{
+  "run_id": "5ba83717-332a-4d24-a121-6aa41a1c3cc3",
+  "mode": "live",
+  "generated_at": "2026-08-07T23:29:21.221898Z",
+  "state": "LEARNED",
+  "datahub_urns": [
+    "urn:li:dataset:(urn:li:dataPlatform:dbt,repairpilot.analytics_staging.stg_orders,PROD)",
+    "urn:li:schemaField:(urn:li:dataset:(urn:li:dataPlatform:dbt,repairpilot.analytics_staging.stg_orders,PROD),gross_amount)"
+  ],
+  "policy_version": "2026-08-07.1",
+  "risk_score": 100,
+  "risk_action": "BLOCK",
+  "matched_rules": [
+    "BREAKING_SCHEMA_CHANGE",
+    "GOVERNED_OR_TIER1_ASSET",
+    "THREE_OR_MORE_DOWNSTREAM_ASSETS",
+    "DASHBOARD_IMPACT"
+  ],
+  "model": "deepseek-v4-flash",
+  "base_commit": "9c52d6da7e6ecb37192258edd66b8f772aba1c21",
+  "repair_commit": "e0bf3c79ee66bc12dbaa7164720fbbab39f6842b",
+  "patch_sha256": "588e2b4ba90abf9c65a1c53da7913c25d531ccbe9304bc98a82577ed877f13e7",
+  "dbt_invocation_id": "84ca016f-e191-41bf-a94a-7af7c05f5d14",
+  "approval": {
+    "decision": "approve",
+    "actor": "Revenue Analytics Owner",
+    "decided_at": "2026-08-07T23:29:16.277577Z"
+  },
+  "pull_request_url": "https://github.com/TianChen17/repairpilot/pull/1",
+  "writeback_urns": [
+    "urn:li:document:shared-12bcf57c-8606-47d0-9e0a-fd655391302b",
+    "urn:li:document:shared-42e25ed3-de48-4b7a-be70-20a038dfd4f8",
+    "urn:li:dataset:(urn:li:dataPlatform:dbt,repairpilot.analytics_staging.stg_orders,PROD)",
+    "urn:li:assertion:repairpilot-gross-revenue-not-null"
+  ]
+}

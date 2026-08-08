@@ -1,0 +1,22 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "+18%",
+  "pitch": "-2Hz",
+  "text": "RepairPilot closes the DataHub loop with an Incident Document, successful assertion, verified tag, and idempotent safe-column-rename Runbook. The next responder inherits evidence instead of repeating the investigation.",
+  "captions": [
+    {
+      "text": " RepairPilot closes the DataHub loop with an Incident Document, successful assertion, verified tag, and idempotent safe-column-rename Runbook.",
+      "startMs": 50,
+      "endMs": 8157,
+      "timestampMs": 50,
+      "confidence": null
+    },
+    {
+      "text": " The next responder inherits evidence instead of repeating the investigation.",
+      "startMs": 8157,
+      "endMs": 12394,
+      "timestampMs": 8157,
+      "confidence": null
+    }
+  ]
+}

@@ -20,7 +20,9 @@ warehouse/dbt_packages/
 warehouse/.user.yml
 runtime/*
 !runtime/.gitkeep
-video/out/
+video/output/
+video/public/audio/narration.raw.mp3
+video/public/data/narration.vtt
 video/public/captures/*.webm
 video/public/captures/*.mp4
 .DS_Store

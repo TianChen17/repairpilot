@@ -1,0 +1,36 @@
+{
+  "voice": "en-US-AndrewMultilingualNeural",
+  "rate": "+18%",
+  "pitch": "-2Hz",
+  "text": "Now comes executable proof. In a detached Git worktree and temporary Postgres schemas, RepairPilot reproduces the failure, applies reviewed templates, and runs dbt build. Fourteen tests pass with zero failures. Commits, invocation, and patch hash are captured.",
+  "captions": [
+    {
+      "text": " Now comes executable proof.",
+      "startMs": 50,
+      "endMs": 1981,
+      "timestampMs": 50,
+      "confidence": null
+    },
+    {
+      "text": " In a detached Git worktree and temporary Postgres schemas, RepairPilot reproduces the failure, applies reviewed templates, and runs dbt build.",
+      "startMs": 1981,
+      "endMs": 10720,
+      "timestampMs": 1981,
+      "confidence": null
+    },
+    {
+      "text": " Fourteen tests pass with zero failures.",
+      "startMs": 10720,
+      "endMs": 13347,
+      "timestampMs": 10720,
+      "confidence": null
+    },
+    {
+      "text": " Commits, invocation, and patch hash are captured.",
+      "startMs": 13347,
+      "endMs": 16536,
+      "timestampMs": 13347,
+      "confidence": null
+    }
+  ]
+}
